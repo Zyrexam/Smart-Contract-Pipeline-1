@@ -1,0 +1,137 @@
+1. ERC20 / Fungible Tokens (Extended)
+  - Create a tax token that charges 3% on every transfer and sends the tax to the treasury wallet.
+  - Build a rebasing token whose supply adjusts every 24 hours to maintain price stability.
+  - Develop a token with time-decaying balances (balances shrink 1% per week).
+  - Create an inflationary ERC20 token that mints 1% of total supply every month to the treasury.
+  - Build a flash-mintable ERC20 token where users can mint tokens only within a single transaction.
+  - Create an ERC20 with quadratic mint costs (mint cost increases over time).
+  - Develop a token that locks transferred tokens for 30 days before they become spendable.
+  - Create an ERC20 token with tiered roles: minter, freezer, controller.
+
+2. ERC721 / NFT (Advanced)
+  - Create an NFT with dynamic rarity: rarity changes based on user activity.
+  - Build a rental NFT system where users can rent NFTs for a fixed duration.
+  - Develop an NFT that expires after a year and becomes non-transferable.
+  - Create an NFT passport that stores user KYC hash on-chain.
+  - Build a carbon-credit NFT that burns when redeemed for carbon offsets.
+  - Develop a 3D NFT model renderer with on-chain metadata updates.
+  - Create a breeding NFT system like CryptoKitties with genetic attributes.
+
+3. ERC1155 / Multi-Asset
+  - Develop a multi-token system where each item type has its own supply cap.
+  - Create an ERC1155-based crafting system where combining multiple tokens produces a new one.
+  - Build a consumable-based ERC1155 where some items are burn-to-use.
+  - Develop a dynamic drop-table reward system using ERC1155 tokens.
+
+4. DAO / Governance (Level 2)
+  - Design a minimalistic DAO using quadratic voting.
+  - Create a Delegated Governance DAO where members can delegate votes to representatives.
+  - Develop a token-curated registry for ranking projects.
+  - Create a multi-branch DAO where separate councils govern different modules.
+
+5. DeFi Primitives (Advanced)
+  - Build a liquidation engine for lending markets.
+  - Develop a synthetic asset protocol where users mint USD-pegged tokens using ETH collateral.
+  - Create a stablecoin with a PID controller for peg stability.
+  - Build a TWAMM (time-weighted AMM) for long-term swaps.
+  - Develop a perps (perpetual futures) contract with funding rate adjustments.
+
+6. Staking / Yield
+  - Create a dual-staking contract where users earn rewards in two different tokens.
+  - Develop auto-compounding staking that compounds rewards into principal.
+  - Build a staking contract with slashing for early withdrawals.
+  - Create NFT-based staking where rewards depend on NFT rarity.
+
+7. Marketplace / Commerce v2
+  - Create a decentralized ticketing platform with anti-bot minting verification.
+  - Develop a cross-collection NFT aggregator marketplace.
+  - Build a 'fair Dutch auction' smart contract for art collections.
+  - Create a subscription billing smart contract with auto-renew logic.
+
+8. Escrow / Custody
+  - Build a hashed time-lock escrow contract for cross-chain payments (HTLC).
+  - Create a multi-item escrow where buyers can release items individually.
+  - Develop a two-party arbitration contract with vote-based dispute resolution.
+
+9. Access Control & Compliance
+  - Develop an ERC20 that restricts transfers only to KYC-approved addresses.
+  - Create a geo-fenced token sale blocking restricted countries.
+  - Build a multi-admin system with weighted permission levels.
+  - Create a role that can freeze or unfreeze individual accounts.
+
+10. Oracle-Integrated Contracts
+  - Build a temperature-based insurance payout triggered by Chainlink weather oracle.
+  - Create a gas-price hedging contract using oracle-reported base fees.
+  - Develop an on-chain reputation index updated through an oracle feed.
+
+11. Cross-Chain / Interoperability
+  - Create a bridge contract that locks tokens on chain A and mints wrapped tokens on chain B.
+  - Develop an omnichain NFT that moves between networks using LayerZero.
+  - Build a cross-chain message dispatcher contract.
+
+12. Soulbound Tokens / Identity
+  - Create a non-transferable SBT that records a user's credentials.
+  - Develop a university degree SBT with revoking capability.
+  - Build a reputation score SBT that increments after verified actions.
+
+13. Account Abstraction (ERC-4337)
+  - Create a smart account contract with spending limits.
+  - Develop a user wallet contract that supports session keys.
+  - Build a multi-owner smart wallet with timelocked operations.
+
+14. Zero-Knowledge Friendly
+  - Create a zk-verifiable credential NFT where metadata is a hash commitment.
+  - Develop a contract that verifies ZK-SNARK proofs before minting.
+  - Build a voting contract where votes are anonymous via ZK proofs.
+
+15. Advanced Utility Contracts
+  - Create a rate-limited token vault allowing withdrawals once every 24 hours.
+  - Develop a Commit-Reveal scheme for random number generation.
+  - Build a verifiable lottery with automated payout distribution.
+
+16. Payment Protocols
+  - Create a payment splitter contract that divides incoming funds among multiple recipients.
+  - Develop a streaming payment contract (Superfluid-style).
+  - Build a pay-per-use API metering contract with credits.
+
+17. AI/Autonomous Agent Contracts
+  - Create an autonomous trading bot contract that rebalances weekly.
+  - Build an on-chain agent that executes tasks when gas prices drop.
+  - Develop an AI-oracle-governed treasury allocator.
+
+18. SocialFi / Community Contracts
+  - Create a follower-based token airdrop system.
+  - Develop a tipping contract for microtransactions among creators.
+  - Build a group wallet requiring majority approval for spending.
+
+19. Gaming / Metaverse
+  - Create an on-chain XP leveling system for player profiles.
+  - Develop a loot-box RNG system for game rewards.
+  - Build an avatar equipment system with composable NFTs.
+
+20. Insurance Protocols
+  - Create a parametric insurance contract for crop failures.
+  - Develop a staking-backed insurance pool.
+  - Build an NFT-based insurance certificate that is transferable.
+
+21. Misc / Hybrid
+  - Create a multisig vault that requires biometrics via oracle before signing.
+  - Develop a token-bound smart wallet for ERC6551 NFTs.
+  - Create a rent-to-own contract where users gradually gain token ownership.
+  - Build a mining reward contract where difficulty adjusts automatically.
+  - Develop a vote-escrowed token (veToken) with lockup-based voting weight.
+  - Create an NFT that unlocks ERC20 tokens at each milestone.
+  - Build a decentralized pledge contract for fundraising goals.
+  - Create a digital will contract that transfers assets on inactivity.
+  - Develop a charity donation router tracking donor history.
+
+Export / conversion options:
+  - JSON array
+  - CSV
+  - Markdown
+  - Training dataset for your LLM
+  - Tags by category
+  - Difficulty score
+  - Contract complexity score
+
+If you want, I can generate any of the above formats. I can also export this list into a LaTeX file named `Blockchain_contracts.tex`.

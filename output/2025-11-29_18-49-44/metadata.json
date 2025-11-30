@@ -1,0 +1,38 @@
+{
+  "category": "ERC20",
+  "base_standard": "ERC20",
+  "extensions": [],
+  "access_control": "single_owner",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "balances": "Internal ERC20 mapping",
+      "lockTime": "Custom state variable",
+      "lockDuration": "Custom state variable"
+    },
+    "functions": {
+      "transfer": "Inherited from ERC20",
+      "unlockTokens": "Custom function",
+      "getLockedBalance": "Custom function"
+    },
+    "events": {
+      "TransferLocked": "Custom event",
+      "TokensUnlocked": "Custom event"
+    },
+    "roles": {},
+    "modifiers": {},
+    "unimplemented": []
+  },
+  "validation_errors": [
+    "Warning: No roles defined. Consider adding access control."
+  ],
+  "security_summary": "Security Analysis:\n- Access Control: single_owner\n- Security Features: Standard OpenZeppelin protections\n- Overflow Protection: Built-in Solidity ^0.8.20\n- Reentrancy: No external calls detected\n- Pausability: Not required\n",
+  "imports_used": [
+    "@openzeppelin/contracts/access/Ownable.sol",
+    "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+  ],
+  "inheritance_chain": [
+    "ERC20",
+    "Singleowner"
+  ]
+}

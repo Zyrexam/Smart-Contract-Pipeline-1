@@ -1,0 +1,43 @@
+{
+  "category": "ERC20",
+  "base_standard": "ERC20Burnable",
+  "extensions": [
+    "Mintable",
+    "Burnable"
+  ],
+  "access_control": "single_owner",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "totalSupply": "Dynamic via ERC20.totalSupply()",
+      "owner": "Via Ownable.owner()"
+    },
+    "functions": {
+      "mint": "Custom mint() with single_owner restriction",
+      "burn": "Via ERC20Burnable.burn()",
+      "transfer": "Inherited from ERC20"
+    },
+    "events": {
+      "Transfer": "Automatic via ERC20",
+      "Mint": "Custom event",
+      "Burn": "Custom event"
+    },
+    "roles": {
+      "owner": "Via Ownable"
+    },
+    "modifiers": {},
+    "unimplemented": []
+  },
+  "validation_errors": [],
+  "security_summary": "Security Analysis:\n- Access Control: single_owner\n- Security Features: Standard OpenZeppelin protections\n- Overflow Protection: Built-in Solidity ^0.8.20\n- Reentrancy: No external calls detected\n- Pausability: Not required\n",
+  "imports_used": [
+    "@openzeppelin/contracts/access/Ownable.sol",
+    "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+    "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+  ],
+  "inheritance_chain": [
+    "ERC20Burnable",
+    "ERC20Burnable",
+    "Singleowner"
+  ]
+}

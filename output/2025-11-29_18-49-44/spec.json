@@ -1,0 +1,113 @@
+{
+  "contract_name": "TimeLockedToken",
+  "contract_type": "ERC20",
+  "description": "A token contract that locks transferred tokens for 30 days before they become spendable.",
+  "state_variables": [
+    {
+      "name": "balances",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "lockTime",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "lockDuration",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "30 days"
+    }
+  ],
+  "roles": [],
+  "functions": [
+    {
+      "name": "transfer",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Transfers tokens to a specified address and locks them for 30 days."
+    },
+    {
+      "name": "unlockTokens",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Unlocks tokens that have been locked for more than 30 days."
+    },
+    {
+      "name": "getLockedBalance",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lockedBalance",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Returns the amount of tokens locked for a specific account."
+    }
+  ],
+  "events": [
+    {
+      "name": "TransferLocked",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "unlockTime",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "TokensUnlocked",
+      "parameters": [
+        {
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}
