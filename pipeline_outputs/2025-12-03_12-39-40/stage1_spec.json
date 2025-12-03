@@ -1,0 +1,99 @@
+{
+  "contract_name": "DynamicRarityNFT",
+  "contract_type": "ERC721",
+  "description": "An NFT contract where the rarity of each token changes based on user activity.",
+  "state_variables": [
+    {
+      "name": "tokenRarity",
+      "type": "mapping(uint256 => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "userActivity",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "mint",
+        "updateRarity"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "owner",
+      "description": "Mints a new NFT to the specified address."
+    },
+    {
+      "name": "updateRarity",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "activityScore",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Updates the rarity of a token based on user activity."
+    },
+    {
+      "name": "getRarity",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "rarity",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Returns the current rarity of the specified token."
+    }
+  ],
+  "events": [
+    {
+      "name": "RarityUpdated",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "newRarity",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

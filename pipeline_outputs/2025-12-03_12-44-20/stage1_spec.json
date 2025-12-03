@@ -1,0 +1,164 @@
+{
+  "contract_name": "RentalNFTSystem",
+  "contract_type": "NFT Rental",
+  "description": "A smart contract system that allows users to rent NFTs for a fixed duration.",
+  "state_variables": [
+    {
+      "name": "nftOwner",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "renter",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rentalDuration",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "rentalStartTime",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "nftTokenId",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "isRented",
+      "type": "bool",
+      "visibility": "private",
+      "initial_value": false
+    }
+  ],
+  "roles": [
+    {
+      "name": "Owner",
+      "permissions": [
+        "listNFT",
+        "endRental"
+      ]
+    },
+    {
+      "name": "Renter",
+      "permissions": [
+        "rentNFT"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "listNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Allows the owner to list an NFT for rent with a specified duration."
+    },
+    {
+      "name": "rentNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Renter",
+      "description": "Allows a user to rent an NFT for the specified duration."
+    },
+    {
+      "name": "endRental",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Allows the owner to end the rental period and reclaim the NFT."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTListed",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTRented",
+      "parameters": [
+        {
+          "name": "renter",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "startTime",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RentalEnded",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender == nftOwner",
+      "description": "Ensures that the function is called by the NFT owner."
+    },
+    {
+      "name": "onlyRenter",
+      "condition": "msg.sender == renter",
+      "description": "Ensures that the function is called by the current renter."
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "contract_name": "TaxToken",
+  "contract_type": "ERC20",
+  "description": "An ERC20 token that charges a 3% tax on every transfer, sending the collected tax to a treasury wallet. It includes a minter role and a timelock for large transfers over 10000 tokens.",
+  "state_variables": [
+    {
+      "name": "treasuryWallet",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": ""
+    },
+    {
+      "name": "taxRate",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "3"
+    },
+    {
+      "name": "minTransferForTimelock",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "10000"
+    }
+  ],
+  "roles": [
+    {
+      "name": "minter",
+      "permissions": [
+        "mint tokens"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "transfer",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Transfers tokens to a specified address, charging a 3% tax and sending it to the treasury wallet. Applies a timelock for transfers over 10000 tokens."
+    },
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "minter",
+      "description": "Mints new tokens to a specified address. Only callable by accounts with the minter role."
+    }
+  ],
+  "events": [
+    {
+      "name": "Transfer",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "TaxCollected",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "timelock",
+      "condition": "amount > minTransferForTimelock",
+      "description": "Applies a timelock for transfers over 10000 tokens."
+    }
+  ]
+}

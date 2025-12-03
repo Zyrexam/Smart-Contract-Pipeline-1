@@ -1,0 +1,89 @@
+{
+  "contract_name": "RebasingToken",
+  "contract_type": "ERC20",
+  "description": "A rebasing token whose supply adjusts every 24 hours to maintain price stability.",
+  "state_variables": [
+    {
+      "name": "totalSupply",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "lastRebaseTimestamp",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "block.timestamp"
+    },
+    {
+      "name": "targetPrice",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "1 ether"
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "initiateRebase",
+        "setTargetPrice"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "rebase",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Adjusts the total supply of the token to maintain price stability. Can be called every 24 hours."
+    },
+    {
+      "name": "setTargetPrice",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "newTargetPrice",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Sets a new target price for the token."
+    }
+  ],
+  "events": [
+    {
+      "name": "Rebase",
+      "parameters": [
+        {
+          "name": "newTotalSupply",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "TargetPriceUpdated",
+      "parameters": [
+        {
+          "name": "newTargetPrice",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender == owner",
+      "description": "Restricts function access to the contract owner."
+    },
+    {
+      "name": "rebaseCooldown",
+      "condition": "block.timestamp >= lastRebaseTimestamp + 24 hours",
+      "description": "Ensures rebase can only be called every 24 hours."
+    }
+  ]
+}

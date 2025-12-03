@@ -1,0 +1,189 @@
+{
+  "contract_name": "MultisigVault",
+  "contract_type": "Vault",
+  "description": "A multisig vault that requires biometric verification via an oracle before signing transactions.",
+  "state_variables": [
+    {
+      "name": "owners",
+      "type": "address[]",
+      "visibility": "private",
+      "initial_value": "[]"
+    },
+    {
+      "name": "requiredSignatures",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "0"
+    },
+    {
+      "name": "biometricOracle",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": "0x0"
+    },
+    {
+      "name": "pendingTransactions",
+      "type": "mapping(uint256 => Transaction)",
+      "visibility": "private",
+      "initial_value": "{}"
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "proposeTransaction",
+        "approveTransaction",
+        "executeTransaction"
+      ]
+    },
+    {
+      "name": "oracle",
+      "permissions": [
+        "verifyBiometrics"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "proposeTransaction",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "owner",
+      "description": "Allows an owner to propose a new transaction."
+    },
+    {
+      "name": "approveTransaction",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows an owner to approve a proposed transaction."
+    },
+    {
+      "name": "executeTransaction",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Executes a transaction if it has enough approvals and biometric verification."
+    },
+    {
+      "name": "verifyBiometrics",
+      "visibility": "external",
+      "inputs": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        },
+        {
+          "name": "biometricData",
+          "type": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "verified",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "oracle",
+      "description": "Called by the oracle to verify biometric data for a transaction."
+    }
+  ],
+  "events": [
+    {
+      "name": "TransactionProposed",
+      "parameters": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        },
+        {
+          "name": "destination",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "TransactionApproved",
+      "parameters": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        },
+        {
+          "name": "owner",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "TransactionExecuted",
+      "parameters": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "BiometricVerified",
+      "parameters": [
+        {
+          "name": "transactionId",
+          "type": "uint256"
+        },
+        {
+          "name": "verified",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender is an owner",
+      "description": "Restricts function access to contract owners."
+    },
+    {
+      "name": "onlyOracle",
+      "condition": "msg.sender is the biometric oracle",
+      "description": "Restricts function access to the biometric oracle."
+    }
+  ]
+}

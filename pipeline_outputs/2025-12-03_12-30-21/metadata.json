@@ -1,0 +1,34 @@
+{
+  "category": "ERC20",
+  "base_standard": "ERC20",
+  "extensions": [],
+  "access_control": "single_owner",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "totalSupply": "Dynamic via ERC20.totalSupply()",
+      "lastRebaseTimestamp": "Custom state variable",
+      "targetPrice": "Custom state variable"
+    },
+    "functions": {
+      "rebase": "Custom function",
+      "setTargetPrice": "Custom function"
+    },
+    "events": {
+      "Rebase": "Custom or inherited event",
+      "TargetPriceUpdated": "Custom or inherited event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Access Control: single_owner\nSecurity Features: Standard\n",
+  "imports_used": [
+    "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+    "@openzeppelin/contracts/access/Ownable.sol"
+  ],
+  "inheritance_chain": [
+    "ERC20",
+    "Ownable"
+  ]
+}
