@@ -1,0 +1,65 @@
+{
+  "contract_name": "InflationaryERC20Token",
+  "contract_type": "ERC20",
+  "description": "An inflationary ERC20 token that mints 1% of the total supply every month to the treasury.",
+  "state_variables": [
+    {
+      "name": "totalSupply",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "treasury",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": "0x0"
+    },
+    {
+      "name": "lastMintTime",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "0"
+    }
+  ],
+  "roles": [
+    {
+      "name": "Treasury",
+      "permissions": [
+        "receive minted tokens"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "mintMonthlyInflation",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "Treasury",
+      "description": "Mints 1% of the total supply to the treasury if a month has passed since the last mint."
+    }
+  ],
+  "events": [
+    {
+      "name": "MintedInflation",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyTreasury",
+      "condition": "msg.sender == treasury",
+      "description": "Ensures that the function can only be called by the treasury."
+    }
+  ]
+}

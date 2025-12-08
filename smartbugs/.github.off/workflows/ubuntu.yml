@@ -1,0 +1,78 @@
+name: SmartBugs tests # name displayed in badge
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  run-sb-ubuntu-sol:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        tool: ["all"]
+        contract: ["'samples/SimpleDAO.sol'"]
+        python-version: ["3.10", "3.12"]
+    steps:
+      - name: Clone SmartBugs
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Smartbugs' dependencies
+        run: install/setup-venv.sh
+      - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
+        run: ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github-sol --main --timeout 180
+      - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./reparse --sarif results
+      - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./results2csv -x start duration -- results | sed '/confuzzius/s/".*"//' | diff .github/results-ubuntu-sol.csv -
+
+  run-sb-ubuntu-rt:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        tool: ["all"]
+        contract: ["'samples/SimpleDAO.rt.hex'"]
+        python-version: ["3.10", "3.12"]
+    steps:
+      - name: Clone SmartBugs
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Smartbugs' dependencies
+        run: install/setup-venv.sh
+      - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
+        run: ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github-rt --main --timeout 180
+      - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./reparse --sarif results
+      - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./results2csv -x start duration -- results | diff .github/results-ubuntu-rt.csv -
+
+  run-sb-ubuntu-hx:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        tool: ["all"]
+        contract: ["'samples/SimpleDAO.hex'"]
+        python-version: ["3.10", "3.12"]
+    steps:
+      - name: Clone SmartBugs
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Smartbugs' dependencies
+        run: install/setup-venv.sh
+      - name: Execute ${{ matrix.tool }} on ${{ matrix.contract }}
+        run: ./smartbugs -t ${{ matrix.tool }} -f ${{ matrix.contract }} --sarif --runid github-hx --main --timeout 180
+      - name: Reparse results  of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./reparse --sarif results
+      - name: Verify results of ${{matrix.tool}} on ${{ matrix.contract }}
+        run: ./results2csv -x start duration -- results | diff .github/results-ubuntu-hx.csv -

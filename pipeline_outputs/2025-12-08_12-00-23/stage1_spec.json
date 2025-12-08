@@ -1,0 +1,196 @@
+{
+  "contract_name": "RentalNFTSystem",
+  "contract_type": "NFT Rental",
+  "description": "A smart contract system that allows users to rent NFTs for a fixed duration.",
+  "state_variables": [
+    {
+      "name": "nftOwner",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "renter",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rentalDuration",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "rentalStartTime",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "nftTokenId",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "isRented",
+      "type": "bool",
+      "visibility": "private",
+      "initial_value": false
+    }
+  ],
+  "roles": [
+    {
+      "name": "Owner",
+      "permissions": [
+        "setNFTForRent",
+        "withdrawNFT"
+      ]
+    },
+    {
+      "name": "Renter",
+      "permissions": [
+        "rentNFT",
+        "returnNFT"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "setNFTForRent",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Allows the owner to set an NFT for rent with a specified duration."
+    },
+    {
+      "name": "rentNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Renter",
+      "description": "Allows a user to rent an NFT for the specified duration."
+    },
+    {
+      "name": "returnNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Renter",
+      "description": "Allows the renter to return the NFT after the rental period is over."
+    },
+    {
+      "name": "withdrawNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Allows the owner to withdraw the NFT from the rental system."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTSetForRent",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTRented",
+      "parameters": [
+        {
+          "name": "renter",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "startTime",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTReturned",
+      "parameters": [
+        {
+          "name": "renter",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTWithdrawn",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender == nftOwner",
+      "description": "Ensures that the function is called by the NFT owner."
+    },
+    {
+      "name": "onlyRenter",
+      "condition": "msg.sender == renter",
+      "description": "Ensures that the function is called by the current renter."
+    },
+    {
+      "name": "notRented",
+      "condition": "!isRented",
+      "description": "Ensures that the NFT is not currently rented."
+    }
+  ]
+}

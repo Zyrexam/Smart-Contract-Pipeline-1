@@ -1,0 +1,148 @@
+{
+  "contract_name": "StakingContract",
+  "contract_type": "staking",
+  "description": "A staking contract where users can stake ERC20 tokens to earn rewards. The owner can set the reward rate and pause the contract.",
+  "state_variables": [
+    {
+      "name": "rewardRate",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "0"
+    },
+    {
+      "name": "paused",
+      "type": "bool",
+      "visibility": "private",
+      "initial_value": "false"
+    },
+    {
+      "name": "owner",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": "0x0"
+    }
+  ],
+  "roles": [
+    {
+      "name": "user",
+      "permissions": [
+        "stakeTokens",
+        "claimRewards"
+      ]
+    },
+    {
+      "name": "owner",
+      "permissions": [
+        "setRewardRate",
+        "pauseContract"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "stakeTokens",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows users to stake a specified amount of ERC20 tokens."
+    },
+    {
+      "name": "claimRewards",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "rewards",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "user",
+      "description": "Allows users to claim their earned rewards."
+    },
+    {
+      "name": "setRewardRate",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "newRate",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to set a new reward rate."
+    },
+    {
+      "name": "pauseContract",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to pause the contract."
+    }
+  ],
+  "events": [
+    {
+      "name": "Staked",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RewardClaimed",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "rewards",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RewardRateSet",
+      "parameters": [
+        {
+          "name": "newRate",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "Paused",
+      "parameters": [
+        {
+          "name": "status",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender == owner",
+      "description": "Restricts function access to the owner."
+    },
+    {
+      "name": "whenNotPaused",
+      "condition": "!paused",
+      "description": "Ensures the contract is not paused."
+    }
+  ]
+}

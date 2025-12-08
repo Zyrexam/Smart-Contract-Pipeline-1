@@ -1,0 +1,19 @@
+{
+  "validation_errors": [],
+  "coverage": {
+    "state_variables": {
+      "rewardRate": "Custom staking state variable",
+      "paused": "Custom staking state variable",
+      "owner": "Custom staking state variable"
+    },
+    "functions": {
+      "stakeTokens": "Custom function",
+      "claimRewards": "Claim rewards",
+      "setRewardRate": "Custom function",
+      "pauseContract": "Custom function"
+    },
+    "events": {},
+    "roles": {},
+    "modifiers": {}
+  }
+}

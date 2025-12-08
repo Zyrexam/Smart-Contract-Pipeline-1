@@ -1,0 +1,18 @@
+{
+  "validation_errors": [],
+  "coverage": {
+    "state_variables": {
+      "totalSupply": "Dynamic via ERC20.totalSupply()",
+      "treasury": "Custom state variable",
+      "lastMintTime": "Custom state variable"
+    },
+    "functions": {
+      "mintMonthlyInflation": "Custom function"
+    },
+    "events": {
+      "MintedInflation": "Custom or inherited event"
+    },
+    "roles": {},
+    "modifiers": {}
+  }
+}
