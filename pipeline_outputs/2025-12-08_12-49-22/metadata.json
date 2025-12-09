@@ -1,0 +1,41 @@
+{
+  "category": "GOVERNANCE",
+  "base_standard": "Governor",
+  "extensions": [
+    "GovernorVotes",
+    "GovernorSettings"
+  ],
+  "access_control": "single_owner",
+  "security_features": [
+    "TimelockController"
+  ],
+  "coverage": {
+    "state_variables": {},
+    "functions": {
+      "registerVoter": "Governance function / override or custom",
+      "addCandidate": "Governance function / override or custom",
+      "startVotingPeriod": "Governance function / override or custom",
+      "vote": "Governance function / override or custom",
+      "declareWinner": "Governance function / override or custom"
+    },
+    "events": {},
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Access Control: single_owner\nSecurity Features: TimelockController\n",
+  "imports_used": [
+    "@openzeppelin/contracts/governance/Governor.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorSettings.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol",
+    "@openzeppelin/contracts/access/Ownable.sol"
+  ],
+  "inheritance_chain": [
+    "Governor",
+    "GovernorSettings",
+    "GovernorVotes",
+    "GovernorVotesQuorumFraction",
+    "Ownable"
+  ]
+}

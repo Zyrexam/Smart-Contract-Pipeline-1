@@ -1,0 +1,45 @@
+{
+  "category": "Governor",
+  "base_standard": "Governor",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {},
+    "functions": {
+      "submitProposal": "Override or custom function",
+      "vote": "Override or custom function",
+      "calculateResults": "Override or custom function",
+      "executeApprovedAction": "Override or custom function"
+    },
+    "events": {},
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Governor\nClassification Confidence: 95%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin Governor\n\nReasoning: The contract describes a DAO governance system where token holders can submit proposals, vote on them, and execute approved actions. This aligns with the Governor template, which includes proposals, voting power, quorum, and execution.",
+  "imports_used": [
+    "@openzeppelin/contracts/governance/Governor.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorSettings.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol",
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "Governor",
+    "GovernorSettings",
+    "GovernorVotes",
+    "GovernorVotesQuorumFraction",
+    "AccessControl"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Governor",
+    "subtype": null,
+    "confidence": 0.95,
+    "reasoning": "The contract describes a DAO governance system where token holders can submit proposals, vote on them, and execute approved actions. This aligns with the Governor template, which includes proposals, voting power, quorum, and execution.",
+    "is_template": true,
+    "recommended_approach": "template"
+  }
+}

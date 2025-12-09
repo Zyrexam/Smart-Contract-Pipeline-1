@@ -1,0 +1,101 @@
+{
+  "contract_name": "CertificateManager",
+  "contract_type": "Smart Contract",
+  "description": "A smart contract to manage and verify digital certificates or academic degrees.",
+  "state_variables": [
+    {
+      "name": "certificates",
+      "type": "mapping(address => bytes32)",
+      "visibility": "private",
+      "initial_value": null
+    }
+  ],
+  "roles": [
+    {
+      "name": "EducationalInstitution",
+      "permissions": [
+        "issueCertificate"
+      ]
+    },
+    {
+      "name": "Employer",
+      "permissions": [
+        "verifyCertificate"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "issueCertificate",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "name": "certificateHash",
+          "type": "bytes32"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "EducationalInstitution",
+      "description": "Allows an educational institution to issue a hashed version of a certificate to a student's digital identity."
+    },
+    {
+      "name": "verifyCertificate",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "name": "certificateHash",
+          "type": "bytes32"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isValid",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "Employer",
+      "description": "Allows an employer to verify the authenticity and validity of a certificate without contacting the issuing authority."
+    }
+  ],
+  "events": [
+    {
+      "name": "CertificateIssued",
+      "parameters": [
+        {
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "name": "certificateHash",
+          "type": "bytes32"
+        }
+      ]
+    },
+    {
+      "name": "CertificateVerified",
+      "parameters": [
+        {
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "name": "certificateHash",
+          "type": "bytes32"
+        },
+        {
+          "name": "isValid",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

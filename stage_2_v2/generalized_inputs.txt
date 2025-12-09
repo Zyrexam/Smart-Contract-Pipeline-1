@@ -1,0 +1,48 @@
+"Design a smart contract system to verify the authenticity and origin of luxury goods (e.g., a high-end watch)."
+
+Conditions: The contract will store an immutable record of the watch's unique ID, ownership history, and maintenance records. Each time the item changes ownership, the smart contract manages the transparent transfer of the digital title.
+
+
+
+
+
+
+
+"Create a smart contract for a simple, tamper-proof election system for a small community or club."
+
+Conditions: The contract manages voter registration and identity verification, assigns a single "vote" per verified identity, and immutably records votes. Once the voting period ends, the contract automatically tabulates and publicly declares the winner.
+
+
+
+
+
+"Develop a smart contract to manage and verify digital certificates or academic degrees."
+
+Conditions: An educational institution can issue a hashed version of a certificate to a student's digital identity. An employer can then use the smart contract to instantly verify the certificate's authenticity and validity without needing to contact the issuing authority directly.
+
+
+
+
+
+
+"Design a smart contract that automates royalty payments for music streaming."
+
+Conditions: The contract stores the ownership percentages for all involved parties (artist, producer, label). When a streaming service reports usage data (via an oracle), the smart contract automatically distributes the corresponding micro-payments instantly to all recipients according to their pre-defined shares.
+
+
+
+
+
+
+"Implement a smart contract for a secure and transparent decentralized autonomous organization (DAO) voting system."
+
+Conditions: Token holders can submit proposals and vote on them using their tokens. The contract ensures that each token is counted once, prevents double-voting, calculates the results, and automatically executes the approved actions (e.g., updating a protocol parameter) when a majority is reached.
+
+
+
+
+
+
+"Create a smart contract for tracking a medical shipment from the manufacturer to the hospital."
+
+Conditions: The contract should automatically log each time a location is updated via an IoT sensor, trigger an alert if the temperature goes outside a specified range, and release payment to the shipping company only upon confirmed delivery at the final destination.

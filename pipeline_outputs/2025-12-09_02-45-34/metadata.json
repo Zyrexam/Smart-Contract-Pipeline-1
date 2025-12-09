@@ -1,0 +1,55 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [
+    "ReentrancyGuard"
+  ],
+  "coverage": {
+    "state_variables": {
+      "voterRegistry": "Election state - Design appropriate type",
+      "votes": "Election state - Design appropriate type",
+      "candidates": "Candidate tracking (info/status) - Use mapping(address => bool) isCandidate",
+      "votingPeriodEnd": "Time-based voting period - Use uint256 for timestamp",
+      "winner": "Election state - Design appropriate type",
+      "_REQUIREMENT_hasVoted": "MUST create: mapping(address => bool) public hasVoted - SEPARATE mapping for tracking if voter voted",
+      "_REQUIREMENT_candidateVotes": "MUST create: mapping(address => uint256) public candidateVotes - SEPARATE mapping for vote counts per candidate"
+    },
+    "functions": {
+      "setVotingPeriod": "Election function - Implement with proper data structures",
+      "registerVoter": "Voter registration with verification - Set voters[address] = true",
+      "addCandidate": "Election function - Implement with proper data structures",
+      "vote": "Vote casting - MUST: 1) Check auto-tabulate at START, 2) Check hasVoted[msg.sender], 3) Set hasVoted[msg.sender]=true, 4) Increment candidateVotes[candidate] - Use SEPARATE mappings",
+      "declareWinner": "Result calculation - MUST be internal _autoTabulate() called automatically, NOT external manual function",
+      "_REQUIREMENT_autoTabulate": "MUST create internal _autoTabulate() function, check at START of vote() function, NOT as external manual function"
+    },
+    "events": {
+      "VoterRegistered": "Election event for transparency",
+      "VoteCast": "Election event for transparency",
+      "WinnerDeclared": "Election event for transparency"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\nSubtype: election\n\nReasoning: The contract is designed for a simple election system with voter registration, identity verification, and vote tabulation, which does not fit the Governor template as it lacks full DAO governance features like proposals and quorum. It is a straightforward election system.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol",
+    "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl",
+    "ReentrancyGuard"
+  ],
+  "is_template": false,
+  "subtype": "election",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "election",
+    "confidence": 0.9,
+    "reasoning": "The contract is designed for a simple election system with voter registration, identity verification, and vote tabulation, which does not fit the Governor template as it lacks full DAO governance features like proposals and quorum. It is a straightforward election system.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  }
+}

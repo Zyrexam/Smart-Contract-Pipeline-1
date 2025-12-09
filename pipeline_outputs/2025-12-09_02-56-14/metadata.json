@@ -1,0 +1,49 @@
+{
+  "category": "Governor",
+  "base_standard": "Governor",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "_REQUIREMENT_hasVoted": "MUST create: mapping(uint256 => mapping(address => bool)) hasVoted - Per-proposal vote status tracking",
+      "_REQUIREMENT_voteWeights": "MUST create: mapping(uint256 => mapping(address => uint256)) voteWeights - Per-proposal vote weights"
+    },
+    "functions": {
+      "submitProposal": "Override or custom function",
+      "vote": "Vote casting - MUST: 1) Use getVotes() for token balance (not parameter), 2) Use per-proposal hasVoted mapping, 3) Check and auto-execute if majority reached",
+      "calculateResults": "Override or custom function",
+      "executeProposal": "Proposal execution - MUST be called automatically in vote() when majority reached, NOT as separate manual function",
+      "_REQUIREMENT_autoExecute": "MUST check if majority reached at END of vote() function and call execute function automatically"
+    },
+    "events": {},
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Governor\nClassification Confidence: 95%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin Governor\n\nReasoning: The contract describes a DAO governance system where token holders can submit proposals and vote on them. It includes features like proposal submission, voting, result calculation, and automatic execution of approved actions, which align with the Governor template.",
+  "imports_used": [
+    "@openzeppelin/contracts/governance/Governor.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorSettings.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorVotes.sol",
+    "@openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol",
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "Governor",
+    "GovernorSettings",
+    "GovernorVotes",
+    "GovernorVotesQuorumFraction",
+    "AccessControl"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Governor",
+    "subtype": null,
+    "confidence": 0.95,
+    "reasoning": "The contract describes a DAO governance system where token holders can submit proposals and vote on them. It includes features like proposal submission, voting, result calculation, and automatic execution of approved actions, which align with the Governor template.",
+    "is_template": true,
+    "recommended_approach": "template"
+  }
+}
