@@ -1,0 +1,181 @@
+{
+  "contract_name": "DualStaking",
+  "contract_type": "ERC20 Staking",
+  "description": "A dual-staking contract where users stake one ERC20 token and earn rewards in two ERC20 reward tokens. Admin sets reward rates. Users can stake, withdraw, and claim rewards. Rewards accumulate linearly based on stake amount.",
+  "state_variables": [
+    {
+      "name": "stakingToken",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rewardToken1",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rewardToken2",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rewardRate1",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "rewardRate2",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "totalStaked",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "stakes",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rewardDebt1",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rewardDebt2",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": null
+    }
+  ],
+  "roles": [
+    {
+      "name": "admin",
+      "permissions": [
+        "setRewardRates"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "setRewardRates",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "rate1",
+          "type": "uint256"
+        },
+        {
+          "name": "rate2",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "admin",
+      "description": "Sets the reward rates for the two reward tokens."
+    },
+    {
+      "name": "stake",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to stake a specified amount of the staking token."
+    },
+    {
+      "name": "withdraw",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to withdraw a specified amount of their staked tokens."
+    },
+    {
+      "name": "claimRewards",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to claim their accumulated rewards in both reward tokens."
+    }
+  ],
+  "events": [
+    {
+      "name": "Staked",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "Withdrawn",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RewardClaimed",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "reward1",
+          "type": "uint256"
+        },
+        {
+          "name": "reward2",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RewardRatesSet",
+      "parameters": [
+        {
+          "name": "rate1",
+          "type": "uint256"
+        },
+        {
+          "name": "rate2",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

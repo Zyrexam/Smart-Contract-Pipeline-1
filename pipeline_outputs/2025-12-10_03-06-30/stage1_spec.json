@@ -1,0 +1,58 @@
+{
+  "contract_name": "",
+  "contract_type": "",
+  "description": "A contract where users can deposit Ether and the owner can withdraw it.",
+  "state_variables": [
+    {
+      "name": "owner",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": "msg.sender"
+    },
+    {
+      "name": "balances",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": ""
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "withdraw"
+      ]
+    },
+    {
+      "name": "user",
+      "permissions": [
+        "deposit"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "deposit",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows users to deposit Ether into the contract. The deposited amount is added to the user's balance."
+    },
+    {
+      "name": "withdraw",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to withdraw a specified amount of Ether from the contract."
+    }
+  ],
+  "events": [],
+  "modifiers": []
+}

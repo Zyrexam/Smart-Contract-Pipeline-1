@@ -9,6 +9,14 @@ _CATEGORY_RULES = {
     ContractCategory.GOVERNANCE: """GOVERNANCE: Inherit Governor + extensions, implement votingDelay/votingPeriod/proposalThreshold/quorum.""",
     ContractCategory.NFT_MARKETPLACE: """MARKETPLACE: Use ReentrancyGuard, listings mapping, royalties (ERC2981) support.""",
     ContractCategory.AUCTION: """AUCTION: ReentrancyGuard, pull refunds, auction lifecycle functions.""",
+    ContractCategory.ERC721: """ERC721 RENTAL PATTERN:
+- MUST have mint/safeMint function (onlyOwner) - NFTs must be minted before rental
+- Use actual token transfers (_transfer or transferFrom) for rental, NOT just state variables
+- rental functions (rentNFT) should be payable if they accept ETH payments
+- Track rental metadata in separate mapping (startTime, duration, originalOwner)
+- Use ERC721.ownerOf() for ownership checks - DO NOT create redundant owner state variables
+- Return/reclaim functions should transfer NFT back to original owner
+- Constructor: ERC721("name", "symbol") Ownable(msg.sender)""",
 }
 
 # OpenZeppelin v5 specific guidance
@@ -173,6 +181,20 @@ ERC20 IMPLEMENTATION RULES:
 - For minting: implement mint() with access control
 - For burning: inherit ERC20Burnable or implement custom burn
 - For transfer restrictions: override _update function"""
+
+    # Add ERC721 specific guidance (especially for rentals)
+    if profile.category == ContractCategory.ERC721:
+        system_prompt += """
+
+ERC721 IMPLEMENTATION RULES:
+- MUST implement mint/safeMint function if managing NFTs (onlyOwner)
+- Use actual token transfers (_transfer) for ownership changes, NOT just state variables
+- For rental systems:
+  * rentNFT() should be payable if accepting ETH payments
+  * Use _transfer(owner, renter, tokenId) to change ownership
+  * Track rental metadata separately (mapping(uint256 => Rental))
+  * Use ownerOf(tokenId) for ownership checks - DO NOT create redundant owner variables
+- Constructor: ERC721("name", "symbol") Ownable(msg.sender)"""
 
     # Build imports and inheritance
     imports = _build_imports(profile)

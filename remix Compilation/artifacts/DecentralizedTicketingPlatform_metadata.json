@@ -1,0 +1,237 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "InsufficientFunds",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NoTicketsAvailable",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "VerificationFailed",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsWithdrawn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "ticketId",
+						"type": "uint256"
+					}
+				],
+				"name": "TicketPurchased",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "numberOfTickets",
+						"type": "uint256"
+					}
+				],
+				"name": "TicketsMinted",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "buyTicket",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "numberOfTickets",
+						"type": "uint256"
+					}
+				],
+				"name": "mintTickets",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "setTicketPrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ticketPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ticketsSold",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalTickets",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"mintTickets(uint256)": {
+					"params": {
+						"numberOfTickets": "The number of tickets to mint."
+					}
+				},
+				"setTicketPrice(uint256)": {
+					"params": {
+						"price": "The new price for each ticket."
+					}
+				}
+			},
+			"title": "DecentralizedTicketingPlatform",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"buyTicket()": {
+					"notice": "Allows a user to purchase a ticket with anti-bot verification."
+				},
+				"constructor": {
+					"notice": "Constructor sets the contract deployer as the owner."
+				},
+				"mintTickets(uint256)": {
+					"notice": "Mints a specified number of tickets."
+				},
+				"setTicketPrice(uint256)": {
+					"notice": "Sets the price for each ticket."
+				},
+				"withdrawFunds()": {
+					"notice": "Allows the owner to withdraw funds from ticket sales."
+				}
+			},
+			"notice": "A decentralized platform for minting and managing event tickets with anti-bot verification.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"volk.sol": "DecentralizedTicketingPlatform"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"volk.sol": {
+			"keccak256": "0x5f5ec3f260f63a96cf15dd0f5e99eb21165e1295c6578856873aeedaa4822f43",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c478b15ee4de5787e53ad28e555f393fe9de5879d52670b5e78d5bc803c90138",
+				"dweb:/ipfs/QmPzvXuET91RsUPcCukrucrYpN4t1dZ9uipddBhjbEEqmr"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,44 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "single_owner",
+  "security_features": [
+    "ReentrancyGuard"
+  ],
+  "coverage": {
+    "state_variables": {
+      "treasuryWallet": "Custom state variable",
+      "taxRate": "Custom state variable"
+    },
+    "functions": {
+      "transfer": "Custom function"
+    },
+    "events": {
+      "TaxCharged": "Custom event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: single_owner\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\n\nReasoning: The contract involves a unique business logic of charging a tax on every transfer and sending it to a treasury wallet, which is not a standard feature of ERC20 tokens. Therefore, it does not fit the standard ERC20 template.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/Ownable.sol",
+    "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+  ],
+  "inheritance_chain": [
+    "Ownable",
+    "ReentrancyGuard"
+  ],
+  "is_template": false,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": null,
+    "confidence": 0.9,
+    "reasoning": "The contract involves a unique business logic of charging a tax on every transfer and sending it to a treasury wallet, which is not a standard feature of ERC20 tokens. Therefore, it does not fit the standard ERC20 template.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

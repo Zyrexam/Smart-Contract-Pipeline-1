@@ -10,11 +10,31 @@ from stage_1.intent_extraction import extract_intent
 from stage_2_v2.generator_v2 import generate_solidity_v2
 
 
+# Create a tax token that charges 3% on every transfer and sends the tax to the treasury wallet.
+
+
+# Create an NFT with dynamic rarity: rarity changes based on user activity.
+
+# Create a decentralized ticketing platform with anti-bot minting verification.
+
+# Create a rate-limited token vault allowing withdrawals once every 24 hours.
+
+# Create a dual-staking contract where users earn rewards in two different tokens.
+
+# Create a dual-staking contract where users earn rewards in two different tokens.
+
+# Write a contract where users can deposit Ether and the owner can withdraw it.”
+
+# “Generate a simple Counter smart contract with increment, decrement, and reset functions.”
+
+# Write a contract where users can deposit Ether and the owner can withdraw it.”
+
+# “Generate a token staking contract where users stake ERC20 tokens and earn reward tokens over time.”
+
+ 
+
 USER_INPUT = """
-"Implement a smart contract for a secure and transparent decentralized autonomous organization (DAO) voting system."
-
-Conditions: Token holders can submit proposals and vote on them using their tokens. The contract ensures that each token is counted once, prevents double-voting, calculates the results, and automatically executes the approved actions (e.g., updating a protocol parameter) when a majority is reached.
-
+Create a tax token that charges 3% on every transfer and sends the tax to the treasury wallet.
 """
 
 

@@ -1,0 +1,24 @@
+# Custom Slither image with pre-installed Solidity compilers
+FROM smartbugs/slither:0.11.3
+
+# Install solc-select if not present
+RUN pip3 install solc-select || true
+
+# Install multiple Solidity versions to avoid download issues
+RUN solc-select install 0.8.20 || true && \
+    solc-select install 0.8.24 || true && \
+    solc-select install 0.8.25 || true && \
+    solc-select install 0.8.26 || true
+
+# Set default version
+RUN solc-select use 0.8.20 || true
+
+# Verify installation
+RUN solc --version || echo "Solc not available, will use Docker's version"
+
+# Disable solc-select verification to avoid checksum errors
+ENV SOLC_SELECT_DISABLED=1
+ENV SOLC_VERSION=0.8.20
+
+# Keep working
+WORKDIR /sb

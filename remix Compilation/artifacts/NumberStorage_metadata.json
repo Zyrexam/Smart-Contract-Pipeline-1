@@ -1,0 +1,142 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "NotOwner",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "updater",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "NumberUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "retrieveNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "updateNumber",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Implements a simple number storage with owner access control.",
+			"errors": {
+				"NotOwner()": [
+					{
+						"details": "Custom error for unauthorized access."
+					}
+				]
+			},
+			"events": {
+				"NumberUpdated(address,uint256)": {
+					"details": "Emitted when the stored number is updated.",
+					"params": {
+						"newNumber": "The new number that was stored.",
+						"updater": "The address of the user who updated the number."
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Sets the deployer as the initial owner of the contract."
+				},
+				"retrieveNumber()": {
+					"returns": {
+						"_0": "The current stored number."
+					}
+				},
+				"updateNumber(uint256)": {
+					"details": "Only the owner can update the number.",
+					"params": {
+						"newNumber": "The new number to store."
+					}
+				}
+			},
+			"title": "Number Storage Contract",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"retrieveNumber()": {
+					"notice": "Retrieves the current stored number."
+				},
+				"updateNumber(uint256)": {
+					"notice": "Updates the stored number to a new value provided by the user."
+				}
+			},
+			"notice": "This contract allows storing, updating, and retrieving a number.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"numberStorage.sol": "NumberStorage"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"numberStorage.sol": {
+			"keccak256": "0x798ae366424111d270d396ecac73d149765a5b673d2b04d0d929d8099e7c4208",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://496c86e0b3013dae2bd2d36faf398b8427eb19c780bb93c39d16e42f7e2fc43c",
+				"dweb:/ipfs/QmbBpDN8xMvGNKh1Xv8xUp3gd5jNbVCTnSm1tXMPGWYCxq"
+			]
+		}
+	},
+	"version": 1
+}

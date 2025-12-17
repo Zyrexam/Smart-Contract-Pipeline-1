@@ -1,0 +1,157 @@
+{
+  "contract_name": "ElectionSystem",
+  "contract_type": "Election",
+  "description": "A smart contract for a simple, tamper-proof election system for a small community or club. It manages voter registration and identity verification, assigns a single vote per verified identity, and immutably records votes. Once the voting period ends, the contract automatically tabulates and publicly declares the winner.",
+  "state_variables": [
+    {
+      "name": "voters",
+      "type": "mapping(address => bool)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "votes",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "candidates",
+      "type": "address[]",
+      "visibility": "public",
+      "initial_value": "[]"
+    },
+    {
+      "name": "votingPeriodEnd",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "winner",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": "address(0)"
+    }
+  ],
+  "roles": [
+    {
+      "name": "admin",
+      "permissions": [
+        "registerVoter",
+        "startVoting",
+        "endVoting"
+      ]
+    },
+    {
+      "name": "voter",
+      "permissions": [
+        "vote"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "registerVoter",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "voterAddress",
+          "type": "address"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "admin",
+      "description": "Registers a voter by verifying their identity and allowing them to vote."
+    },
+    {
+      "name": "startVoting",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "admin",
+      "description": "Starts the voting period for a specified duration."
+    },
+    {
+      "name": "vote",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "candidate",
+          "type": "address"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "voter",
+      "description": "Allows a registered voter to cast a vote for a candidate."
+    },
+    {
+      "name": "endVoting",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "admin",
+      "description": "Ends the voting period, tabulates votes, and declares the winner."
+    }
+  ],
+  "events": [
+    {
+      "name": "VoterRegistered",
+      "parameters": [
+        {
+          "name": "voterAddress",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "VoteCast",
+      "parameters": [
+        {
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "name": "candidate",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "WinnerDeclared",
+      "parameters": [
+        {
+          "name": "winner",
+          "type": "address"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyDuringVoting",
+      "condition": "block.timestamp <= votingPeriodEnd",
+      "description": "Ensures that the function can only be called during the voting period."
+    },
+    {
+      "name": "onlyAfterVoting",
+      "condition": "block.timestamp > votingPeriodEnd",
+      "description": "Ensures that the function can only be called after the voting period has ended."
+    },
+    {
+      "name": "onlyAdmin",
+      "condition": "msg.sender == admin",
+      "description": "Restricts access to admin-only functions."
+    },
+    {
+      "name": "onlyVoter",
+      "condition": "voters[msg.sender]",
+      "description": "Restricts access to functions for registered voters only."
+    }
+  ]
+}

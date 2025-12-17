@@ -1,0 +1,84 @@
+{
+  "contract_name": "RateLimitedTokenVault",
+  "contract_type": "TokenVault",
+  "description": "A smart contract that acts as a token vault with rate-limited withdrawals, allowing withdrawals once every 24 hours.",
+  "state_variables": [
+    {
+      "name": "lastWithdrawalTime",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": "0"
+    },
+    {
+      "name": "tokenBalance",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "owner",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": "0x0"
+    }
+  ],
+  "roles": [
+    {
+      "name": "Owner",
+      "permissions": [
+        "withdraw",
+        "setWithdrawalTime"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "withdraw",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Allows the owner to withdraw tokens from the vault, but only once every 24 hours."
+    },
+    {
+      "name": "setWithdrawalTime",
+      "visibility": "private",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Sets the last withdrawal time to the current block timestamp."
+    }
+  ],
+  "events": [
+    {
+      "name": "Withdrawal",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "rateLimit",
+      "condition": "block.timestamp >= lastWithdrawalTime + 24 hours",
+      "description": "Ensures that withdrawals can only occur once every 24 hours."
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "NotOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "Underflow",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newCount",
+						"type": "uint256"
+					}
+				],
+				"name": "Decremented",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newCount",
+						"type": "uint256"
+					}
+				],
+				"name": "Incremented",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newCount",
+						"type": "uint256"
+					}
+				],
+				"name": "Reset",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "decrement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "increment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "reset",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "This contract allows incrementing, decrementing, and resetting a counter. Only the owner can perform these actions.",
+			"errors": {
+				"NotOwner()": [
+					{
+						"details": "Custom error for unauthorized access."
+					}
+				],
+				"Underflow()": [
+					{
+						"details": "Custom error for underflow when decrementing."
+					}
+				]
+			},
+			"events": {
+				"Decremented(uint256)": {
+					"details": "Emitted when the count is decremented.",
+					"params": {
+						"newCount": "The new count value after decrement."
+					}
+				},
+				"Incremented(uint256)": {
+					"details": "Emitted when the count is incremented.",
+					"params": {
+						"newCount": "The new count value after increment."
+					}
+				},
+				"Reset(uint256)": {
+					"details": "Emitted when the count is reset.",
+					"params": {
+						"newCount": "The new count value after reset."
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Sets the deployer as the initial owner."
+				},
+				"decrement()": {
+					"details": "Emits a Decremented event. Reverts if count is 0."
+				},
+				"getCount()": {
+					"returns": {
+						"_0": "The current count."
+					}
+				},
+				"increment()": {
+					"details": "Emits an Incremented event."
+				},
+				"reset()": {
+					"details": "Emits a Reset event."
+				}
+			},
+			"title": "Counter - A simple Counter smart contract with increment, decrement, and reset functions.",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"decrement()": {
+					"notice": "Decreases the count by 1."
+				},
+				"getCount()": {
+					"notice": "Returns the current count value."
+				},
+				"increment()": {
+					"notice": "Increases the count by 1."
+				},
+				"reset()": {
+					"notice": "Resets the count to 0."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"counter.sol": "Counter"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"counter.sol": {
+			"keccak256": "0xb12258a4439b2a8c631dbe073fbc29e58de5d3e44ce0d9b23bdaa6ee6692d298",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3d92d2d9e9e847996a4209aa28a7c6114e5ac18bc879427a4be59dc41600e5dc",
+				"dweb:/ipfs/QmPQMDRCq6cnNdZgSJVfpnTNsCNLcmBXHaKDijEiaX6qLW"
+			]
+		}
+	},
+	"version": 1
+}

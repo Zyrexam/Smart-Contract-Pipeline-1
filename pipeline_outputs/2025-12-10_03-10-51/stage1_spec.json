@@ -1,0 +1,42 @@
+{
+  "contract_name": "Counter",
+  "contract_type": "Simple Counter",
+  "description": "A simple Counter smart contract with increment, decrement, and reset functions.",
+  "state_variables": [
+    {
+      "name": "count",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    }
+  ],
+  "roles": [],
+  "functions": [
+    {
+      "name": "increment",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Increases the count by 1."
+    },
+    {
+      "name": "decrement",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Decreases the count by 1."
+    },
+    {
+      "name": "reset",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Resets the count to 0."
+    }
+  ],
+  "events": [],
+  "modifiers": []
+}

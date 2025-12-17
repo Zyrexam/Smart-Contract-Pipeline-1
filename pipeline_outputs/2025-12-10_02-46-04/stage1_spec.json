@@ -1,0 +1,96 @@
+{
+  "contract_name": "DynamicRarityNFT",
+  "contract_type": "ERC721",
+  "description": "This smart contract creates an NFT with dynamic rarity, where the rarity changes based on user activity.",
+  "state_variables": [
+    {
+      "name": "rarity",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "userActivity",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "mint",
+        "setBaseURI"
+      ]
+    },
+    {
+      "name": "user",
+      "permissions": [
+        "interact"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "owner",
+      "description": "Mints a new NFT to the specified address."
+    },
+    {
+      "name": "interact",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to interact with the NFT, potentially affecting its rarity."
+    },
+    {
+      "name": "updateRarity",
+      "visibility": "private",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Updates the rarity of the NFT based on user activity."
+    }
+  ],
+  "events": [
+    {
+      "name": "RarityUpdated",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "newRarity",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

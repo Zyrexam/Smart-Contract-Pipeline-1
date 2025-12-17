@@ -1,0 +1,74 @@
+{
+  "category": "ERC20",
+  "base_standard": "ERC20Burnable",
+  "extensions": [
+    "Burnable"
+  ],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "totalSupply": "Dynamic via ERC20.totalSupply()",
+      "balances": "Custom state variable"
+    },
+    "functions": {
+      "mint": "Custom mint() with access control",
+      "burn": "Inherited from ERC20Burnable"
+    },
+    "events": {
+      "Mint": "Custom or inherited event",
+      "Burn": "Custom or inherited event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: ERC20\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin ERC20Burnable\n\nReasoning: The contract describes a token with minting and burning capabilities, which are common features of an ERC20 token. ERC20 tokens typically include functions for minting and burning, along with tracking total supply and balances.",
+  "imports_used": [
+    "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+    "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "ERC20",
+    "ERC20Burnable",
+    "AccessControl"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "ERC20",
+    "subtype": null,
+    "confidence": 0.9,
+    "reasoning": "The contract describes a token with minting and burning capabilities, which are common features of an ERC20 token. ERC20 tokens typically include functions for minting and burning, along with tracking total supply and balances.",
+    "is_template": true,
+    "recommended_approach": "template"
+  },
+  "fixes_applied": [
+    {
+      "attempt": 1,
+      "method": "constructor_resolver",
+      "description": "Applied constructor fixes for OpenZeppelin v5 compatibility",
+      "errors_before": 1,
+      "warnings_before": 1
+    },
+    {
+      "attempt": 1,
+      "method": "model_repair",
+      "description": "Applied LLM-based repair for remaining validation issues",
+      "errors_before": 1
+    },
+    {
+      "attempt": 2,
+      "method": "semantic_repair",
+      "description": "Fixed semantic/logic issues",
+      "errors_before": 1
+    },
+    {
+      "attempt": 2,
+      "method": "model_repair",
+      "description": "Applied LLM-based repair for remaining validation issues",
+      "errors_before": 1
+    }
+  ]
+}

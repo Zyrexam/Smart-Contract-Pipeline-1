@@ -1,165 +1,160 @@
 """
-Mythril Parser - Extracted from SmartBugs tools/mythril-0.24.7/parser.py
-Adapted for direct CLI execution (no Docker dependency)
+Mythril Parser
+==============
+
+Adapted from SmartBugs tools/mythril-0.24.7/parser.py
+Modified for direct CLI execution
 """
 
 import json
-from typing import List
+from typing import List, Optional, Set
 
-# Import our data structures
-import sys
-from pathlib import Path
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from security_integration import SecurityIssue, Severity
-else:
-    sys.path.insert(0, str(Path(__file__).parent.parent))
-    from security_integration import SecurityIssue, Severity
-
-from .parse_utils import errors_fails
-
-VERSION = "2025/08/29"
-
-# All possible Mythril findings (from SmartBugs)
-FINDINGS = {
-    "Jump to an arbitrary instruction (SWC 127)",
-    "Write to an arbitrary storage location (SWC 124)",
-    "Delegatecall to user-supplied address (SWC 112)",
-    "Dependence on tx.origin (SWC 115)",
-    "Dependence on predictable environment variable (SWC 116)",
-    "Dependence on predictable environment variable (SWC 120)",
-    "Unprotected Ether Withdrawal (SWC 105)",
-    "Exception State (SWC 110)",
-    "External Call To User-Supplied Address (SWC 107)",
-    "Integer Arithmetic Bugs (SWC 101)",
-    "Multiple Calls in a Single Transaction (SWC 113)",
-    "State access after external call (SWC 107)",
-    "Unprotected Selfdestruct (SWC 106)",
-    "Unchecked return value from external call. (SWC 104)",
-    "Transaction Order Dependence (SWC 114)",
-    "requirement violation (SWC 123)",
-    "Strict Ether balance check (SWC 132)",
-}
+from ..models import SecurityIssue, Severity
+from .base import Parser, ParseResult
 
 
-class MythrilParser:
-    """Parse Mythril output using SmartBugs logic"""
+class MythrilParser(Parser):
+    """Parse Mythril JSON output"""
     
-    @staticmethod
-    def parse_from_json(result: dict) -> List[SecurityIssue]:
-        """
-        Parse Mythril JSON output (SmartBugs style)
-        
-        Args:
-            result: Mythril JSON output as dictionary
-            
-        Returns:
-            List of SecurityIssue objects
-        """
-        issues = []
-        
-        # Check for errors
-        error = result.get("error")
-        if error:
-            # Error is handled, continue parsing
-            pass
-        
-        for issue in result.get("issues", []):
-            finding = {"name": issue.get("title", "Unknown")}
-            
-            # Map SmartBugs fields
-            for i, f in (
-                ("filename", "filename"),
-                ("contract", "contract"),
-                ("function", "function"),
-                ("address", "address"),
-                ("lineno", "line"),
-                ("tx_sequence", "exploit"),
-                ("description", "message"),
-                ("severity", "severity"),
-            ):
-                if i in issue:
-                    finding[f] = issue[i]
-            
-            # Add SWC classification
-            if "swc-id" in issue:
-                finding["name"] += f" (SWC {issue['swc-id']})"
-                classification = f"Classification: SWC-{issue['swc-id']}"
-                if finding.get("message"):
-                    finding["message"] += f"\n{classification}"
-                else:
-                    finding["message"] = classification
-            
-            # Workaround for utility.yul files
-            if finding.get("filename", "").endswith("#utility.yul"):
-                finding.pop("filename", None)
-                finding.pop("line", None)
-            
-            # Map severity
-            severity_str = finding.get("severity", "Medium")
-            severity_map = {
-                "High": Severity.HIGH,
-                "Medium": Severity.MEDIUM,
-                "Low": Severity.LOW
-            }
-            severity = severity_map.get(severity_str, Severity.MEDIUM)
-            
-            issues.append(SecurityIssue(
-                tool="mythril",
-                severity=severity,
-                title=finding.get("name", "Unknown"),
-                description=finding.get("message", ""),
-                line=finding.get("line"),
-                recommendation=f"SWC-{issue.get('swc-id', '')}"
-            ))
-        
-        return issues
+    # Severity mapping
+    SEVERITY_MAP = {
+        "High": Severity.HIGH,
+        "Medium": Severity.MEDIUM,
+        "Low": Severity.LOW,
+        "Informational": Severity.INFO,
+    }
     
-    @staticmethod
-    def parse_from_log(log_lines: List[str]) -> List[SecurityIssue]:
-        """
-        Parse Mythril output from log (SmartBugs style - JSON in last line)
-        
-        Args:
-            log_lines: Log lines from stdout/stderr
-            
-        Returns:
-            List of SecurityIssue objects
-        """
-        try:
-            # Mythril outputs JSON in the last line
-            if log_lines:
-                result = json.loads(log_lines[-1])
-                return MythrilParser.parse_from_json(result)
-        except (json.JSONDecodeError, IndexError):
-            pass
-        
-        return []
+    def __init__(self):
+        super().__init__("mythril")
     
-    @staticmethod
-    def parse(exit_code: int, log: List[str], output: bytes) -> List[SecurityIssue]:
-        """
-        Main parse function matching SmartBugs interface
+    def parse(
+        self,
+        exit_code: Optional[int],
+        stdout: str,
+        stderr: str
+    ) -> ParseResult:
+        """Parse Mythril JSON output"""
+        issues: List[SecurityIssue] = []
+        errors: Set[str] = set()
+        fails: Set[str] = set()
+        infos: Set[str] = set()
         
-        Args:
-            exit_code: Process exit code
-            log: Log lines (stdout/stderr)
-            output: Binary output (not used for Mythril)
-            
-        Returns:
-            List of SecurityIssue objects
-        """
-        # Handle exceptions (from SmartBugs logic)
-        errors, fails = errors_fails(exit_code, log)
-        errors.discard("EXIT_CODE_1")  # exit code = 1 just means vulnerability found
+        stdout_lines = stdout.split('\n') if stdout else []
+        stderr_lines = stderr.split('\n') if stderr else []
         
-        # Check for analysis incomplete
-        for line in log:
+        # Extract errors and fails
+        errs, fls = self._extract_errors_fails(exit_code, stdout_lines, stderr_lines)
+        errors.update(errs)
+        fails.update(fls)
+        
+        # Mythril returns 1 when issues are found (not an error)
+        if exit_code == 1:
+            errors.discard("EXIT_CODE_1")
+        
+        # Check for exceptions in output
+        for line in stdout_lines + stderr_lines:
             if "Exception occurred, aborting analysis." in line:
-                # Analysis incomplete, but continue parsing what we have
-                break
+                infos.add("analysis incomplete")
+                if not fails and not errors:
+                    fails.add("execution failed")
         
-        # Try parsing JSON from last log line
-        return MythrilParser.parse_from_log(log)
-
+        # Try to parse JSON (usually last line of stdout)
+        result = None
+        try:
+            # Mythril outputs JSON as the last line
+            if stdout_lines:
+                last_line = stdout_lines[-1].strip()
+                if last_line.startswith('{'):
+                    result = json.loads(last_line)
+        except json.JSONDecodeError:
+            # Try parsing entire stdout
+            try:
+                result = json.loads(stdout)
+            except json.JSONDecodeError:
+                fails.add("error parsing JSON output")
+        
+        if result:
+            error = result.get("error")
+            if error:
+                errors.add(error.split(".")[0])
+            
+            # Parse issues
+            for issue in result.get("issues", []):
+                security_issue = self._parse_issue(issue)
+                if security_issue:
+                    issues.append(security_issue)
+        
+        return ParseResult(
+            issues=issues,
+            errors=errors,
+            fails=fails,
+            infos=infos
+        )
+    
+    def _parse_issue(self, issue: dict) -> Optional[SecurityIssue]:
+        """Parse a single Mythril issue"""
+        title = issue.get("title", "Mythril Finding")
+        severity_str = issue.get("severity", "Informational")
+        description = issue.get("description", "")
+        swc_id = issue.get("swc-id")
+        
+        # Map severity
+        severity = self.SEVERITY_MAP.get(severity_str, Severity.INFO)
+        
+        # Add SWC ID to title if present
+        if swc_id:
+            title = f"{title} (SWC {swc_id})"
+            description += f"\nClassification: SWC-{swc_id}"
+        
+        # Extract location
+        filename = issue.get("filename", "")
+        line = issue.get("lineno")
+        contract = issue.get("contract")
+        function = issue.get("function")
+        address = issue.get("address")
+        
+        # Workaround for utility.yul files
+        if filename and filename.endswith("#utility.yul"):
+            filename = None
+            line = None
+        
+        # Build recommendation
+        recommendation = self._get_recommendation(title, swc_id)
+        
+        return SecurityIssue(
+            tool=self.tool_name,
+            severity=severity,
+            title=title,
+            description=description,
+            line=line,
+            filename=filename if filename else None,
+            contract=contract,
+            function=function,
+            recommendation=recommendation
+        )
+    
+    def _get_recommendation(self, title: str, swc_id: Optional[str]) -> str:
+        """Get fix recommendation based on SWC ID or title"""
+        if swc_id:
+            swc_recommendations = {
+                "107": "Validate external call targets and use checks-effects-interactions",
+                "104": "Check return values from external calls",
+                "105": "Add access control to withdrawal functions",
+                "106": "Add access control to selfdestruct",
+                "112": "Validate delegatecall targets",
+                "115": "Replace tx.origin with msg.sender",
+                "116": "Avoid using block.timestamp for randomness",
+                "120": "Avoid using block.number for randomness",
+            }
+            return swc_recommendations.get(swc_id, "Review SWC documentation")
+        
+        # Fallback to title-based recommendations
+        title_lower = title.lower()
+        if "reentrancy" in title_lower:
+            return "Use ReentrancyGuard and checks-effects-interactions pattern"
+        elif "unchecked" in title_lower:
+            return "Check return values or use SafeERC20"
+        elif "tx.origin" in title_lower or "tx-origin" in title_lower:
+            return "Replace tx.origin with msg.sender"
+        
+        return "Review and apply security best practices"

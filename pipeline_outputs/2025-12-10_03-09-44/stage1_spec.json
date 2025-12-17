@@ -1,0 +1,44 @@
+{
+  "contract_name": "",
+  "contract_type": "",
+  "description": "A smart contract that stores a number and allows the user to update and retrieve it.",
+  "state_variables": [
+    {
+      "name": "storedNumber",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": ""
+    }
+  ],
+  "roles": [],
+  "functions": [
+    {
+      "name": "updateNumber",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "newNumber",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Updates the stored number to a new value provided by the user."
+    },
+    {
+      "name": "retrieveNumber",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "storedNumber",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Retrieves the current stored number."
+    }
+  ],
+  "events": [],
+  "modifiers": []
+}

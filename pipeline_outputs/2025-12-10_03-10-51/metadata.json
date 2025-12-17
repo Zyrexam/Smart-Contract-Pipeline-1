@@ -1,0 +1,39 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "single_owner",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "count": "Custom state variable"
+    },
+    "functions": {
+      "increment": "Custom function",
+      "decrement": "Custom function",
+      "reset": "Custom function"
+    },
+    "events": {},
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: single_owner\nSecurity Features: Standard\nImplementation: Custom from scratch\n\nReasoning: The contract is a simple counter with basic arithmetic operations, which does not fit any standard template like ERC20, ERC721, etc. It involves unique business logic specific to counting operations.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/Ownable.sol"
+  ],
+  "inheritance_chain": [
+    "Ownable"
+  ],
+  "is_template": false,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": null,
+    "confidence": 0.9,
+    "reasoning": "The contract is a simple counter with basic arithmetic operations, which does not fit any standard template like ERC20, ERC721, etc. It involves unique business logic specific to counting operations.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

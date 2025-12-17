@@ -1,0 +1,197 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "RateLimitExceeded",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "Unauthorized",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdrawal",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tokenBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"Withdrawal(uint256,uint256)": {
+					"params": {
+						"amount": "The amount withdrawn",
+						"timestamp": "The time of withdrawal"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"params": {
+						"_owner": "The address of the owner"
+					}
+				},
+				"deposit(uint256)": {
+					"params": {
+						"amount": "The amount to deposit"
+					}
+				},
+				"withdraw(uint256)": {
+					"params": {
+						"amount": "The amount to withdraw"
+					}
+				}
+			},
+			"title": "RateLimitedTokenVault",
+			"version": 1
+		},
+		"userdoc": {
+			"errors": {
+				"RateLimitExceeded()": [
+					{
+						"notice": "Custom error for rate limit violation"
+					}
+				],
+				"Unauthorized()": [
+					{
+						"notice": "Custom error for unauthorized access"
+					}
+				]
+			},
+			"events": {
+				"Withdrawal(uint256,uint256)": {
+					"notice": "Emitted when a withdrawal is made"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "Constructor to set the initial owner of the vault"
+				},
+				"deposit(uint256)": {
+					"notice": "Function to deposit tokens into the vault"
+				},
+				"owner()": {
+					"notice": "The owner of the vault"
+				},
+				"tokenBalance()": {
+					"notice": "The balance of tokens in the vault"
+				},
+				"withdraw(uint256)": {
+					"notice": "Allows the owner to withdraw tokens from the vault, but only once every 24 hours."
+				}
+			},
+			"notice": "A smart contract that acts as a token vault with rate-limited withdrawals, allowing withdrawals once every 24 hours.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"rine.sol": "RateLimitedTokenVault"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"rine.sol": {
+			"keccak256": "0x82161e4e40c369ed4fff53daff83330417c9f566fb1cbe25d3e0e392ae9a0633",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6fc92096cc44a4956496d6345b85c613e4166d6f4e21cca331cd2f1aa37efc88",
+				"dweb:/ipfs/QmNnYHdDWQdKsQEAc43ocCoVZamkwGbv1aFpsvbdB9ww7k"
+			]
+		}
+	},
+	"version": 1
+}

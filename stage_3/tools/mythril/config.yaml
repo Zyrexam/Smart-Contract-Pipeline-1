@@ -1,0 +1,10 @@
+name: Mythril
+version: 0.24.7
+origin: https://github.com/ConsenSys/mythril
+info: Mythril analyses EVM bytecode using symbolic analysis
+image: custom-mythril:latest
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN' '$MAIN'"
+    solc: yes
+

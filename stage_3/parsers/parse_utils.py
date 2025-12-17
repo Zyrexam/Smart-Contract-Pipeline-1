@@ -4,11 +4,11 @@ Adapted to work without SmartBugs dependencies
 """
 
 import re
-from typing import Optional, Set, Tuple
+from typing import Optional, Set, Tuple, List, Dict, Pattern
 
 
 # Docker exit codes mapping
-DOCKER_CODES: dict[int, str] = {
+DOCKER_CODES: Dict[int, str] = {
     125: "DOCKER_INVOCATION_PROBLEM",
     126: "DOCKER_CMD_NOT_EXECUTABLE",
     127: "DOCKER_CMD_NOT_FOUND",
@@ -18,10 +18,10 @@ DOCKER_CODES: dict[int, str] = {
 }
 
 # ANSI escape sequence removal
-ANSI: re.Pattern[str] = re.compile("\x1b\\[[^m]*m")
+ANSI: Pattern[str] = re.compile("\x1b\\[[^m]*m")
 
 
-def discard_ansi(lines) -> list[str]:
+def discard_ansi(lines) -> List[str]:
     """Remove ANSI escape sequences from log lines"""
     return [ANSI.sub("", line) for line in lines]
 
@@ -29,7 +29,7 @@ def discard_ansi(lines) -> list[str]:
 # Exception patterns
 TRACEBACK: str = "Traceback (most recent call last):"
 
-EXCEPTIONS: tuple[re.Pattern[str], ...] = (
+EXCEPTIONS: Tuple[Pattern[str], ...] = (
     re.compile(".*line [0-9: ]*(Segmentation fault|Killed)"),
     re.compile('Exception in thread "[^"]*" (.*)'),
     re.compile(r"^(?:[a-zA-Z0-9]+\.)+[a-zA-Z0-9]*Exception: (.*)$"),
@@ -37,7 +37,7 @@ EXCEPTIONS: tuple[re.Pattern[str], ...] = (
 )
 
 
-def exceptions(lines: list[str]) -> Set[str]:
+def exceptions(lines: List[str]) -> Set[str]:
     """Extract exceptions from log lines"""
     exceptions_set = set()
     traceback = False
@@ -55,7 +55,7 @@ def exceptions(lines: list[str]) -> Set[str]:
     return exceptions_set
 
 
-def add_match(matches: Set[str], line: str, patterns: list[re.Pattern[str]]) -> bool:
+def add_match(matches: Set[str], line: str, patterns: List[Pattern[str]]) -> bool:
     """Add match to set if pattern matches line"""
     for pattern in patterns:
         m = pattern.match(line)
@@ -66,7 +66,7 @@ def add_match(matches: Set[str], line: str, patterns: list[re.Pattern[str]]) -> 
 
 
 def errors_fails(
-    exit_code: Optional[int], log: Optional[list[str]], log_expected: bool = True
+    exit_code: Optional[int], log: Optional[List[str]], log_expected: bool = True
 ) -> Tuple[Set[str], Set[str]]:
     """
     Extract errors and fails from exit code and log

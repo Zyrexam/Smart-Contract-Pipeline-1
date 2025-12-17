@@ -98,6 +98,17 @@ class ConstructorResolver:
     def _build_initializer_string(self, parents: List[str], json_spec: Dict) -> str:
         initializers = []
 
+        # Special handling: If inheriting from ERC721Enumerable or ERC721URIStorage,
+        # we need to ensure ERC721 is initialized first
+        has_erc721_extension = any(p in ["ERC721Enumerable", "ERC721URIStorage"] for p in parents)
+        has_erc721_direct = "ERC721" in parents
+        
+        # If we have extensions but not direct ERC721, we need to add ERC721 initialization
+        if has_erc721_extension and not has_erc721_direct:
+            name = json_spec.get("token_name", json_spec.get("name", "NFT"))
+            symbol = json_spec.get("token_symbol", json_spec.get("symbol", "NFT"))
+            initializers.append(f'ERC721("{name}", "{symbol}")')
+        
         for p in parents:
             # skip parents that have no constructors
             if p in SKIP_INITIALIZER:

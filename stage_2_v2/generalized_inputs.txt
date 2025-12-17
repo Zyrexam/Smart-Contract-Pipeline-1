@@ -7,11 +7,11 @@ Conditions: The contract will store an immutable record of the watch's unique ID
 
 
 
-
+..............
 "Create a smart contract for a simple, tamper-proof election system for a small community or club."
 
 Conditions: The contract manages voter registration and identity verification, assigns a single "vote" per verified identity, and immutably records votes. Once the voting period ends, the contract automatically tabulates and publicly declares the winner.
-
+.............
 
 
 

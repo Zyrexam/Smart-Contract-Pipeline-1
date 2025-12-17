@@ -1,0 +1,48 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [
+    "ReentrancyGuard"
+  ],
+  "coverage": {
+    "state_variables": {
+      "lastWithdrawalTime": "Custom state variable",
+      "tokenBalance": "Custom state variable",
+      "owner": "Custom state variable"
+    },
+    "functions": {
+      "withdraw": "Custom function",
+      "setWithdrawalTime": "Custom function"
+    },
+    "events": {
+      "Withdrawal": "Custom event"
+    },
+    "roles": {
+      "Owner": "Custom role"
+    },
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 70%\nAccess Control: role_based\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\nSubtype: rate_limited_vault\n\nReasoning: The contract involves a token vault with specific rate-limiting functionality for withdrawals, which does not fit the standard Vault (ERC4626) template. The rate-limiting aspect makes it unique.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol",
+    "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl",
+    "ReentrancyGuard"
+  ],
+  "is_template": false,
+  "subtype": "rate_limited_vault",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "rate_limited_vault",
+    "confidence": 0.7,
+    "reasoning": "The contract involves a token vault with specific rate-limiting functionality for withdrawals, which does not fit the standard Vault (ERC4626) template. The rate-limiting aspect makes it unique.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

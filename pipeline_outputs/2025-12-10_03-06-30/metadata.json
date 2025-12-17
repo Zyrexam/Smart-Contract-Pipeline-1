@@ -1,0 +1,48 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [
+    "ReentrancyGuard"
+  ],
+  "coverage": {
+    "state_variables": {
+      "owner": "Custom state variable",
+      "balances": "Custom state variable"
+    },
+    "functions": {
+      "deposit": "Custom function",
+      "withdraw": "Custom function"
+    },
+    "events": {},
+    "roles": {
+      "owner": "Custom role",
+      "user": "Custom role"
+    },
+    "modifiers": {}
+  },
+  "validation_errors": [
+    "Missing required field: 'contract_name'"
+  ],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\n\nReasoning: The contract involves Ether deposits and withdrawals, which does not fit any standard template like ERC20, ERC721, etc. It is a simple custom contract for managing Ether deposits and withdrawals by the owner.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol",
+    "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl",
+    "ReentrancyGuard"
+  ],
+  "is_template": false,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": null,
+    "confidence": 0.9,
+    "reasoning": "The contract involves Ether deposits and withdrawals, which does not fit any standard template like ERC20, ERC721, etc. It is a simple custom contract for managing Ether deposits and withdrawals by the owner.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

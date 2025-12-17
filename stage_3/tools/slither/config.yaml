@@ -1,0 +1,11 @@
+name: Slither
+version: 0.11.3
+origin: https://github.com/crytic/slither
+info: Slither is a Solidity static analysis framework written in Python 3
+image: custom-slither:latest
+output: /output.json
+bin: scripts
+solidity:
+    entrypoint: "'$BIN/do_solidity.sh' '$FILENAME' '$TIMEOUT' '$BIN'"
+    solc: yes
+

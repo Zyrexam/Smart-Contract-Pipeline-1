@@ -18,7 +18,6 @@ from .llm_classifier import classify_contract
 from .profile_selector_v2 import select_profile_dynamic
 from .categories_v2 import ContractProfile, SpecCoverage, GenerationResult
 from .llm_utils import safe_parse_json, call_chat_completion, validate_classification_schema
-from .platform_utils import detect_platform, get_available_tools, get_tool_warnings
 
 __all__ = [
     'generate_solidity_v2',
@@ -31,7 +30,4 @@ __all__ = [
     'safe_parse_json',
     'call_chat_completion',
     'validate_classification_schema',
-    'detect_platform',
-    'get_available_tools',
-    'get_tool_warnings',
 ]

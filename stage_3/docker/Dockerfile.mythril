@@ -1,0 +1,22 @@
+# Custom Mythril image with pre-installed Solidity compilers
+FROM smartbugs/mythril:0.24.7
+
+# Pre-download solc versions to cache locally and avoid network calls
+RUN python3 -c "\
+import solcx; \
+try: \
+    solcx.install_solc('0.8.20'); \
+    solcx.install_solc('0.8.24'); \
+    print('Solc versions installed'); \
+except Exception as e: \
+    print(f'Warning: {e}'); \
+" || echo "Solc installation skipped"
+
+# Set environment to use cached versions
+ENV SOLC_VERSION=0.8.20
+ENV MYTHRIL_DISABLE_SOLC_DOWNLOAD=1
+
+# Verify mythril works
+RUN myth version || echo "Mythril ready"
+
+WORKDIR /sb

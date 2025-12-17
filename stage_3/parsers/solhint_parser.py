@@ -1,151 +1,210 @@
-"""
-Solhint Parser - Extracted from SmartBugs tools/solhint-6.0.0/parser.py
-Adapted for direct CLI execution (no Docker dependency)
-"""
-
+import json
 import re
-from typing import List
+from typing import List, Optional, Set
 
-# Import our data structures
-import sys
-from pathlib import Path
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from security_integration import SecurityIssue, Severity
-else:
-    sys.path.insert(0, str(Path(__file__).parent.parent))
-    from security_integration import SecurityIssue, Severity
-
-from .parse_utils import errors_fails
-
-VERSION = "2025/09/14"
-
-# All possible Solhint findings (from SmartBugs)
-FINDINGS = {
-    "avoid-call-value",
-    "avoid-low-level-calls",
-    "avoid-sha3",
-    "avoid-suicide",
-    "avoid-throw",
-    "avoid-tx-origin",
-    "check-send-result",
-    "code-complexity",
-    "compiler-version",
-    "comprehensive-interface",
-    "const-name-snakecase",
-    "constructor-syntax",
-    "contract-name-capwords",
-    "duplicated-imports",
-    "event-name-capwords",
-    "explicit-types",
-    "foundry-test-functions",
-    "func-named-parameters",
-    "func-name-mixedcase",
-    "func-param-name-mixedcase",
-    "function-max-lines",
-    "func-visibility",
-    "gas-calldata-parameters",
-    "gas-custom-errors",
-    "gas-increment-by-one",
-    "gas-indexed-events",
-    "gas-length-in-loops",
-    "gas-multitoken1155",
-    "gas-named-return-values",
-    "gas-small-strings",
-    "gas-strict-inequalities",
-    "gas-struct-packing",
-    "immutable-vars-naming",
-    "import-path-check",
-    "imports-on-top",
-    "imports-order",
-    "interface-starts-with-i",
-    "max-line-length",
-    "max-states-count",
-    "modifier-name-mixedcase",
-    "multiple-sends",
-    "named-parameters-mapping",
-    "no-complex-fallback",
-    "no-console",
-    "no-empty-blocks",
-    "no-global-import",
-    "no-inline-assembly",
-    "not-rely-on-block-hash",
-    "not-rely-on-time",
-    "no-unused-import",
-    "no-unused-vars",
-    "one-contract-per-file",
-    "ordering",
-    "payable-fallback",
-    "private-vars-leading-underscore",
-    "quotes",
-    "reason-string",
-    "reentrancy",
-    "state-visibility",
-    "use-forbidden-name",
-    "use-natspec",
-    "var-name-mixedcase",
-    "visibility-modifier-order",
-}
-
-# Exact regex from SmartBugs
-REPORT = re.compile(
-    r"""
-    ^(?P<filename>[^:]*)
-    :(?P<line>\d+)
-    :(?P<column>\d+)
-    :\s*(?P<message>.*?)
-    \s*\[(?P<level>[^\[/\]]*)/
-    (?P<name>[^\[/\]]*)\]$
-""",
-    re.VERBOSE,
-)
+from ..models import SecurityIssue, Severity
+from .base import Parser, ParseResult
 
 
-class SolhintParser:
-    """Parse Solhint output using SmartBugs logic"""
+class SolhintParser(Parser):
+    """Parse Solhint output (multiple formats)"""
     
-    @staticmethod
-    def parse(exit_code: int, log: List[str], output: bytes) -> List[SecurityIssue]:
-        """
-        Main parse function matching SmartBugs interface
-        
-        Args:
-            exit_code: Process exit code
-            log: Log lines (stdout/stderr)
-            output: Binary output (not used for Solhint)
-            
-        Returns:
-            List of SecurityIssue objects
-        """
+    SEVERITY_MAP = {
+        "error": Severity.HIGH,
+        "Error": Severity.HIGH,
+        "warning": Severity.MEDIUM,
+        "Warning": Severity.MEDIUM,
+        "info": Severity.INFO,
+        "Info": Severity.INFO,
+    }
+    
+    # Format: /sb/contract.sol:96:5: Missing @notice tag [Warning/use-natspec]
+    TEXT_PATTERN = re.compile(
+        r"^(.+?):(\d+):(\d+):\s+(.+?)\s+\[(Error|Warning|Info)/(.+?)\]$"
+    )
+    
+    # Unix format: file:line:column: severity message (rule)
+    UNIX_PATTERN = re.compile(
+        r"^(.+?):(\d+):(\d+):\s+(error|warning|info)\s+(.+?)\s+\((.+?)\)$"
+    )
+    
+    # Solhint default format: "  line:column  severity  message  rule"
+    # Example: "  11:9   warning  Provide an error message for require                 reason-string"
+    SOLHINT_PATTERN = re.compile(
+        r"^\s*(\d+):(\d+)\s+(error|warning|info)\s+(.+?)\s{2,}([\w-]+)\s*$"
+    )
+    
+    def __init__(self):
+        super().__init__("solhint")
+    
+    def parse(self, exit_code, stdout, stderr):
         issues = []
-        errors, fails = errors_fails(exit_code, log)
-        errors.discard("EXIT_CODE_1")  # Solhint returns 1 when issues found
+        errors = set()
+        fails = set()
+        infos = set()
         
-        for line in log:
-            match = REPORT.match(line)
+        stdout_lines = stdout.split('\n') if stdout else []
+        stderr_lines = stderr.split('\n') if stderr else []
+        
+        errs, fls = self._extract_errors_fails(exit_code, stdout_lines, stderr_lines)
+        errors.update(errs)
+        fails.update(fls)
+        
+        # Exit code 1 means issues found (not an error)
+        if exit_code == 1:
+            errors.discard("EXIT_CODE_1")
+        
+        # Try JSON format first
+        try:
+            result = json.loads(stdout)
+            issues = self._parse_json_format(result)
+            return ParseResult(issues=issues, errors=errors, fails=fails, infos=infos)
+        except (json.JSONDecodeError, TypeError):
+            pass
+        
+        # Parse text/unix format
+        for line in stdout_lines:
+            line_stripped = line.strip()
+            if not line_stripped:
+                continue
+            
+            # Skip header/footer lines
+            if "problem" in line_stripped.lower() or "discord" in line_stripped.lower():
+                continue
+            if line_stripped.startswith("---") or line_stripped.startswith("==="):
+                continue
+            
+            # Try SOLHINT_PATTERN first (most common format)
+            match = self.SOLHINT_PATTERN.match(line)
             if match:
-                finding = match.groupdict()
-                finding["line"] = int(finding["line"])
-                finding["column"] = int(finding["column"])
-                finding["level"] = finding["level"].lower()
+                line_num = int(match.group(1))
+                col_num = int(match.group(2))
+                severity_str = match.group(3)
+                message = match.group(4).strip()
+                rule = match.group(5).strip()
                 
-                # Map severity
-                severity_map = {
-                    "error": Severity.HIGH,
-                    "warning": Severity.MEDIUM,
-                    "info": Severity.LOW
-                }
-                severity = severity_map.get(finding["level"], Severity.MEDIUM)
+                severity = self.SEVERITY_MAP.get(severity_str, Severity.INFO)
                 
-                issues.append(SecurityIssue(
-                    tool="solhint",
+                # Filter out documentation warnings if desired
+                if "use-natspec" in rule.lower() or "natspec" in message.lower():
+                    continue  # Skip natspec warnings entirely
+                
+                recommendation = self._get_recommendation(rule)
+                
+                issue = SecurityIssue(
+                    tool=self.tool_name,
                     severity=severity,
-                    title=finding["name"],
-                    description=finding["message"],
-                    line=finding["line"],
-                    recommendation=f"Rule: {finding['name']}"
-                ))
+                    title=rule,
+                    description=message,
+                    line=line_num,
+                    filename="contract.sol",
+                    recommendation=recommendation
+                )
+                issues.append(issue)
+                continue
+            
+            # Try TEXT_PATTERN (with filename)
+            match = self.TEXT_PATTERN.match(line_stripped)
+            if match:
+                filename = match.group(1)
+                line_num = int(match.group(2))
+                message = match.group(4)
+                severity_str = match.group(5)
+                rule = match.group(6)
+                
+                severity = self.SEVERITY_MAP.get(severity_str, Severity.INFO)
+                
+                # Filter out documentation warnings
+                if "use-natspec" in rule.lower():
+                    continue
+                
+                recommendation = self._get_recommendation(rule)
+                
+                issue = SecurityIssue(
+                    tool=self.tool_name,
+                    severity=severity,
+                    title=rule,
+                    description=message,
+                    line=line_num,
+                    filename=filename,
+                    recommendation=recommendation
+                )
+                issues.append(issue)
+                continue
+            
+            # Try UNIX_PATTERN as fallback
+            match = self.UNIX_PATTERN.match(line_stripped)
+            if match:
+                filename = match.group(1)
+                line_num = int(match.group(2))
+                severity_str = match.group(4)
+                message = match.group(5)
+                rule = match.group(6)
+                
+                severity = self.SEVERITY_MAP.get(severity_str, Severity.INFO)
+                recommendation = self._get_recommendation(rule)
+                
+                issue = SecurityIssue(
+                    tool=self.tool_name,
+                    severity=severity,
+                    title=rule,
+                    description=message,
+                    line=line_num,
+                    filename=filename,
+                    recommendation=recommendation
+                )
+                issues.append(issue)
+        
+        return ParseResult(issues=issues, errors=errors, fails=fails, infos=infos)
+    
+    def _parse_json_format(self, result):
+        """Parse Solhint JSON format"""
+        issues = []
+        
+        for file_obj in result:
+            filename = file_obj.get("filePath", "")
+            
+            for msg in file_obj.get("messages", []):
+                line = msg.get("line")
+                severity_num = msg.get("severity", 1)
+                message = msg.get("message", "")
+                rule_id = msg.get("ruleId", "unknown")
+                
+                severity_str = {1: "warning", 2: "error", 3: "info"}.get(severity_num, "info")
+                severity = self.SEVERITY_MAP.get(severity_str, Severity.INFO)
+                
+                issue = SecurityIssue(
+                    tool=self.tool_name,
+                    severity=severity,
+                    title=rule_id,
+                    description=message,
+                    line=line,
+                    filename=filename,
+                    recommendation=self._get_recommendation(rule_id)
+                )
+                issues.append(issue)
         
         return issues
-
+    
+    def _get_recommendation(self, rule: str) -> str:
+        """Get fix recommendation"""
+        rule_lower = rule.lower()
+        
+        recommendations = {
+            "use-natspec": "Add NatSpec documentation (@notice, @param, @return)",
+            "no-console": "Remove console.log statements",
+            "no-empty-blocks": "Add logic to empty blocks or remove them",
+            "no-unused-vars": "Remove unused variables",
+            "avoid-tx-origin": "Replace tx.origin with msg.sender",
+            "check-send-result": "Check return value from send()",
+            "avoid-call-value": "Use call{value: x}() instead of call.value()",
+            "avoid-low-level-calls": "Avoid low-level calls or check return values",
+            "state-visibility": "Specify visibility for state variables",
+            "func-visibility": "Specify visibility for functions",
+        }
+        
+        for key, rec in recommendations.items():
+            if key in rule_lower:
+                return rec
+        
+        return "Follow Solidity style guide"

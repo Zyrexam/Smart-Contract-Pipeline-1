@@ -1,0 +1,174 @@
+{
+  "contract_name": "DualStaking",
+  "contract_type": "staking",
+  "description": "A dual-staking contract where users earn rewards in two different tokens.",
+  "state_variables": [
+    {
+      "name": "stakeToken",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": null
+    },
+    {
+      "name": "rewardToken1",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": null
+    },
+    {
+      "name": "rewardToken2",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": null
+    },
+    {
+      "name": "totalStaked",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": 0
+    },
+    {
+      "name": "userStakes",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rewardRate1",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": null
+    },
+    {
+      "name": "rewardRate2",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": null
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "setRewardRates",
+        "withdrawTokens"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "stake",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to stake a specified amount of tokens."
+    },
+    {
+      "name": "withdraw",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to withdraw a specified amount of their staked tokens."
+    },
+    {
+      "name": "claimRewards",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to claim their earned rewards in both reward tokens."
+    },
+    {
+      "name": "setRewardRates",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "rate1",
+          "type": "uint256"
+        },
+        {
+          "name": "rate2",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Sets the reward rates for both reward tokens."
+    },
+    {
+      "name": "withdrawTokens",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to withdraw tokens from the contract."
+    }
+  ],
+  "events": [
+    {
+      "name": "Staked",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "Withdrawn",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RewardsClaimed",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "reward1",
+          "type": "uint256"
+        },
+        {
+          "name": "reward2",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

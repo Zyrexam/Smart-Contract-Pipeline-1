@@ -100,8 +100,11 @@ class SolidityValidator:
                 if "ERC20" in parents and "ERC20(" not in constructor_sig:
                     errors.append("CRITICAL: ERC20 constructor must be initialized with name and symbol")
                 
-                if "ERC721" in parents and "ERC721(" not in constructor_sig:
-                    errors.append("CRITICAL: ERC721 constructor must be initialized with name and symbol")
+                # Check for ERC721 (direct or through extensions)
+                has_erc721 = "ERC721" in parents or any(p in ["ERC721Enumerable", "ERC721URIStorage"] for p in parents)
+                if has_erc721 and "ERC721(" not in constructor_sig:
+                    errors.append("CRITICAL: ERC721 constructor must be initialized with name and symbol. "
+                                 "When using ERC721Enumerable or ERC721URIStorage, you must call ERC721(name, symbol) in constructor.")
                 
                 if "Ownable" in parents and "Ownable(" not in constructor_sig:
                     errors.append("CRITICAL: Ownable constructor must be initialized with initialOwner")

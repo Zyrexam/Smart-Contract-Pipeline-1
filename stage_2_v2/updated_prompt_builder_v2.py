@@ -32,15 +32,19 @@ ERC721 NFT IMPLEMENTATION:
 - For metadata: Use ERC721URIStorage extension
 - For enumeration: Use ERC721Enumerable extension
 - Override _update for custom transfer logic
+- CRITICAL: In mint functions, use parameter name "metadataURI" NOT "tokenURI" (to avoid shadowing tokenURI() function)
+  Example: function mint(address to, string memory metadataURI) public onlyOwner { ... }
 """,
     
     "Governor": """
 GOVERNOR DAO IMPLEMENTATION:
 - Inherit: Governor, GovernorSettings, GovernorVotes, GovernorVotesQuorumFraction
+- If using AccessControl: Inherit AccessControl and use _grantRole() in constructor (NOT _setupRole)
 - Constructor must initialize all parent contracts
 - Override required functions: votingDelay, votingPeriod, proposalThreshold, quorum
 - Implement proposal lifecycle: propose, vote, execute
 - Consider adding TimelockController for security
+- CRITICAL: For AccessControl in constructor, use: _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
 """,
     
     "Staking": """
@@ -78,6 +82,14 @@ OPENZEPPELIN V5 REQUIREMENTS:
 3. Use custom errors instead of require strings
 4. SafeERC20 for all ERC20 interactions
 5. Access control via Ownable or AccessControl
+6. CRITICAL: AccessControl._setupRole() REMOVED - use _grantRole() instead
+   - OLD (v4): _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
+   - NEW (v5): _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+   - Always use _grantRole() in constructor for role initialization
+7. CRITICAL: NO SHADOWING - Parameter names must NOT shadow function names
+   - NEVER use parameter names that match function names (e.g., tokenURI, ownerOf, balanceOf)
+   - Use alternative names: tokenURIValue, metadataURI, ownerAddress, balanceAmount, etc.
+   - Example: function mint(address to, string memory metadataURI) NOT function mint(..., string memory tokenURI)
 """
 
 CUSTOM_CONTRACT_GUIDANCE = """

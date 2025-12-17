@@ -1,0 +1,53 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "stakeToken": "Custom state variable",
+      "rewardToken1": "Custom state variable",
+      "rewardToken2": "Custom state variable",
+      "totalStaked": "Custom state variable",
+      "userStakes": "Custom state variable",
+      "rewardRate1": "Custom state variable",
+      "rewardRate2": "Custom state variable"
+    },
+    "functions": {
+      "stake": "Custom function",
+      "withdraw": "Custom function",
+      "claimRewards": "Custom function",
+      "setRewardRates": "Custom function",
+      "withdrawTokens": "Custom function"
+    },
+    "events": {
+      "Staked": "Custom event",
+      "Withdrawn": "Custom event",
+      "RewardsClaimed": "Custom event"
+    },
+    "roles": {
+      "admin": "Custom role"
+    },
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 70%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: dual_staking\n\nReasoning: The contract involves staking with rewards in two different tokens, which is not a standard staking template. Standard staking contracts typically involve rewards in a single token.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": false,
+  "subtype": "dual_staking",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "dual_staking",
+    "confidence": 0.7,
+    "reasoning": "The contract involves staking with rewards in two different tokens, which is not a standard staking template. Standard staking contracts typically involve rewards in a single token.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

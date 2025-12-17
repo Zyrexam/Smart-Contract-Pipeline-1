@@ -1,299 +1,190 @@
 """
-Slither Parser - Extracted from SmartBugs tools/slither-0.11.3/parser.py
-Adapted for direct CLI execution (no Docker dependency)
+Slither Parser
+==============
+
+Adapted from SmartBugs tools/slither-0.11.3/parser.py
+Modified for direct CLI execution (JSON output to stdout, not tar file)
 """
 
-import io
 import json
 import re
-import tarfile
-from typing import List, Optional
+from typing import List, Optional, Set
 
-# Import our data structures - use TYPE_CHECKING to avoid circular imports
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from security_integration import SecurityIssue, Severity
-else:
-    # Runtime import
-    import sys
-    from pathlib import Path
-    sys.path.insert(0, str(Path(__file__).parent.parent))
-    from security_integration import SecurityIssue, Severity
-
-from .parse_utils import errors_fails
+from ..models import SecurityIssue, Severity
+from .base import Parser, ParseResult
 
 
-VERSION = "2025/09/14"
-
-# All possible Slither findings (from SmartBugs)
-FINDINGS = {
-    "abiencoderv2-array",
-    "arbitrary-send-erc20",
-    "arbitrary-send-erc20-permit",
-    "arbitrary-send-eth",
-    "array-by-reference",
-    "assembly",
-    "assert-state-change",
-    "backdoor",
-    "boolean-cst",
-    "boolean-equal",
-    "cache-array-length",
-    "calls-loop",
-    "chainlink-feed-registry",
-    "chronicle-unchecked-price",
-    "codex",
-    "constable-states",
-    "constant-function-asm",
-    "constant-function-state",
-    "controlled-array-length",
-    "controlled-delegatecall",
-    "costly-loop",
-    "cyclomatic-complexity",
-    "dead-code",
-    "delegatecall-loop",
-    "deprecated-standards",
-    "divide-before-multiply",
-    "domain-separator-collision",
-    "encode-packed-collision",
-    "enum-conversion",
-    "erc20-indexed",
-    "erc20-interface",
-    "erc721-interface",
-    "events-access",
-    "events-maths",
-    "external-function",
-    "function-init-state",
-    "gelato-unprotected-randomness",
-    "immutable-states",
-    "incorrect-equality",
-    "incorrect-exp",
-    "incorrect-modifier",
-    "incorrect-return",
-    "incorrect-shift",
-    "incorrect-unary",
-    "incorrect-using-for",
-    "locked-ether",
-    "low-level-calls",
-    "mapping-deletion",
-    "missing-inheritance",
-    "missing-zero-check",
-    "msg-value-loop",
-    "multiple-constructors",
-    "name-reused",
-    "naming-convention",
-    "optimism-deprecation",
-    "out-of-order-retryable",
-    "pragma",
-    "protected-vars",
-    "public-mappings-nested",
-    "pyth-deprecated-functions",
-    "pyth-unchecked-confidence",
-    "pyth-unchecked-publishtime",
-    "redundant-statements",
-    "reentrancy-benign",
-    "reentrancy-eth",
-    "reentrancy-events",
-    "reentrancy-no-eth",
-    "reentrancy-unlimited-gas",
-    "return-bomb",
-    "return-leave",
-    "reused-constructor",
-    "rtlo",
-    "shadowing-abstract",
-    "shadowing-builtin",
-    "shadowing-local",
-    "shadowing-state",
-    "solc-version",
-    "storage-array",
-    "suicidal",
-    "tautological-compare",
-    "tautology",
-    "timestamp",
-    "token-reentrancy",
-    "too-many-digits",
-    "tx-origin",
-    "unchecked-lowlevel",
-    "unchecked-send",
-    "unchecked-transfer",
-    "unimplemented-functions",
-    "uninitialized-fptr-cst",
-    "uninitialized-local",
-    "uninitialized-state",
-    "uninitialized-storage",
-    "unprotected-upgrade",
-    "unused-import",
-    "unused-return",
-    "unused-state",
-    "variable-scope",
-    "var-read-using-this",
-    "void-cst",
-    "weak-prng",
-    "write-after-write",
-}
-
-LOCATION = re.compile(r"/sb/(.*?)#([0-9-]*)")
-
-
-class SlitherParser:
-    """Parse Slither output using SmartBugs logic"""
+class SlitherParser(Parser):
+    """Parse Slither JSON output"""
     
-    @staticmethod
-    def parse_from_json(output_dict: dict) -> List[SecurityIssue]:
-        """
-        Parse Slither JSON output (SmartBugs style)
+    # Impact to Severity mapping
+    IMPACT_TO_SEVERITY = {
+        "High": Severity.HIGH,
+        "Medium": Severity.MEDIUM,
+        "Low": Severity.LOW,
+        "Informational": Severity.INFO,
+        "Optimization": Severity.INFO,
+    }
+    
+    # Location pattern (adapted for direct paths, not /sb/ paths)
+    LOCATION_PATTERN = re.compile(r"([^#]+)#(\d+)(?:-(\d+))?")
+    
+    def __init__(self):
+        super().__init__("slither")
+    
+    def parse(
+        self,
+        exit_code: Optional[int],
+        stdout: str,
+        stderr: str
+    ) -> ParseResult:
+        """Parse Slither JSON output (from /output.json file)"""
+        issues: List[SecurityIssue] = []
+        errors: Set[str] = set()
+        fails: Set[str] = set()
+        infos: Set[str] = set()
         
-        Args:
-            output_dict: Slither JSON output as dictionary
-            
-        Returns:
-            List of SecurityIssue objects
-        """
-        issues = []
+        stdout_lines = stdout.split('\n') if stdout else []
+        stderr_lines = stderr.split('\n') if stderr else []
+        
+        # Extract errors and fails
+        errs, fls = self._extract_errors_fails(exit_code, stdout_lines, stderr_lines)
+        errors.update(errs)
+        fails.update(fls)
+        
+        # Slither may return non-zero on errors, but we still try to parse
+        if exit_code == 255:
+            errors.discard("EXIT_CODE_255")  # Common non-error code
+        
+        # Slither writes to /output.json file (extracted by analyzer)
+        # stdout should contain the JSON content from the file
+        output_dict = {}
+        
+        if stdout.strip():
+            # Try to parse JSON from stdout (which should be the file content)
+            try:
+                output_dict = json.loads(stdout)
+            except json.JSONDecodeError:
+                # Try to find JSON in lines
+                json_lines = []
+                in_json = False
+                for line in stdout_lines:
+                    line_stripped = line.strip()
+                    if line_stripped.startswith('{'):
+                        in_json = True
+                    if in_json:
+                        json_lines.append(line)
+                    if in_json and line_stripped.endswith('}'):
+                        break
+                
+                if json_lines:
+                    try:
+                        output_dict = json.loads('\n'.join(json_lines))
+                    except json.JSONDecodeError:
+                        fails.add("error parsing JSON output")
+                else:
+                    fails.add("no JSON output found")
+        else:
+            fails.add("no output received")
         
         if not output_dict.get("success", False):
-            return issues
+            fails.add("analysis unsuccessful")
         
-        if output_dict.get("error", None):
-            # Error reported but continue parsing
-            pass
+        if output_dict.get("error"):
+            errors.add("analysis reports errors")
         
+        # Extract findings
         results = output_dict.get("results", {})
         detectors = results.get("detectors", [])
         
-        for issue in detectors:
-            finding = {}
-            # Map SmartBugs fields
-            for i, f in (
-                ("check", "name"),
-                ("impact", "impact"),
-                ("confidence", "confidence"),
-                ("description", "message"),
-            ):
-                if i in issue:
-                    finding[f] = issue[i]
+        for detector in detectors:
+            issue = self._parse_detector(detector)
+            if issue:
+                issues.append(issue)
+        
+        return ParseResult(
+            issues=issues,
+            errors=errors,
+            fails=fails,
+            infos=infos
+        )
+    
+    def _parse_detector(self, detector: dict) -> Optional[SecurityIssue]:
+        """Parse a single detector result"""
+        check = detector.get("check", "")
+        impact = detector.get("impact", "Informational")
+        confidence = detector.get("confidence", "Medium")
+        description = detector.get("description", "")
+        elements = detector.get("elements", [])
+        
+        # Map impact to severity
+        severity = self.IMPACT_TO_SEVERITY.get(impact, Severity.INFO)
+        
+        # Extract location information
+        line = None
+        line_end = None
+        filename = None
+        contract = None
+        function = None
+        
+        # Try to extract from description (location pattern)
+        location_match = self.LOCATION_PATTERN.search(description)
+        if location_match:
+            filename = location_match.group(1).strip()
+            line = int(location_match.group(2))
+            if location_match.group(3):
+                line_end = int(location_match.group(3))
+        
+        # Extract from elements
+        for element in elements:
+            if element.get("type") == "function":
+                function = element.get("name")
+                type_specific = element.get("type_specific_fields", {})
+                parent = type_specific.get("parent", {})
+                if parent.get("type") == "contract":
+                    contract = parent.get("name")
             
-            # Clean message
-            if "message" in finding:
-                finding["message"] = finding["message"].replace("../../sb/", "")
-            
-            # Extract location from message or elements
-            elements = issue.get("elements", [])
-            m = LOCATION.search(finding.get("message", ""))
-            if m:
-                finding["filename"] = m[1]
-                if "-" in m[2]:
-                    start, end = m[2].split("-")
-                    finding["line"] = int(start)
-                    finding["line_end"] = int(end)
-                else:
-                    finding["line"] = int(m[2])
-            elif len(elements) > 0 and "source_mapping" in elements[0]:
-                source_mapping = elements[0]["source_mapping"]
+            if "source_mapping" in element:
+                source_mapping = element["source_mapping"]
                 lines = sorted(source_mapping.get("lines", []))
-                if len(lines) > 0:
-                    finding["line"] = lines[0]
-                    if len(lines) > 1:
-                        finding["line_end"] = lines[-1]
-                if "filename_absolute" in source_mapping:
-                    finding["filename"] = source_mapping["filename_absolute"].replace("/sb/", "")
-            
-            # Extract function and contract
-            for element in elements:
-                if element.get("type") == "function":
-                    finding["function"] = element["name"]
-                    type_specific_fields = element.get("type_specific_fields", {})
-                    parent = type_specific_fields.get("parent", {})
-                    if parent.get("type", None) == "contract":
-                        finding["contract"] = parent.get("name", "")
-                    break
-            
-            # Map severity
-            impact = finding.get("impact", "Medium")
-            severity_map = {
-                "High": Severity.HIGH,
-                "Medium": Severity.MEDIUM,
-                "Low": Severity.LOW,
-                "Informational": Severity.INFO,
-                "Optimization": Severity.INFO
-            }
-            severity = severity_map.get(impact, Severity.MEDIUM)
-            
-            # Get recommendation from markdown if available
-            recommendation = issue.get("markdown", "")
-            
-            issues.append(SecurityIssue(
-                tool="slither",
-                severity=severity,
-                title=finding.get("name", "Unknown"),
-                description=finding.get("message", ""),
-                line=finding.get("line"),
-                recommendation=recommendation
-            ))
+                if lines:
+                    if line is None:
+                        line = lines[0]
+                    if line_end is None and len(lines) > 1:
+                        line_end = lines[-1]
+                if filename is None:
+                    filename_abs = source_mapping.get("filename_absolute", "")
+                    if filename_abs:
+                        # Clean up path
+                        filename = filename_abs.split('/')[-1]
         
-        return issues
+        # Build recommendation
+        recommendation = self._get_recommendation(check, impact)
+        
+        return SecurityIssue(
+            tool=self.tool_name,
+            severity=severity,
+            title=check or "Slither Finding",
+            description=description or f"{check} detected",
+            line=line,
+            line_end=line_end,
+            filename=filename,
+            contract=contract,
+            function=function,
+            recommendation=recommendation
+        )
     
-    @staticmethod
-    def parse_from_tar(output_bytes: bytes) -> List[SecurityIssue]:
-        """
-        Parse Slither tar.gz output (SmartBugs Docker style)
+    def _get_recommendation(self, check: str, impact: str) -> str:
+        """Get fix recommendation based on check type"""
+        recommendations = {
+            "reentrancy-eth": "Use ReentrancyGuard and checks-effects-interactions pattern",
+            "reentrancy-no-eth": "Use ReentrancyGuard and checks-effects-interactions pattern",
+            "unchecked-transfer": "Check return value or use SafeERC20",
+            "unchecked-send": "Check return value or use SafeERC20",
+            "tx-origin": "Replace tx.origin with msg.sender",
+            "arbitrary-send-eth": "Add access control and input validation",
+            "suicidal": "Add access control to selfdestruct",
+            "locked-ether": "Add withdrawal function or make contract payable",
+        }
         
-        Args:
-            output_bytes: Tar.gz file content as bytes
-            
-        Returns:
-            List of SecurityIssue objects
-        """
-        try:
-            with io.BytesIO(output_bytes) as o, tarfile.open(fileobj=o) as tar:
-                output_json = tar.extractfile("output.json").read()
-                output_dict = json.loads(output_json)
-                return SlitherParser.parse_from_json(output_dict)
-        except Exception:
-            return []
-    
-    @staticmethod
-    def parse(exit_code: int, log: List[str], output: bytes) -> List[SecurityIssue]:
-        """
-        Main parse function matching SmartBugs interface (from tools/slither-0.11.3/parser.py)
-        
-        Args:
-            exit_code: Process exit code
-            log: Log lines (stdout/stderr)
-            output: Binary output (tar.gz for Docker, empty for direct)
-            
-        Returns:
-            List of SecurityIssue objects
-        """
-        # SmartBugs logic: handle errors and fails
-        errors, fails = errors_fails(exit_code, log)
-        errors.discard("EXIT_CODE_255")  # this code seems to be returned in any case
-        
-        # Try parsing from tar.gz first (Docker output - SmartBugs style)
-        output_dict = {}
-        if output:
-            try:
-                with io.BytesIO(output) as o, tarfile.open(fileobj=o) as tar:
-                    output_json = tar.extractfile("output.json").read()
-                    output_dict = json.loads(output_json)
-            except Exception:
-                # If tar parsing fails, try JSON from log
-                pass
-        
-        # Fallback: try parsing JSON from log (direct CLI execution)
-        if not output_dict:
-            for line in reversed(log):
-                try:
-                    data = json.loads(line)
-                    if "results" in data or "detectors" in data:
-                        output_dict = data
-                        break
-                except (json.JSONDecodeError, ValueError):
-                    continue
-        
-        # Parse the output dictionary
-        if output_dict:
-            return SlitherParser.parse_from_json(output_dict)
-        
-        return []
-
+        return recommendations.get(check, "Review and apply security best practices")

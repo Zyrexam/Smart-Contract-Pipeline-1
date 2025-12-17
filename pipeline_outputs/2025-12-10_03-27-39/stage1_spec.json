@@ -1,0 +1,166 @@
+{
+  "contract_name": "TokenStaking",
+  "contract_type": "staking",
+  "description": "A token staking contract where users stake ERC20 tokens and earn reward tokens over time.",
+  "state_variables": [
+    {
+      "name": "stakedTokens",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": {}
+    },
+    {
+      "name": "rewardTokens",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": {}
+    },
+    {
+      "name": "totalStaked",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "rewardRate",
+      "type": "uint256",
+      "visibility": "private",
+      "initial_value": 0
+    },
+    {
+      "name": "lastUpdateTime",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": {}
+    },
+    {
+      "name": "erc20Token",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": "0x0"
+    },
+    {
+      "name": "rewardToken",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": "0x0"
+    }
+  ],
+  "roles": [
+    {
+      "name": "admin",
+      "permissions": [
+        "setRewardRate",
+        "setTokenAddresses"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "stakeTokens",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to stake a specified amount of ERC20 tokens."
+    },
+    {
+      "name": "withdrawTokens",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to withdraw a specified amount of staked tokens."
+    },
+    {
+      "name": "claimRewards",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to claim their earned reward tokens."
+    },
+    {
+      "name": "setRewardRate",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "newRate",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "admin",
+      "description": "Allows admin to set the reward rate for staking."
+    },
+    {
+      "name": "setTokenAddresses",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "erc20TokenAddress",
+          "type": "address"
+        },
+        {
+          "name": "rewardTokenAddress",
+          "type": "address"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "admin",
+      "description": "Allows admin to set the addresses of the ERC20 and reward tokens."
+    }
+  ],
+  "events": [
+    {
+      "name": "TokensStaked",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "TokensWithdrawn",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RewardsClaimed",
+      "parameters": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

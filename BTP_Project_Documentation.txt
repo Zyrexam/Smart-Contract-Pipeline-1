@@ -1,0 +1,1136 @@
+================================================================================
+B.TECH PROJECT - COMPLETE DOCUMENTATION
+Smart Contract Generation Pipeline with Security Analysis
+================================================================================
+
+TABLE OF CONTENTS
+-----------------
+1. Project Overview
+2. System Architecture
+3. Stage 1: Intent Extraction
+4. Stage 2 (v1): Original Code Generation
+5. Stage 2 (v2): LLM-Powered Code Generation
+6. Stage 3: Security Analysis & Auto-Fix
+7. Key Differences Between Implementations
+8. Pipeline Flow
+9. Technical Implementation Details
+10. Features & Capabilities
+11. Testing & Validation
+12. Future Enhancements
+
+================================================================================
+1. PROJECT OVERVIEW
+================================================================================
+
+PROJECT TITLE:
+AI-Powered Smart Contract Generation Pipeline with Automated Security Analysis
+
+OBJECTIVE:
+Develop an end-to-end system that converts natural language descriptions into
+secure, production-ready Solidity smart contracts through a three-stage pipeline:
+1. Intent Extraction (Natural Language → Structured JSON)
+2. Code Generation (JSON → Solidity Code)
+3. Security Analysis & Auto-Fix (Solidity → Secure Solidity)
+
+KEY INNOVATIONS:
+- LLM-powered classification (no hardcoded categories)
+- Generalized input support (description + conditions)
+- Multi-tool security analysis (6 security scanners)
+- Automated vulnerability fixing using LLM
+- Template-based generation for standard contracts
+- Custom contract generation for unique requirements
+
+================================================================================
+2. SYSTEM ARCHITECTURE
+================================================================================
+
+HIGH-LEVEL ARCHITECTURE:
+┌─────────────────────────────────────────────────────────────────┐
+│                    USER INPUT (Natural Language)                │
+│  "Create an election system for club voting with auto-tabulate" │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    STAGE 1: INTENT EXTRACTION                   │
+│  • Parses natural language input                                 │
+│  • Extracts description + conditions                            │
+│  • Uses GPT-4o to generate structured JSON specification       │
+│  • Output: JSON with contract_name, functions, state_variables, │
+│    roles, events, modifiers                                      │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    STAGE 2: CODE GENERATION                     │
+│  ┌──────────────────────┐         ┌──────────────────────┐     │
+│  │   STAGE 2 (v1)       │         │   STAGE 2 (v2)       │     │
+│  │  Hardcoded Keywords  │         │  LLM Classification  │     │
+│  │  Category Detection  │         │  Dynamic Profiles   │     │
+│  └──────────────────────┘         └──────────────────────┘     │
+│  • Profile Selection                                              │
+│  • Coverage Mapping                                               │
+│  • Prompt Building                                                │
+│  • Solidity Code Generation (GPT-4o)                             │
+│  • Output: Complete Solidity contract                            │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              STAGE 3: SECURITY ANALYSIS & AUTO-FIX              │
+│  • Runs 6 security analysis tools (Slither, Mythril, Semgrep,   │
+│    Solhint, Oyente, SmartCheck)                                 │
+│  • Parses results using SmartBugs-style parsers                 │
+│  • Filters CRITICAL/HIGH severity issues                        │
+│  • LLM-based automatic fixing                                    │
+│  • Iterative improvement (up to max_iterations)                  │
+│  • Output: Secure, fixed Solidity contract                      │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              FINAL OUTPUT: SECURE SOLIDITY CONTRACT             │
+│  • Production-ready code                                         │
+│  • Security analysis report                                      │
+│  • Metadata (profile, coverage, fixes applied)                   │
+└─────────────────────────────────────────────────────────────────┘
+
+================================================================================
+3. STAGE 1: INTENT EXTRACTION
+================================================================================
+
+PURPOSE:
+Convert natural language contract descriptions into structured JSON specifications
+that can be used for code generation.
+
+IMPLEMENTATION:
+File: stage_1/intent_extraction.py
+
+KEY FEATURES:
+1. Generalized Input Parsing
+   - Supports format: "Description" + "Conditions: Additional requirements"
+   - Handles both simple descriptions and complex requirements
+   - Example:
+     "Create an election system"
+     Conditions: Automatically tabulates votes when voting period ends
+
+2. LLM-Based Extraction
+   - Uses GPT-4o (temperature=0.0 for consistency)
+   - Structured JSON schema with validation
+   - Extracts: contract_name, contract_type, description, state_variables,
+     functions, events, roles, modifiers
+
+3. Schema Structure:
+   {
+     "contract_name": "ElectionSystem",
+     "contract_type": "Election",
+     "description": "Community election system...",
+     "state_variables": [
+       {"name": "votingPeriod", "type": "uint256", "visibility": "public"}
+     ],
+     "functions": [
+       {
+         "name": "vote",
+         "visibility": "public",
+         "inputs": [{"name": "candidate", "type": "address"}],
+         "restricted_to": "voter",
+         "description": "Cast a vote for a candidate"
+       }
+     ],
+     "roles": [
+       {"name": "admin", "permissions": ["manageElection"]},
+       {"name": "voter", "permissions": ["vote"]}
+     ],
+     "events": [
+       {"name": "VoteCast", "parameters": [{"name": "voter", "type": "address"}]}
+     ],
+     "modifiers": [
+       {"name": "onlyVotingPeriod", "condition": "block.timestamp < endTime"}
+     ]
+   }
+
+4. Error Handling
+   - Cleans markdown code blocks from LLM output
+   - Validates JSON structure
+   - Handles missing fields gracefully
+
+WORKFLOW:
+1. Parse user input (handle description + conditions)
+2. Build prompt with schema instructions
+3. Call GPT-4o API
+4. Parse and clean JSON response
+5. Return structured specification
+
+OUTPUT:
+- JSON specification file (stage1_spec.json)
+- Used as input for Stage 2
+
+================================================================================
+4. STAGE 2 (v1): ORIGINAL CODE GENERATION
+================================================================================
+
+PURPOSE:
+Generate Solidity code from JSON specification using hardcoded category detection
+and template-based generation.
+
+IMPLEMENTATION:
+Directory: stage_2/
+Main File: generator.py
+
+KEY COMPONENTS:
+
+1. Categories System (categories.py)
+   - Hardcoded ContractCategory enum:
+     * ERC20, ERC721, ERC1155 (token standards)
+     * STAKING, VAULT, AMM, LENDING
+     * GOVERNANCE, TIMELOCK
+     * NFT_MARKETPLACE, AUCTION
+     * MULTISIG, UPGRADEABLE
+     * CUSTOM
+   - AccessControlType: SINGLE_OWNER, ROLE_BASED
+   - SecurityFeature: REENTRANCY_GUARD, PAUSABLE, TIMELOCK
+
+2. Profile Selector (profile_selector.py)
+   - Keyword-based category detection
+   - Uses hardcoded keyword dictionaries:
+     * STAKING: ["stake", "staking", "unstake"]
+     * VAULT: ["vault", "erc4626"]
+     * GOVERNANCE: ["governor", "governance", "dao"]
+     * NFT_MARKETPLACE: ["marketplace", "market"]
+     * AUCTION: ["auction"]
+   - Function name matching for category detection
+   - Builds ContractProfile with:
+     * category, base_standard, extensions
+     * access_control, security_features
+
+3. Coverage Mapper (coverage_mapper.py)
+   - Maps JSON spec elements to implementation strategies
+   - Maps functions, state variables, events to Solidity patterns
+   - Uses OpenZeppelin patterns for standard contracts
+
+4. Prompt Builder (prompt_builder.py)
+   - Builds system and user prompts for code generation
+   - Includes OpenZeppelin v5 guidelines
+   - Template-specific instructions
+   - Includes inheritance chain and imports
+
+5. Code Generator (code_generator.py)
+   - Calls GPT-4o to generate Solidity code
+   - Applies constructor fixes for template contracts
+   - Validates generated code structure
+
+WORKFLOW:
+1. Validate JSON specification
+2. Detect category using keyword matching
+3. Select contract profile
+4. Map specification coverage
+5. Build prompts (system + user)
+6. Generate Solidity code using GPT-4o
+7. Apply fixes (constructor resolution, etc.)
+8. Return GenerationResult
+
+LIMITATIONS:
+- Hardcoded keywords don't scale to new domains
+- Requires manual category engineering
+- May misclassify contracts with similar keywords
+- Limited to predefined categories
+
+OUTPUT:
+- Solidity contract file (.sol)
+- Metadata JSON (profile, coverage, validation errors)
+
+================================================================================
+5. STAGE 2 (v2): LLM-POWERED CODE GENERATION
+================================================================================
+
+PURPOSE:
+Generate Solidity code using LLM-powered classification instead of hardcoded
+keywords. This makes the system truly generalized for ANY contract type.
+
+IMPLEMENTATION:
+Directory: stage_2_v2/
+Main File: generator_v2.py
+
+KEY INNOVATIONS:
+
+1. LLM Classifier (llm_classifier.py)
+   - Uses GPT-4o to intelligently classify contract types
+   - No hardcoded keywords - scales to any domain
+   - Classification output:
+     {
+       "contract_type": "ERC20" | "ERC721" | "Governor" | "Custom",
+       "subtype": "election" | "certificate" | "supply_chain" | null,
+       "confidence": 0.0-1.0,
+       "reasoning": "Brief explanation",
+       "is_template": true | false,
+       "recommended_approach": "template" | "custom"
+     }
+   - Template types: ERC20, ERC721, ERC1155, Governor, Staking, Vault,
+     Marketplace, Auction, Timelock, MultiSig
+   - Custom types: Any unique business logic (elections, certificates, etc.)
+
+2. Dynamic Profile Selector (profile_selector_v2.py)
+   - Builds profiles based on LLM classification
+   - Sets is_template flag automatically
+   - Determines access control and security features intelligently
+   - Handles subtypes for custom contracts
+
+3. Simplified Categories (categories_v2.py)
+   - ContractProfile with is_template and subtype fields
+   - Works with both template and custom contracts
+   - Clean, simple structure
+
+4. Smart Coverage Mapping (coverage_mapper_v2.py)
+   - Maps templates to OpenZeppelin patterns
+   - Maps custom contracts with semantic understanding
+   - Handles subtypes (election, certificate, etc.)
+
+5. Dynamic Prompts (updated_prompt_builder_v2.py)
+   - Template contracts: OpenZeppelin v5 rules
+   - Custom contracts: Custom contract guidance
+   - Includes automatic actions, data structure rules
+   - Enhanced with CORRECT vs WRONG examples
+
+6. Profile-Aware Code Generation (code_generator_v2.py)
+   - Template contracts: Apply constructor fixes
+   - Custom contracts: Skip fixes (protect custom logic)
+   - Uses is_template flag to decide
+   - Tracks fixes_applied for auditability
+
+KEY IMPROVEMENTS OVER v1:
+
+1. No Hardcoding
+   - LLM handles classification
+   - No manual category engineering needed
+
+2. Scales to Any Domain
+   - Works for any contract type
+   - No need to add new categories manually
+
+3. Better Accuracy
+   - LLM understands context, not just keywords
+   - Distinguishes between similar concepts
+     (e.g., "Election" vs "Governor")
+
+4. Protected Custom Logic
+   - Custom contracts aren't modified by fixes
+   - Preserves unique business logic
+
+5. Generalized Input Support
+   - Handles description + conditions format
+   - Implements automatic actions correctly
+   - Separate data structures for different purposes
+
+ROBUSTNESS FEATURES:
+
+1. Robust JSON Parsing (llm_utils.py)
+   - Safe JSON parser handles markdown fences, extra text
+   - Retry mechanism with parse-fix prompts
+   - JSON Schema validation
+
+2. Resilient LLM Client (llm_utils.py)
+   - Wrapper with timeout and retry logic
+   - Handles response_format parameter gracefully
+   - Exponential backoff on failures
+
+3. Fixes Tracking
+   - fixes_applied list tracks all repair attempts
+   - Records method, attempt number, description
+   - Included in metadata
+
+4. Prompt Size Management
+   - Token estimation and size checks
+   - Automatic spec truncation for very large inputs
+   - Prevents token limit errors
+
+5. Platform Detection (platform_utils.py)
+   - Detects Windows/Linux/macOS
+   - Provides tool availability checks
+   - Warnings for platform-incompatible tools
+
+WORKFLOW:
+1. Validate JSON specification
+2. LLM Classification (analyze user_input + json_spec)
+3. Build profile from classification
+4. Map specification coverage
+5. Build dynamic prompts (template vs custom)
+6. Generate Solidity code using GPT-4o
+7. Apply fixes (only for templates)
+8. Return GenerationResult with classification
+
+OUTPUT:
+- Solidity contract file (.sol)
+- Metadata JSON (profile, coverage, classification, fixes_applied)
+
+EXAMPLE CLASSIFICATIONS:
+- "Create an ERC20 token" → ERC20 (template)
+- "Election system for club" → Custom (subtype: election)
+- "Track luxury watch authenticity" → Custom (subtype: authentication)
+- "DAO governance" → Governor (template)
+- "Tax token with fees" → ERC20 (template, with custom transfer logic)
+
+================================================================================
+6. STAGE 3: SECURITY ANALYSIS & AUTO-FIX
+================================================================================
+
+PURPOSE:
+Analyze generated Solidity code using multiple security tools, detect
+vulnerabilities, and automatically fix them using LLM.
+
+IMPLEMENTATION:
+Directory: stage_3/
+Main File: security_integration.py
+
+SECURITY TOOLS INTEGRATED:
+
+1. Slither (Static Analysis)
+   - Tool: slither-analyzer (pip install)
+   - Command: slither "$FILENAME" --json -
+   - Parser: parsers/slither_parser.py
+   - Findings: 114 different vulnerability types
+   - Output: JSON format
+
+2. Mythril (Symbolic Execution)
+   - Tool: mythril (pip install)
+   - Command: myth analyze "$FILENAME" -o json
+   - Parser: parsers/mythril_parser.py
+   - Findings: 17 SWC (Smart Contract Weakness Classification) types
+   - Output: JSON from last log line
+
+3. Semgrep (Pattern Matching)
+   - Tool: semgrep (pip install)
+   - Command: semgrep --config=auto --json "$FILENAME"
+   - Parser: parsers/semgrep_parser.py
+   - Findings: 68 different patterns
+   - Output: JSON format
+
+4. Solhint (Linting)
+   - Tool: solhint (npm install -g)
+   - Command: solhint -f unix "$FILENAME"
+   - Parser: parsers/solhint_parser.py
+   - Findings: 72 different linting rules
+   - Output: Unix format
+
+5. Oyente (Symbolic Execution)
+   - Tool: oyente (pip install)
+   - Command: oyente -s "$FILENAME"
+   - Parser: parsers/oyente_parser.py
+   - Findings: 7 different vulnerability types
+   - Output: Text format with regex parsing
+
+6. SmartCheck (Static Analysis)
+   - Tool: smartcheck (npm install -g)
+   - Command: smartcheck -p "$FILENAME"
+   - Parser: parsers/smartcheck_parser.py
+   - Findings: 52 different vulnerability types
+   - Output: Line-by-line key-value format
+
+PARSER EXTRACTION:
+- All parsers extracted from SmartBugs framework
+- Self-contained implementation (no SmartBugs dependency)
+- SmartBugs-style parsing logic preserved
+- Handles tool-specific output formats
+
+SEVERITY LEVELS:
+- CRITICAL: Immediate security risks
+- HIGH: Significant security concerns
+- MEDIUM: Moderate security issues
+- LOW: Minor security concerns
+- INFO: Informational findings
+
+WORKFLOW:
+
+Phase 1: Initial Analysis
+1. Create temporary Solidity file
+2. Run all available security tools
+3. Parse results using SmartBugs-style parsers
+4. Aggregate all issues into AnalysisResult
+5. Filter CRITICAL and HIGH severity issues
+
+Phase 2: Iterative Fixing (up to max_iterations)
+1. If no CRITICAL/HIGH issues → Skip to Phase 3
+2. Format issues for LLM (tool, severity, title, description, line, recommendation)
+3. Send to GPT-4 with fix instructions:
+   - System prompt: Security expert role with fix guidelines
+   - User prompt: Contract code + formatted issues
+4. GPT-4 generates fixed Solidity code
+5. Clean output (remove markdown, ensure headers)
+6. Re-analyze fixed code
+7. Repeat until no critical/high issues or max iterations reached
+
+Phase 3: Final Verification
+1. Return Stage3Result with:
+   - original_code: Initial code from Stage 2
+   - final_code: Fixed code after iterations
+   - iterations: Number of fix iterations
+   - initial_analysis: First security scan results
+   - final_analysis: Final security scan results
+   - fixes_applied: Fix history per iteration
+   - issues_resolved: Total issues resolved
+
+LLM FIXING PROCESS:
+
+Fix Guidelines (System Prompt):
+- Preserve functionality
+- Maintain OpenZeppelin v5 compatibility
+- Apply security best practices
+- Handle common vulnerabilities:
+  * Reentrancy → Use ReentrancyGuard
+  * Access Control → Use Ownable or AccessControl
+  * tx.origin → Replace with msg.sender
+  * Unchecked external calls → Add checks
+  * Integer overflow → Use SafeMath or Solidity 0.8+
+  * etc.
+
+Issue Format (User Prompt):
+```
+Tool: slither
+Severity: HIGH
+Title: reentrancy-eth
+Description: Reentrancy vulnerability in withdraw() function
+Line: 42
+Recommendation: Use ReentrancyGuard modifier and update state before external call
+```
+
+AUTO-INSTALLATION:
+- Checks tool availability
+- Attempts auto-install for pip/npm tools
+- Graceful degradation if tools unavailable
+- Platform detection (Windows/Linux/macOS)
+
+OUTPUT FORMAT:
+
+Stage3Result:
+{
+  "iterations": 2,
+  "issues_resolved": 25,
+  "initial_analysis": {
+    "contract_name": "MyContract",
+    "tools_used": ["slither", "mythril", "semgrep", "solhint"],
+    "total_issues": 28,
+    "critical": 2,
+    "high": 8,
+    "medium": 12,
+    "low": 6,
+    "issues": [...]
+  },
+  "final_analysis": {
+    "total_issues": 3,
+    "critical": 0,
+    "high": 0,
+    ...
+  },
+  "fixes_applied": [
+    {
+      "iteration": 1,
+      "issues_before": 10,
+      "issues_after": 4
+    }
+  ]
+}
+
+================================================================================
+7. KEY DIFFERENCES BETWEEN IMPLEMENTATIONS
+================================================================================
+
+STAGE 2 (v1) vs STAGE 2 (v2):
+
+┌─────────────────────────────────┬─────────────────────────────────┐
+│        STAGE 2 (v1)             │        STAGE 2 (v2)             │
+├─────────────────────────────────┼─────────────────────────────────┤
+│ Hardcoded keyword matching      │ LLM-powered classification      │
+│ Manual category engineering     │ Automatic classification        │
+│ Limited to predefined categories│ Works for ANY contract type     │
+│ Keyword-based detection         │ Context-aware classification    │
+│ May misclassify similar types   │ Distinguishes subtle differences│
+│ Requires updates for new types  │ Scales automatically           │
+│ Fixed category enum             │ Dynamic contract types          │
+│ No subtype support              │ Subtype support (election, etc)│
+│ Always applies fixes            │ Fixes only for templates       │
+│ No classification metadata     │ Classification in metadata     │
+│ No fixes tracking               │ Tracks all fixes applied        │
+│ Basic error handling            │ Robust error handling           │
+│ No platform detection           │ Platform-aware tool checks      │
+└─────────────────────────────────┴─────────────────────────────────┘
+
+CLASSIFICATION COMPARISON:
+
+Example: "Create an election system for club voting"
+
+Stage 2 (v1):
+- Keyword matching: "election" not in predefined categories
+- Falls back to: CUSTOM category
+- No understanding of election-specific requirements
+
+Stage 2 (v2):
+- LLM classification: Analyzes context
+- Classification: Custom (subtype: election)
+- Reasoning: "Election system is distinct from Governor governance"
+- Profile: Custom contract with election-specific patterns
+- Prompts: Include election-specific guidance (auto-tabulation, etc.)
+
+TEMPLATE vs CUSTOM HANDLING:
+
+Stage 2 (v1):
+- All contracts treated similarly
+- Same fix application for all
+
+Stage 2 (v2):
+- Template contracts (ERC20, Governor):
+  * Use OpenZeppelin patterns
+  * Apply constructor fixes
+  * Follow standard implementations
+- Custom contracts (Election, Certificate):
+  * Custom implementation from scratch
+  * Skip constructor fixes (protect logic)
+  * Domain-specific patterns
+
+GENERALIZED INPUT SUPPORT:
+
+Stage 2 (v1):
+- Basic description parsing
+- Limited condition handling
+
+Stage 2 (v2):
+- Full description + conditions format
+- Automatic action implementation
+- Separate data structures for different purposes
+- Enhanced prompt building with conditions
+
+CODE QUALITY IMPROVEMENTS (v2):
+
+1. Data Structure Separation (FIXED)
+   - ✅ Uses separate mappings:
+     * mapping(address => bool) hasVoted
+     * mapping(address => uint256) candidateVotes
+   - ❌ Previously: One mapping reused (caused bugs)
+
+2. Automatic Tabulation (FIXED)
+   - ✅ Check at START of vote() function
+   - ✅ Internal _autoTabulate() function
+   - ✅ Works automatically when period ends
+
+3. Prompt Enhancements
+   - ✅ Explicit CORRECT vs WRONG examples
+   - ✅ Enhanced coverage mapper
+   - ✅ Fixed Python f-string syntax issues
+
+================================================================================
+8. PIPELINE FLOW
+================================================================================
+
+COMPLETE PIPELINE EXECUTION:
+
+Step 1: User Input
+   Input: "Create an election system for club voting"
+   Conditions: Automatically tabulates votes when voting period ends
+
+Step 2: Stage 1 - Intent Extraction
+   Input: Natural language description
+   Process:
+     - Parse description + conditions
+     - Call GPT-4o with schema prompt
+     - Extract structured JSON
+   Output: stage1_spec.json
+     {
+       "contract_name": "ElectionSystem",
+       "contract_type": "Election",
+       "description": "...",
+       "functions": [...],
+       "state_variables": [...],
+       "roles": [...]
+     }
+
+Step 3: Stage 2 - Code Generation (v2)
+   Input: user_input + json_spec
+   Process:
+     - Validate specification
+     - LLM Classification (GPT-4o)
+       * Classifies as: Custom (subtype: election)
+       * Confidence: 0.95
+       * is_template: false
+     - Build profile (Custom, role_based, ReentrancyGuard)
+     - Map coverage (functions, variables, events)
+     - Build prompts (custom contract guidance)
+     - Generate Solidity code (GPT-4o)
+     - Skip fixes (custom contract)
+   Output: ElectionSystem.sol
+     - Complete Solidity contract
+     - Implements voting, auto-tabulation
+     - Separate mappings for vote status and counts
+
+Step 4: Stage 3 - Security Analysis
+   Input: ElectionSystem.sol
+   Process:
+     - Initial Analysis:
+       * Run Slither → 5 issues found
+       * Run Mythril → 2 issues found
+       * Run Semgrep → 3 issues found
+       * Run Solhint → 8 issues found
+       * Total: 18 issues (2 HIGH, 6 MEDIUM, 10 LOW)
+     - Iteration 1:
+       * Filter: 2 HIGH issues
+       * LLM Fix: Add ReentrancyGuard, fix access control
+       * Re-analyze: 8 issues (0 HIGH, 3 MEDIUM, 5 LOW)
+     - Iteration 2:
+       * Filter: 0 HIGH issues
+       * Skip fixing
+   Output: Secure ElectionSystem.sol
+     - Fixed reentrancy vulnerabilities
+     - Improved access control
+     - Final: 8 issues (0 HIGH)
+
+Step 5: Final Output
+   Files:
+     - ElectionSystem.sol (secure, fixed code)
+     - metadata.json (profile, classification, coverage)
+     - stage1_spec.json (original specification)
+     - security_report.json (analysis results)
+
+INTEGRATION POINTS:
+
+Stage 1 → Stage 2:
+   - JSON specification passed directly
+   - user_input also passed for classification (v2)
+
+Stage 2 → Stage 3:
+   - Solidity code passed as string
+   - Contract name from specification
+
+Stage 3 → Final:
+   - Fixed code returned
+   - Analysis results included in metadata
+
+================================================================================
+9. TECHNICAL IMPLEMENTATION DETAILS
+================================================================================
+
+TECHNOLOGY STACK:
+
+1. Language: Python 3.8+
+2. LLM: OpenAI GPT-4o
+3. Security Tools:
+   - Slither (Python)
+   - Mythril (Python)
+   - Semgrep (Python)
+   - Solhint (Node.js)
+   - Oyente (Python)
+   - SmartCheck (Node.js)
+4. Solidity: ^0.8.20
+5. OpenZeppelin: v5.0.0
+
+KEY ALGORITHMS:
+
+1. LLM Classification Algorithm:
+   - Input: user_input + json_spec
+   - Context building: Extract contract name, description, functions, variables, roles
+   - Classification prompt: Template types + Custom distinction
+   - Output: contract_type, subtype, confidence, is_template
+   - Validation: Schema validation, confidence threshold (0.6)
+
+2. Profile Selection Algorithm:
+   - If is_template:
+     * Use OpenZeppelin base (ERC20, Governor, etc.)
+     * Determine extensions from functions
+     * Set access control from roles
+   - If Custom:
+     * Build custom profile
+     * Set subtype-specific patterns
+     * Determine security features from description
+
+3. Coverage Mapping Algorithm:
+   - For each function in spec:
+     * Map to OpenZeppelin function (if template)
+     * Map to custom implementation (if custom)
+   - For each state variable:
+     * Map to storage pattern
+   - For each event:
+     * Map to event emission pattern
+
+4. Security Analysis Algorithm:
+   - For each tool:
+     * Execute tool command
+     * Parse output using SmartBugs parser
+     * Extract issues with severity
+   - Aggregate all issues
+   - Filter by severity (CRITICAL, HIGH)
+
+5. LLM Fixing Algorithm:
+   - Format issues: tool, severity, title, description, line, recommendation
+   - Build fix prompt: System (expert role) + User (code + issues)
+   - Generate fixed code
+   - Clean output (remove markdown)
+   - Re-analyze
+   - Iterate until no critical/high issues
+
+DATA STRUCTURES:
+
+1. JSON Specification (Stage 1 Output):
+   {
+     "contract_name": str,
+     "contract_type": str,
+     "description": str,
+     "state_variables": [{"name": str, "type": str, ...}],
+     "functions": [{"name": str, "inputs": [...], ...}],
+     "roles": [{"name": str, "permissions": [...]}],
+     "events": [{"name": str, "parameters": [...]}],
+     "modifiers": [{"name": str, "condition": str}]
+   }
+
+2. Classification Result:
+   {
+     "contract_type": str,
+     "subtype": str | None,
+     "confidence": float,
+     "reasoning": str,
+     "is_template": bool,
+     "recommended_approach": str
+   }
+
+3. ContractProfile:
+   {
+     "category": str,
+     "base_standard": str,
+     "extensions": [str],
+     "access_control": str,
+     "security_features": [str],
+     "subtype": str | None,
+     "is_template": bool
+   }
+
+4. GenerationResult:
+   {
+     "solidity_code": str,
+     "profile": ContractProfile,
+     "coverage": SpecCoverage,
+     "validation_errors": [str],
+     "security_summary": str,
+     "imports_used": [str],
+     "inheritance_chain": [str],
+     "classification": Dict,
+     "fixes_applied": [Dict]
+   }
+
+5. SecurityIssue:
+   {
+     "tool": str,
+     "severity": Severity,
+     "title": str,
+     "description": str,
+     "line": int | None,
+     "recommendation": str
+   }
+
+6. Stage3Result:
+   {
+     "original_code": str,
+     "final_code": str,
+     "iterations": int,
+     "initial_analysis": AnalysisResult,
+     "final_analysis": AnalysisResult,
+     "fixes_applied": [Dict],
+     "issues_resolved": int
+   }
+
+ERROR HANDLING:
+
+1. Stage 1:
+   - JSON parsing errors → Retry with cleaned output
+   - Missing fields → Set defaults
+   - Invalid types → Validation warnings
+
+2. Stage 2:
+   - LLM classification failures → Retry with parse-fix prompt
+   - JSON parsing errors → Safe parser with retry
+   - Token limit errors → Truncate spec automatically
+   - Classification validation → Schema validation
+
+3. Stage 3:
+   - Tool not installed → Auto-install attempt
+   - Tool execution failure → Skip tool, continue with others
+   - Parser errors → Log and continue
+   - LLM fix failures → Retry with different strategy
+
+================================================================================
+10. FEATURES & CAPABILITIES
+================================================================================
+
+SUPPORTED CONTRACT TYPES:
+
+Template Contracts (OpenZeppelin-based):
+1. ERC20 - Fungible tokens
+2. ERC721 - Non-fungible tokens (NFTs)
+3. ERC1155 - Multi-token standard
+4. Governor - DAO governance with proposals/voting
+5. Staking - Token staking with rewards
+6. Vault - Asset vault (ERC4626)
+7. Marketplace - NFT marketplace
+8. Auction - Auction system
+9. Timelock - Time-delayed execution
+10. MultiSig - Multi-signature wallet
+
+Custom Contracts (Domain-specific):
+1. Election Systems
+   - Voter registration
+   - Single vote per identity
+   - Automatic tabulation
+   - Candidate management
+
+2. Certificate Verification
+   - Educational certificates
+   - Employer verification
+   - Access control for institutions
+
+3. Supply Chain Tracking
+   - IoT sensor data logging
+   - Automatic alerts
+   - Conditional payment release
+   - Oracle integration
+
+4. Royalty Distribution
+   - Automatic micro-payments
+   - Oracle integration
+   - Ownership share tracking
+
+5. Authentication/Provenance
+   - Ownership history
+   - Maintenance records
+   - Digital title transfer
+
+6. Registry Systems
+   - Record registration
+   - Identity management
+   - Custom data structures
+
+GENERALIZED INPUT SUPPORT:
+
+Format:
+"Main description text"
+
+Conditions: Additional requirements and constraints...
+
+Examples:
+1. Election with auto-tabulation
+2. Certificate with employer verification
+3. Supply chain with IoT alerts
+4. Royalty with automatic distribution
+
+AUTOMATIC FEATURES:
+
+1. Automatic Tabulation (Elections)
+   - Checks at start of vote() function
+   - Internal _autoTabulate() function
+   - Works when voting period ends
+
+2. Automatic Alerts (Supply Chain)
+   - Condition violation detection
+   - Event emission
+   - State updates
+
+3. Automatic Distribution (Royalties)
+   - Usage-based triggers
+   - Micro-payment calculation
+   - Pull payment pattern
+
+4. Automatic Verification (Certificates)
+   - Employer verification without issuer contact
+   - Access control enforcement
+
+SECURITY FEATURES:
+
+1. Reentrancy Protection
+   - ReentrancyGuard modifier
+   - Checks-Effects-Interactions pattern
+
+2. Access Control
+   - Ownable for single owner
+   - AccessControl for role-based
+   - Custom role management
+
+3. Input Validation
+   - Parameter checks
+   - Range validation
+   - Type safety
+
+4. Safe Math (Solidity 0.8+)
+   - Built-in overflow protection
+   - Unchecked blocks where safe
+
+5. Event Emission
+   - All state changes logged
+   - Indexed parameters for filtering
+
+6. Pausable Contracts
+   - Emergency stop functionality
+   - Pausable modifier
+
+================================================================================
+11. TESTING & VALIDATION
+================================================================================
+
+TEST FILES:
+
+1. stage_1/intent_extraction.py
+   - Test: Direct execution with sample input
+   - Validates: JSON structure, required fields
+
+2. stage_2/test.py
+   - Test: Full pipeline (Stage 1 + Stage 2 v1)
+   - Validates: Code generation, profile selection
+
+3. stage_2_v2/test_v2.py
+   - Test: Full pipeline (Stage 1 + Stage 2 v2)
+   - Validates: Classification, code generation
+
+4. stage_3/run_pipeline.py
+   - Test: Stage 3 standalone
+   - Tests:
+     * Tool installation check
+     * Slither analysis
+     * Multiple tools analysis
+     * Vulnerability fixing
+     * Secure contract analysis
+     * Auto-installation
+     * Pipeline integration
+
+VALIDATION CHECKS:
+
+1. Stage 1:
+   - JSON schema validation
+   - Required fields present
+   - Type correctness
+
+2. Stage 2:
+   - Specification validation
+   - Profile selection correctness
+   - Coverage mapping completeness
+   - Generated code compiles (solc check)
+
+3. Stage 3:
+   - Tool execution success
+   - Parser correctness
+   - Issue severity classification
+   - Fix application correctness
+
+TEST CASES:
+
+1. ERC20 Token Generation
+   - Input: "Create an ERC20 token"
+   - Expected: ERC20 template, OpenZeppelin-based
+   - Validation: Compiles, has transfer, approve, balanceOf
+
+2. Election System
+   - Input: "Election system with auto-tabulation"
+   - Expected: Custom contract, election subtype
+   - Validation: Separate mappings, auto-tabulation logic
+
+3. Reentrancy Fix
+   - Input: Vulnerable withdraw function
+   - Expected: ReentrancyGuard added
+   - Validation: No reentrancy issues in final analysis
+
+4. Access Control Fix
+   - Input: Public admin function
+   - Expected: Ownable or AccessControl added
+   - Validation: Access control issues resolved
+
+OUTPUT VALIDATION:
+
+1. Solidity Code:
+   - Compiles with solc
+   - Follows Solidity style guide
+   - OpenZeppelin v5 compatible
+
+2. Metadata:
+   - Complete profile information
+   - Coverage mapping present
+   - Classification data (v2)
+
+3. Security Report:
+   - All tools executed
+   - Issues properly categorized
+   - Fixes documented
+
+================================================================================
+12. FUTURE ENHANCEMENTS
+================================================================================
+
+POTENTIAL IMPROVEMENTS:
+
+1. Multi-Contract Support
+   - Generate multiple related contracts
+   - Contract interaction patterns
+   - Factory contracts
+
+2. Gas Optimization
+   - Automatic gas optimization suggestions
+   - Storage packing optimization
+   - Function optimization
+
+3. Test Generation
+   - Automatic test case generation
+   - Foundry/Hardhat test templates
+   - Coverage-based test generation
+
+4. Documentation Generation
+   - NatSpec comments
+   - User documentation
+   - API documentation
+
+5. Upgradeability Support
+   - Proxy pattern generation
+   - Upgrade scripts
+   - Storage layout management
+
+6. Multi-Chain Support
+   - Chain-specific optimizations
+   - Cross-chain patterns
+   - Layer 2 support
+
+7. Advanced Security
+   - Formal verification integration
+   - Fuzzing support
+   - Custom security rules
+
+8. UI/UX Improvements
+   - Web interface
+   - Real-time generation
+   - Interactive editing
+
+9. Performance Optimization
+   - Caching classification results
+   - Parallel tool execution
+   - Incremental analysis
+
+10. Integration Enhancements
+    - CI/CD integration
+    - IDE plugins
+    - API endpoints
+
+================================================================================
+CONCLUSION
+================================================================================
+
+This project demonstrates a complete end-to-end pipeline for generating secure
+smart contracts from natural language descriptions. The system leverages:
+
+1. Advanced LLM capabilities for intent extraction and classification
+2. Template-based generation for standard contracts
+3. Custom generation for unique requirements
+4. Multi-tool security analysis
+5. Automated vulnerability fixing
+
+Key achievements:
+- Generalized system that works for any contract type
+- LLM-powered classification (no hardcoded categories)
+- Comprehensive security analysis with 6 tools
+- Automated fixing with iterative improvement
+- Production-ready code generation
+
+The system successfully bridges the gap between natural language requirements
+and secure, production-ready Solidity smart contracts.
+
+================================================================================
+END OF DOCUMENTATION
+================================================================================
+

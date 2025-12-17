@@ -1,0 +1,51 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "tickets": "Custom state variable",
+      "ticketPrice": "Custom state variable",
+      "totalTickets": "Custom state variable",
+      "ticketsSold": "Custom state variable",
+      "owner": "Custom state variable"
+    },
+    "functions": {
+      "setTicketPrice": "Custom function",
+      "mintTickets": "Custom function",
+      "buyTicket": "Custom function",
+      "withdrawFunds": "Custom function"
+    },
+    "events": {
+      "TicketPurchased": "Custom event",
+      "TicketsMinted": "Custom event",
+      "FundsWithdrawn": "Custom event"
+    },
+    "roles": {
+      "owner": "Custom role",
+      "user": "Custom role"
+    },
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: ticketing\n\nReasoning: The contract involves a decentralized ticketing platform with specific functionality for minting and managing event tickets, including anti-bot verification. This does not fit into any standard template like ERC20, ERC721, or Marketplace, as it involves unique business logic related to ticketing and anti-bot measures.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": false,
+  "subtype": "ticketing",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "ticketing",
+    "confidence": 0.9,
+    "reasoning": "The contract involves a decentralized ticketing platform with specific functionality for minting and managing event tickets, including anti-bot verification. This does not fit into any standard template like ERC20, ERC721, or Marketplace, as it involves unique business logic related to ticketing and anti-bot measures.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

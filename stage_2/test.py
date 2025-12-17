@@ -3,7 +3,6 @@ import sys
 import json
 import shutil
 from datetime import datetime
-import subprocess
 
 from stage_1.intent_extraction import extract_intent
 from stage_2.generator import generate_solidity
@@ -19,21 +18,6 @@ USER_INPUT = """Build a rental NFT system where users can rent NFTs for a fixed 
 
 def ensure(path: str):
     os.makedirs(path, exist_ok=True)
-
-
-def run_solc(path: str):
-    """Attempt to compile generated Solidity code."""
-    try:
-        result = subprocess.run(
-            ["solc", "--base-path", ".", "--allow-paths", ".", path],
-            capture_output=True, text=True
-        )
-        if result.returncode == 0:
-            return "✓ Solidity compiles successfully."
-        return f"❌ Compilation errors:\n{result.stderr}"
-
-    except FileNotFoundError:
-        return "solc not installed. Compilation skipped."
 
 
 # ------------------------------------------------------------------------------
@@ -74,7 +58,7 @@ def run_pipeline(user_input: str):
     # ------------------------------------------------------------------
     print("\n[2/3] Stage 2: Generating Solidity...")
     try:
-        result = generate_solidity(spec)
+        result = generate_solidity(spec, debug=True)  # Enable debug to see semantic validation
     except Exception as e:
         print(f"❌ Stage 2 Failed: {e}")
         return
@@ -94,14 +78,6 @@ def run_pipeline(user_input: str):
     print(f"\n📦 Outputs saved in: {outdir}")
     print(f" - Solidity: {sol_path}")
     print(f" - Metadata: {meta_path}")
-
-    # ------------------------------------------------------------------  
-    # Stage 2.5 — Solidity Compilation Test  
-    # ------------------------------------------------------------------
-    print("\n[2.5] Testing compilation with solc...")
-    print(run_solc(sol_path))
-
-
 
     print("\n" + "="*80)
     print("PIPELINE COMPLETE")
