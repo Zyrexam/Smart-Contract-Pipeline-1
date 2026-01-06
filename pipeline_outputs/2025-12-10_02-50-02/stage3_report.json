@@ -1,0 +1,217 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "DecentralizedTicketingPlatform",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 5,
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 69,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [numberOfTickets] on Event [TicketsMinted] could be Indexed",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsWithdrawn] could be Indexed",
+        "line": 17,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 57,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ ticketsSold ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 61,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "DecentralizedTicketingPlatform",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 5,
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 69,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [numberOfTickets] on Event [TicketsMinted] could be Indexed",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsWithdrawn] could be Indexed",
+        "line": 17,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 57,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ ticketsSold ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 61,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "tickets": "Custom state variable",
+        "ticketPrice": "Custom state variable",
+        "totalTickets": "Custom state variable",
+        "ticketsSold": "Custom state variable",
+        "owner": "Custom state variable"
+      },
+      "functions": {
+        "setTicketPrice": "Custom function",
+        "mintTickets": "Custom function",
+        "buyTicket": "Custom function",
+        "withdrawFunds": "Custom function"
+      },
+      "events": {
+        "TicketPurchased": "Custom event",
+        "TicketsMinted": "Custom event",
+        "FundsWithdrawn": "Custom event"
+      },
+      "roles": {
+        "owner": "Custom role",
+        "user": "Custom role"
+      },
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: ticketing\n\nReasoning: The contract involves a decentralized ticketing platform with specific functionality for minting and managing event tickets, including anti-bot verification. This does not fit into any standard template like ERC20, ERC721, or Marketplace, as it involves unique business logic related to ticketing and anti-bot measures.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl"
+    ],
+    "is_template": false,
+    "subtype": "ticketing",
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": "ticketing",
+      "confidence": 0.9,
+      "reasoning": "The contract involves a decentralized ticketing platform with specific functionality for minting and managing event tickets, including anti-bot verification. This does not fit into any standard template like ERC20, ERC721, or Marketplace, as it involves unique business logic related to ticketing and anti-bot measures.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": []
+  },
+  "compiles": null
+}

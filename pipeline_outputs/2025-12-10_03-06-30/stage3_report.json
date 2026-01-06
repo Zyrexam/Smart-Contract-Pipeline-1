@@ -1,0 +1,190 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": ".sol",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "reentrancy-pattern",
+        "description": "reentrancy-pattern detected",
+        "line": 49,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Use ReentrancyGuard and checks-effects-interactions pattern"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Deposit] could be Indexed",
+        "line": 13,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawal] could be Indexed",
+        "line": 18,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 50,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": ".sol",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "reentrancy-pattern",
+        "description": "reentrancy-pattern detected",
+        "line": 49,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Use ReentrancyGuard and checks-effects-interactions pattern"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Deposit] could be Indexed",
+        "line": 13,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawal] could be Indexed",
+        "line": 18,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 50,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [
+      "ReentrancyGuard"
+    ],
+    "coverage": {
+      "state_variables": {
+        "owner": "Custom state variable",
+        "balances": "Custom state variable"
+      },
+      "functions": {
+        "deposit": "Custom function",
+        "withdraw": "Custom function"
+      },
+      "events": {},
+      "roles": {
+        "owner": "Custom role",
+        "user": "Custom role"
+      },
+      "modifiers": {}
+    },
+    "validation_errors": [
+      "Missing required field: 'contract_name'"
+    ],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\n\nReasoning: The contract involves Ether deposits and withdrawals, which does not fit any standard template like ERC20, ERC721, etc. It is a simple custom contract for managing Ether deposits and withdrawals by the owner.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol",
+      "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl",
+      "ReentrancyGuard"
+    ],
+    "is_template": false,
+    "subtype": null,
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": null,
+      "confidence": 0.9,
+      "reasoning": "The contract involves Ether deposits and withdrawals, which does not fit any standard template like ERC20, ERC721, etc. It is a simple custom contract for managing Ether deposits and withdrawals by the owner.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": []
+  },
+  "compiles": null
+}

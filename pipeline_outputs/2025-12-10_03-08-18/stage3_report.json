@@ -1,0 +1,387 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "DualStaking",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 12,
+    "critical": 0,
+    "high": 0,
+    "medium": 12,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Staked] could be Indexed",
+        "line": 19,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawn] could be Indexed",
+        "line": 20,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward1] on Event [RewardsClaimed] could be Indexed",
+        "line": 21,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward2] on Event [RewardsClaimed] could be Indexed",
+        "line": 21,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 48,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 51,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 51,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 71,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 80,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 86,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 89,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 107,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "DualStaking",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 12,
+    "critical": 0,
+    "high": 0,
+    "medium": 12,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Staked] could be Indexed",
+        "line": 19,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawn] could be Indexed",
+        "line": 20,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward1] on Event [RewardsClaimed] could be Indexed",
+        "line": 21,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward2] on Event [RewardsClaimed] could be Indexed",
+        "line": 21,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 48,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 51,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 51,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 71,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 80,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 86,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 89,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "avoid-low-level-calls",
+        "description": "Avoid to use low level calls",
+        "line": 107,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Avoid low-level calls or check return values"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "stakeToken": "Custom state variable",
+        "rewardToken1": "Custom state variable",
+        "rewardToken2": "Custom state variable",
+        "totalStaked": "Custom state variable",
+        "userStakes": "Custom state variable",
+        "rewardRate1": "Custom state variable",
+        "rewardRate2": "Custom state variable"
+      },
+      "functions": {
+        "stake": "Custom function",
+        "withdraw": "Custom function",
+        "claimRewards": "Custom function",
+        "setRewardRates": "Custom function",
+        "withdrawTokens": "Custom function"
+      },
+      "events": {
+        "Staked": "Custom event",
+        "Withdrawn": "Custom event",
+        "RewardsClaimed": "Custom event"
+      },
+      "roles": {
+        "owner": "Custom role"
+      },
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: dual_staking\n\nReasoning: The contract involves a staking mechanism where users earn rewards in two different tokens, which is not a standard feature of typical staking contracts. Standard staking templates usually involve rewards in a single token. Therefore, this requires custom logic to handle dual rewards.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl"
+    ],
+    "is_template": false,
+    "subtype": "dual_staking",
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": "dual_staking",
+      "confidence": 0.9,
+      "reasoning": "The contract involves a staking mechanism where users earn rewards in two different tokens, which is not a standard feature of typical staking contracts. Standard staking templates usually involve rewards in a single token. Therefore, this requires custom logic to handle dual rewards.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": []
+  },
+  "compiles": null
+}

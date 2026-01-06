@@ -41,7 +41,9 @@ def run_stage3(
         print("Mode: Issue detection only (auto-fix disabled)")
     print("="*80)
     
-    analyzer = SecurityAnalyzer(verbose=False)  # Set to True for debugging
+    # Allow verbose to be passed via options (for pipeline integration)
+    verbose = stage2_metadata.get("_verbose", False) if stage2_metadata else False
+    analyzer = SecurityAnalyzer(verbose=verbose)
     fixer = SecurityFixer()
     
     original_code = solidity_code

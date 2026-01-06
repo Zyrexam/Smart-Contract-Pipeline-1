@@ -1,0 +1,81 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "RentalNFTSystem",
+    "tools_used": [],
+    "total_issues": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0,
+    "issues": [],
+    "success": false,
+    "error": "Docker not available. Install Docker and docker Python library.",
+    "warnings": []
+  },
+  "final_analysis": null,
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "nftOwner": "Custom state variable",
+        "renter": "Custom state variable",
+        "rentalDuration": "Custom state variable",
+        "rentalStartTime": "Custom state variable",
+        "nftId": "Custom state variable",
+        "isRented": "Custom state variable"
+      },
+      "functions": {
+        "listNFTForRent": "Custom function",
+        "rentNFT": "Custom function",
+        "withdrawNFT": "Custom function"
+      },
+      "events": {
+        "NFTListed": "Custom event",
+        "NFTRented": "Custom event",
+        "NFTWithdrawn": "Custom event"
+      },
+      "roles": {
+        "Owner": "Custom role",
+        "Renter": "Custom role"
+      },
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: rental_nft\n\nReasoning: The contract involves renting NFTs, which is not covered by standard NFT templates like ERC721 or ERC1155. It requires custom logic for managing rental durations and roles.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl"
+    ],
+    "is_template": false,
+    "subtype": "rental_nft",
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": "rental_nft",
+      "confidence": 0.9,
+      "reasoning": "The contract involves renting NFTs, which is not covered by standard NFT templates like ERC721 or ERC1155. It requires custom logic for managing rental durations and roles.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": [
+      {
+        "attempt": 0,
+        "method": "semantic_repair",
+        "description": "Fixed semantic/logic issues for custom contract",
+        "errors_before": 2,
+        "errors_after": 0
+      }
+    ],
+    "_verbose": false
+  },
+  "compiles": null
+}

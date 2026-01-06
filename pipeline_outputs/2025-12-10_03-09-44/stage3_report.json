@@ -1,0 +1,110 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": ".sol",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [newNumber] on Event [NumberUpdated] could be Indexed",
+        "line": 14,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": ".sol",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [newNumber] on Event [NumberUpdated] could be Indexed",
+        "line": 14,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "single_owner",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "storedNumber": "Custom state variable"
+      },
+      "functions": {
+        "updateNumber": "Custom function",
+        "retrieveNumber": "Custom function"
+      },
+      "events": {},
+      "roles": {},
+      "modifiers": {}
+    },
+    "validation_errors": [
+      "Missing required field: 'contract_name'"
+    ],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: single_owner\nSecurity Features: Standard\nImplementation: Custom from scratch\n\nReasoning: The contract involves simple storage and retrieval of a number, which does not fit any standard template like ERC20, ERC721, etc. It is a basic custom contract with unique business logic.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/Ownable.sol"
+    ],
+    "inheritance_chain": [
+      "Ownable"
+    ],
+    "is_template": false,
+    "subtype": null,
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": null,
+      "confidence": 0.9,
+      "reasoning": "The contract involves simple storage and retrieval of a number, which does not fit any standard template like ERC20, ERC721, etc. It is a basic custom contract with unique business logic.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": []
+  },
+  "compiles": null
+}

@@ -1,0 +1,190 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "RateLimitedTokenVault",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawal] could be Indexed",
+        "line": 19,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [timestamp] on Event [Withdrawal] could be Indexed",
+        "line": 19,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 48,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 48,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "RateLimitedTokenVault",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawal] could be Indexed",
+        "line": 19,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [timestamp] on Event [Withdrawal] could be Indexed",
+        "line": 19,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 48,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 48,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [
+      "ReentrancyGuard"
+    ],
+    "coverage": {
+      "state_variables": {
+        "lastWithdrawalTime": "Custom state variable",
+        "tokenBalance": "Custom state variable",
+        "owner": "Custom state variable"
+      },
+      "functions": {
+        "withdraw": "Custom function",
+        "setWithdrawalTime": "Custom function"
+      },
+      "events": {
+        "Withdrawal": "Custom event"
+      },
+      "roles": {
+        "Owner": "Custom role"
+      },
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 70%\nAccess Control: role_based\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\nSubtype: rate_limited_vault\n\nReasoning: The contract involves a token vault with specific rate-limiting functionality for withdrawals, which does not fit the standard Vault (ERC4626) template. The rate-limiting aspect makes it unique.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol",
+      "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl",
+      "ReentrancyGuard"
+    ],
+    "is_template": false,
+    "subtype": "rate_limited_vault",
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": "rate_limited_vault",
+      "confidence": 0.7,
+      "reasoning": "The contract involves a token vault with specific rate-limiting functionality for withdrawals, which does not fit the standard Vault (ERC4626) template. The rate-limiting aspect makes it unique.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": []
+  },
+  "compiles": null
+}

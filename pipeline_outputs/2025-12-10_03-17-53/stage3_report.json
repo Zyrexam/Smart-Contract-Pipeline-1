@@ -1,0 +1,401 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "DualStaking",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 12,
+    "critical": 0,
+    "high": 0,
+    "medium": 12,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/security/ReentrancyGuard.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/AccessControl.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 6,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 13,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 14,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Staked] could be Indexed",
+        "line": 25,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawn] could be Indexed",
+        "line": 26,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward1] on Event [RewardClaimed] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward2] on Event [RewardClaimed] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [rate1] on Event [RewardRatesSet] could be Indexed",
+        "line": 28,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [rate2] on Event [RewardRatesSet] could be Indexed",
+        "line": 28,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "DualStaking",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 12,
+    "critical": 0,
+    "high": 0,
+    "medium": 12,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/security/ReentrancyGuard.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/AccessControl.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 6,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 13,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 14,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Staked] could be Indexed",
+        "line": 25,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawn] could be Indexed",
+        "line": 26,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward1] on Event [RewardClaimed] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [reward2] on Event [RewardClaimed] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [rate1] on Event [RewardRatesSet] could be Indexed",
+        "line": 28,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [rate2] on Event [RewardRatesSet] could be Indexed",
+        "line": 28,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Staking",
+    "base_standard": "Staking",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {},
+      "functions": {
+        "setrewardrates": "Custom staking function",
+        "stake": "Stake with SafeERC20 + ReentrancyGuard",
+        "withdraw": "Unstake + reward claim",
+        "claimrewards": "Claim accumulated rewards"
+      },
+      "events": {},
+      "roles": {},
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Staking\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin Staking\n\nReasoning: The contract involves staking an ERC20 token and earning rewards in two ERC20 tokens, which aligns with the core functionality of a staking contract. The admin sets reward rates, and users can stake, withdraw, and claim rewards, which are typical features of staking systems.",
+    "imports_used": [
+      "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+      "@openzeppelin/contracts/access/AccessControl.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl"
+    ],
+    "is_template": true,
+    "subtype": null,
+    "classification": {
+      "contract_type": "Staking",
+      "subtype": null,
+      "confidence": 0.9,
+      "reasoning": "The contract involves staking an ERC20 token and earning rewards in two ERC20 tokens, which aligns with the core functionality of a staking contract. The admin sets reward rates, and users can stake, withdraw, and claim rewards, which are typical features of staking systems.",
+      "is_template": true,
+      "recommended_approach": "template"
+    },
+    "fixes_applied": [
+      {
+        "attempt": 1,
+        "method": "constructor_resolver",
+        "description": "Applied constructor fixes for OpenZeppelin v5 compatibility",
+        "errors_before": 1,
+        "warnings_before": 1
+      },
+      {
+        "attempt": 1,
+        "method": "model_repair",
+        "description": "Applied LLM-based repair for remaining validation issues",
+        "errors_before": 1
+      },
+      {
+        "attempt": 2,
+        "method": "constructor_resolver",
+        "description": "Applied constructor fixes for OpenZeppelin v5 compatibility",
+        "errors_before": 1,
+        "warnings_before": 1
+      },
+      {
+        "attempt": 2,
+        "method": "model_repair",
+        "description": "Applied LLM-based repair for remaining validation issues",
+        "errors_before": 1
+      }
+    ]
+  },
+  "compiles": null
+}

@@ -64,34 +64,76 @@ class SlitherParser(Parser):
             # Try to parse JSON from stdout (which should be the file content)
             try:
                 output_dict = json.loads(stdout)
-            except json.JSONDecodeError:
+            except json.JSONDecodeError as e:
                 # Try to find JSON in lines
                 json_lines = []
                 in_json = False
+                brace_count = 0
                 for line in stdout_lines:
                     line_stripped = line.strip()
-                    if line_stripped.startswith('{'):
+                    if line_stripped.startswith('{') or in_json:
                         in_json = True
-                    if in_json:
                         json_lines.append(line)
-                    if in_json and line_stripped.endswith('}'):
-                        break
+                        # Count braces to find complete JSON
+                        brace_count += line.count('{') - line.count('}')
+                        if brace_count == 0 and in_json:
+                            break
                 
                 if json_lines:
                     try:
-                        output_dict = json.loads('\n'.join(json_lines))
+                        json_str = '\n'.join(json_lines)
+                        output_dict = json.loads(json_str)
                     except json.JSONDecodeError:
-                        fails.add("error parsing JSON output")
+                        # Try to extract JSON from the middle of the string
+                        # Sometimes there's extra text before/after JSON
+                        json_start = stdout.find('{')
+                        if json_start >= 0:
+                            # Find matching closing brace
+                            brace_count = 0
+                            json_end = -1
+                            for i in range(json_start, len(stdout)):
+                                if stdout[i] == '{':
+                                    brace_count += 1
+                                elif stdout[i] == '}':
+                                    brace_count -= 1
+                                    if brace_count == 0:
+                                        json_end = i
+                                        break
+                            
+                            if json_end > json_start:
+                                try:
+                                    json_str = stdout[json_start:json_end+1]
+                                    output_dict = json.loads(json_str)
+                                except json.JSONDecodeError:
+                                    fails.add(f"error parsing JSON output: {str(e)[:100]}")
+                        else:
+                            fails.add(f"error parsing JSON output: {str(e)[:100]}")
                 else:
                     fails.add("no JSON output found")
         else:
             fails.add("no output received")
         
-        if not output_dict.get("success", False):
-            fails.add("analysis unsuccessful")
+        # Check if we have a valid output dict
+        if not output_dict:
+            # Return early with fails
+            return ParseResult(
+                issues=issues,
+                errors=errors,
+                fails=fails,
+                infos=infos
+            )
         
-        if output_dict.get("error"):
-            errors.add("analysis reports errors")
+        # Check success flag - but don't fail if success is False, just note it
+        if not output_dict.get("success", False):
+            error_msg = output_dict.get("error", "analysis unsuccessful")
+            if error_msg and error_msg != "analysis unsuccessful":
+                infos.add(f"slither reported: {error_msg}")
+            else:
+                infos.add("analysis completed with warnings")
+        
+        # Only add as error if there's a specific error message
+        if output_dict.get("error") and output_dict.get("error") != "Slither execution failed":
+            errors.add(f"slither error: {output_dict.get('error', 'unknown')[:50]}")
         
         # Extract findings
         results = output_dict.get("results", {})

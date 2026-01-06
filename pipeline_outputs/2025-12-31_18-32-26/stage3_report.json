@@ -1,0 +1,183 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "RentalNFTSystem",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC721/ERC721.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/Ownable.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/AccessControl.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 6,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [duration] on Event [NFTSetForRent] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "RentalNFTSystem",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 4,
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC721/ERC721.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/Ownable.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/AccessControl.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 6,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [duration] on Event [NFTSetForRent] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "ERC721",
+    "base_standard": "ERC721",
+    "extensions": [],
+    "access_control": "single_owner",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "nftOwner": "Custom/inherited via ERC721",
+        "renter": "Custom/inherited via ERC721",
+        "rentalDuration": "Custom/inherited via ERC721",
+        "rentalStartTime": "Custom/inherited via ERC721",
+        "nftId": "Custom/inherited via ERC721",
+        "isRented": "Custom/inherited via ERC721"
+      },
+      "functions": {
+        "setNFTForRent": "Custom function",
+        "rentNFT": "Custom function",
+        "returnNFT": "Custom function",
+        "withdrawNFT": "Custom function"
+      },
+      "events": {
+        "NFTSetForRent": "Custom event",
+        "NFTRented": "Custom event",
+        "NFTReturned": "Custom event",
+        "NFTWithdrawn": "Custom event"
+      },
+      "roles": {},
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Access Control: single_owner\nSecurity Features: Standard\n",
+    "imports_used": [
+      "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+      "@openzeppelin/contracts/access/Ownable.sol"
+    ],
+    "inheritance_chain": [
+      "ERC721",
+      "Ownable"
+    ]
+  },
+  "compiles": null
+}

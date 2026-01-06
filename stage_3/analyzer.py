@@ -133,13 +133,22 @@ class SecurityAnalyzer:
                     # Output is a tar archive, extract it
                     output_content = self._extract_output_from_tar(output, tool_config.output)
                     if output_content:
+                        if self.verbose:
+                            print(f"    [DEBUG] Extracted output file, size: {len(output_content)} bytes")
+                            print(f"    [DEBUG] Output preview: {output_content[:200]}")
                         parse_result = parser.parse(
                             exit_code=exit_code,
                             stdout=output_content,
                             stderr=""
                         )
                     else:
-                        # Fallback to logs
+                        # Fallback to logs - check if JSON is in logs
+                        if self.verbose:
+                            print(f"    [DEBUG] Output file not found, checking logs for JSON")
+                            # Look for JSON in logs
+                            for line in log_lines:
+                                if line.strip().startswith('{'):
+                                    print(f"    [DEBUG] Found JSON-like line in logs: {line[:100]}")
                         parse_result = parser.parse(
                             exit_code=exit_code,
                             stdout="\n".join(log_lines),
@@ -227,7 +236,10 @@ class SecurityAnalyzer:
                         member = tar.getmember(path)
                         file_obj = tar.extractfile(member)
                         if file_obj:
-                            return file_obj.read().decode("utf8")
+                            content = file_obj.read().decode("utf8", errors="replace")
+                            if self.verbose:
+                                print(f"    [DEBUG] Successfully extracted {path}, size: {len(content)} bytes")
+                            return content
                     except KeyError:
                         continue
                 
@@ -235,11 +247,28 @@ class SecurityAnalyzer:
                 available = tar.getnames()
                 if self.verbose:
                     print(f"    [DEBUG] Available files in tar: {available}")
+                    print(f"    [DEBUG] Looking for: {paths_to_try}")
+                
+                # Try to find any JSON file if exact match fails
+                for member_name in available:
+                    if member_name.endswith('.json') or 'output' in member_name.lower():
+                        try:
+                            member = tar.getmember(member_name)
+                            file_obj = tar.extractfile(member)
+                            if file_obj:
+                                content = file_obj.read().decode("utf8", errors="replace")
+                                if self.verbose:
+                                    print(f"    [DEBUG] Found alternative JSON file: {member_name}")
+                                return content
+                        except Exception:
+                            continue
                 
                 return None
         
         except Exception as e:
             if self.verbose:
                 print(f"    [DEBUG] Tar extraction error: {e}")
+                import traceback
+                print(f"    [DEBUG] Traceback: {traceback.format_exc()}")
             return None
 

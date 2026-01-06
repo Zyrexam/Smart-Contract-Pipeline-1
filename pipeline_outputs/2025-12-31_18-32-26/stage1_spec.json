@@ -1,0 +1,189 @@
+{
+  "contract_name": "RentalNFTSystem",
+  "contract_type": "NFT Rental",
+  "description": "A system where users can rent NFTs for a fixed duration.",
+  "state_variables": [
+    {
+      "name": "nftOwner",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": "0x0"
+    },
+    {
+      "name": "renter",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": "0x0"
+    },
+    {
+      "name": "rentalDuration",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "rentalStartTime",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "nftId",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "isRented",
+      "type": "bool",
+      "visibility": "public",
+      "initial_value": "false"
+    }
+  ],
+  "roles": [
+    {
+      "name": "Owner",
+      "permissions": [
+        "setNFTForRent",
+        "withdrawNFT"
+      ]
+    },
+    {
+      "name": "Renter",
+      "permissions": [
+        "rentNFT",
+        "returnNFT"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "setNFTForRent",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Allows the owner to set an NFT for rent with a specified duration."
+    },
+    {
+      "name": "rentNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Renter",
+      "description": "Allows a user to rent an NFT for the specified duration."
+    },
+    {
+      "name": "returnNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Renter",
+      "description": "Allows the renter to return the NFT after the rental period."
+    },
+    {
+      "name": "withdrawNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "Owner",
+      "description": "Allows the owner to withdraw the NFT if it is not rented."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTSetForRent",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTRented",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "renter",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "NFTReturned",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "renter",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "NFTWithdrawn",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender == nftOwner",
+      "description": "Ensures that the function is called by the NFT owner."
+    },
+    {
+      "name": "onlyRenter",
+      "condition": "msg.sender == renter",
+      "description": "Ensures that the function is called by the current renter."
+    },
+    {
+      "name": "notRented",
+      "condition": "!isRented",
+      "description": "Ensures that the NFT is not currently rented."
+    },
+    {
+      "name": "rentalPeriodOver",
+      "condition": "block.timestamp >= rentalStartTime + rentalDuration",
+      "description": "Ensures that the rental period is over."
+    }
+  ]
+}
