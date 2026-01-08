@@ -4854,7 +4854,7 @@
                   "severity": "INFO",
                   "title": "unchecked-transfer",
                   "description": "unchecked-transfer detected",
-                  "line": 46,
+                  "line": 65,
                   "line_end": null,
                   "filename": "/sb/contract.sol",
                   "contract": null,
@@ -4870,11 +4870,11 @@
               {
                 "iteration": 1,
                 "issues_before": 7,
-                "issues_after": 2
+                "issues_after": 9
               },
               {
                 "iteration": 2,
-                "issues_before": 2,
+                "issues_before": 9,
                 "issues_after": 0
               }
             ],
@@ -4888,6 +4888,230 @@
             "source_file": "vulnerable_dataset\\BadLottery.sol",
             "vulnerability_type": "Weak Randomness",
             "swc_id": "SWC-120",
+            "expected_severity": "Medium",
+            "is_vulnerable": true,
+            "source": "vulnerable_dataset"
+          }
+        },
+        {
+          "contract_name": "bad_style",
+          "category": "Vulnerable",
+          "stage3": {
+            "iterations": 1,
+            "issues_resolved": 11,
+            "initial_analysis": {
+              "contract_name": "bad_style",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 12,
+              "critical": 0,
+              "high": 0,
+              "medium": 7,
+              "low": 0,
+              "info": 5,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Variable bad_style.X (contract.sol#5) is not in mixedCase\n",
+                  "line": 5,
+                  "line_end": null,
+                  "filename": "Variable bad_style.X (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Function bad_style.Set(uint256) (contract.sol#7-9) is not in mixedCase\n",
+                  "line": 7,
+                  "line_end": 9,
+                  "filename": "Function bad_style.Set(uint256) (contract.sol",
+                  "contract": "bad_style",
+                  "function": "Set",
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Parameter bad_style.Set(uint256)._X (contract.sol#7) is not in mixedCase\n",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "Parameter bad_style.Set(uint256)._X (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Contract bad_style (contract.sol#4-10) is not in CapWords\n",
+                  "line": 4,
+                  "line_end": 10,
+                  "filename": "Contract bad_style (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "contract-name-capwords",
+                  "description": "Contract, Structs and Enums should be in CapWords",
+                  "line": 4,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "state-visibility",
+                  "description": "Explicitly mark visibility of state",
+                  "line": 5,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Specify visibility for state variables"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "explicit-types",
+                  "description": "Rule is set with explicit type [var/s: uint]",
+                  "line": 5,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "var-name-mixedcase",
+                  "description": "Variable name must be in mixedCase X",
+                  "line": 5,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "func-name-mixedcase",
+                  "description": "Function name must be in mixedCase",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "explicit-types",
+                  "description": "Rule is set with explicit type [var/s: uint]",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "var-name-mixedcase",
+                  "description": "Variable name must be in mixedCase _X",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "final_analysis": {
+              "contract_name": "bad_style",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 1,
+              "critical": 0,
+              "high": 0,
+              "medium": 0,
+              "low": 0,
+              "info": 1,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "fixes_applied": [
+              {
+                "iteration": 1,
+                "issues_before": 7,
+                "issues_after": 0
+              }
+            ],
+            "stage2_metadata": null,
+            "compiles": null
+          },
+          "metadata": {
+            "category": "Vulnerable",
+            "base_standard": "Custom",
+            "contract_name": "bad_style",
+            "source_file": "vulnerable_dataset\\bad_style.sol",
+            "vulnerability_type": "Weak Randomness",
+            "swc_id": null,
             "expected_severity": "Medium",
             "is_vulnerable": true,
             "source": "vulnerable_dataset"
@@ -5047,7 +5271,7 @@
                   "severity": "INFO",
                   "title": "reentrancy-pattern",
                   "description": "reentrancy-pattern detected",
-                  "line": 22,
+                  "line": 23,
                   "line_end": null,
                   "filename": "/sb/contract.sol",
                   "contract": null,
@@ -5081,6 +5305,342 @@
             "source_file": "vulnerable_dataset\\GasDoS.sol",
             "vulnerability_type": "Unknown",
             "swc_id": "SWC-113",
+            "expected_severity": "Unknown",
+            "is_vulnerable": true,
+            "source": "vulnerable_dataset"
+          }
+        },
+        {
+          "contract_name": "InefficientLoop",
+          "category": "Vulnerable",
+          "stage3": {
+            "iterations": 1,
+            "issues_resolved": 2,
+            "initial_analysis": {
+              "contract_name": "InefficientLoop",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 3,
+              "critical": 0,
+              "high": 0,
+              "medium": 2,
+              "low": 0,
+              "info": 1,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "gas-increment-by-one",
+                  "description": "GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "gas-increment-by-one",
+                  "description": "GC: For [ sum ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+                  "line": 8,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Follow Solidity style guide"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "final_analysis": {
+              "contract_name": "InefficientLoop",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 1,
+              "critical": 0,
+              "high": 0,
+              "medium": 0,
+              "low": 0,
+              "info": 1,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "fixes_applied": [
+              {
+                "iteration": 1,
+                "issues_before": 2,
+                "issues_after": 0
+              }
+            ],
+            "stage2_metadata": null,
+            "compiles": null
+          },
+          "metadata": {
+            "category": "Vulnerable",
+            "base_standard": "Custom",
+            "contract_name": "InefficientLoop",
+            "source_file": "vulnerable_dataset\\InSufficientLoop.sol",
+            "vulnerability_type": "Unknown",
+            "swc_id": null,
+            "expected_severity": "Unknown",
+            "is_vulnerable": true,
+            "source": "vulnerable_dataset"
+          }
+        },
+        {
+          "contract_name": "MissingEvents",
+          "category": "Vulnerable",
+          "stage3": {
+            "iterations": 0,
+            "issues_resolved": 0,
+            "initial_analysis": {
+              "contract_name": "MissingEvents",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 2,
+              "critical": 0,
+              "high": 0,
+              "medium": 0,
+              "low": 0,
+              "info": 2,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Parameter MissingEvents.setValue(uint256)._value (contract.sol#7) is not in mixedCase\n",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "Parameter MissingEvents.setValue(uint256)._value (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "final_analysis": {
+              "contract_name": "MissingEvents",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 2,
+              "critical": 0,
+              "high": 0,
+              "medium": 0,
+              "low": 0,
+              "info": 2,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Parameter MissingEvents.setValue(uint256)._value (contract.sol#7) is not in mixedCase\n",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "Parameter MissingEvents.setValue(uint256)._value (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "fixes_applied": [],
+            "stage2_metadata": null,
+            "compiles": null
+          },
+          "metadata": {
+            "category": "Vulnerable",
+            "base_standard": "Custom",
+            "contract_name": "MissingEvents",
+            "source_file": "vulnerable_dataset\\MissingEvents.sol",
+            "vulnerability_type": "Unknown",
+            "swc_id": null,
+            "expected_severity": "Unknown",
+            "is_vulnerable": true,
+            "source": "vulnerable_dataset"
+          }
+        },
+        {
+          "contract_name": "NoAccessControl",
+          "category": "Vulnerable",
+          "stage3": {
+            "iterations": 0,
+            "issues_resolved": 0,
+            "initial_analysis": {
+              "contract_name": "NoAccessControl",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 2,
+              "critical": 0,
+              "high": 0,
+              "medium": 0,
+              "low": 0,
+              "info": 2,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Parameter NoAccessControl.updateAdminValue(uint256)._v (contract.sol#7) is not in mixedCase\n",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "Parameter NoAccessControl.updateAdminValue(uint256)._v (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "final_analysis": {
+              "contract_name": "NoAccessControl",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 2,
+              "critical": 0,
+              "high": 0,
+              "medium": 0,
+              "low": 0,
+              "info": 2,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "naming-convention",
+                  "description": "Parameter NoAccessControl.updateAdminValue(uint256)._v (contract.sol#7) is not in mixedCase\n",
+                  "line": 7,
+                  "line_end": null,
+                  "filename": "Parameter NoAccessControl.updateAdminValue(uint256)._v (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "fixes_applied": [],
+            "stage2_metadata": null,
+            "compiles": null
+          },
+          "metadata": {
+            "category": "Vulnerable",
+            "base_standard": "Custom",
+            "contract_name": "NoAccessControl",
+            "source_file": "vulnerable_dataset\\NoAccessControl.sol",
+            "vulnerability_type": "Unknown",
+            "swc_id": null,
             "expected_severity": "Unknown",
             "is_vulnerable": true,
             "source": "vulnerable_dataset"
@@ -5457,7 +6017,7 @@
                   "severity": "INFO",
                   "title": "unchecked-transfer",
                   "description": "unchecked-transfer detected",
-                  "line": 25,
+                  "line": 28,
                   "line_end": null,
                   "filename": "/sb/contract.sol",
                   "contract": null,
@@ -5473,11 +6033,11 @@
               {
                 "iteration": 1,
                 "issues_before": 7,
-                "issues_after": 4
+                "issues_after": 1
               },
               {
                 "iteration": 2,
-                "issues_before": 4,
+                "issues_before": 1,
                 "issues_after": 0
               }
             ],
@@ -5927,7 +6487,7 @@
                   "severity": "INFO",
                   "title": "unchecked-transfer",
                   "description": "unchecked-transfer detected",
-                  "line": 32,
+                  "line": 30,
                   "line_end": null,
                   "filename": "/sb/contract.sol",
                   "contract": null,
@@ -5939,7 +6499,7 @@
                   "severity": "INFO",
                   "title": "unchecked-transfer",
                   "description": "unchecked-transfer detected",
-                  "line": 40,
+                  "line": 36,
                   "line_end": null,
                   "filename": "/sb/contract.sol",
                   "contract": null,
@@ -5972,10 +6532,126 @@
             "is_vulnerable": true,
             "source": "vulnerable_dataset"
           }
+        },
+        {
+          "contract_name": "UnusedVariables",
+          "category": "Vulnerable",
+          "stage3": {
+            "iterations": 1,
+            "issues_resolved": 2,
+            "initial_analysis": {
+              "contract_name": "UnusedVariables",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 3,
+              "critical": 0,
+              "high": 0,
+              "medium": 1,
+              "low": 0,
+              "info": 2,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "constable-states",
+                  "description": "UnusedVariables.unusedState (contract.sol#5) should be constant \n",
+                  "line": 5,
+                  "line_end": null,
+                  "filename": "UnusedVariables.unusedState (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                },
+                {
+                  "tool": "solhint",
+                  "severity": "MEDIUM",
+                  "title": "no-unused-vars",
+                  "description": "Variable \"temp\" is unused",
+                  "line": 8,
+                  "line_end": null,
+                  "filename": "contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Remove unused variables"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "final_analysis": {
+              "contract_name": "UnusedVariables",
+              "tools_used": [
+                "slither",
+                "mythril",
+                "semgrep",
+                "solhint"
+              ],
+              "total_issues": 1,
+              "critical": 0,
+              "high": 0,
+              "medium": 0,
+              "low": 0,
+              "info": 1,
+              "issues": [
+                {
+                  "tool": "slither",
+                  "severity": "INFO",
+                  "title": "solc-version",
+                  "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+                  "line": 2,
+                  "line_end": null,
+                  "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+                  "contract": null,
+                  "function": null,
+                  "recommendation": "Review and apply security best practices"
+                }
+              ],
+              "success": true,
+              "error": null,
+              "warnings": []
+            },
+            "fixes_applied": [
+              {
+                "iteration": 1,
+                "issues_before": 1,
+                "issues_after": 0
+              }
+            ],
+            "stage2_metadata": null,
+            "compiles": null
+          },
+          "metadata": {
+            "category": "Vulnerable",
+            "base_standard": "Custom",
+            "contract_name": "UnusedVariables",
+            "source_file": "vulnerable_dataset\\unusedVariable.sol",
+            "vulnerability_type": "Unknown",
+            "swc_id": null,
+            "expected_severity": "Unknown",
+            "is_vulnerable": true,
+            "source": "vulnerable_dataset"
+          }
         }
       ]
     },
-    "total": 24
+    "total": 29
   },
   "detection": {
     "tool_counts": {
@@ -5983,14 +6659,14 @@
         "INFO": 10
       },
       "solhint": {
-        "MEDIUM": 95,
+        "MEDIUM": 105,
         "HIGH": 3
       },
       "slither": {
         "HIGH": 6,
         "MEDIUM": 5,
-        "INFO": 14,
-        "LOW": 4
+        "LOW": 4,
+        "INFO": 26
       },
       "mythril": {
         "LOW": 5,
@@ -6001,29 +6677,29 @@
     "combined": {
       "CRITICAL": 0,
       "HIGH": 10,
-      "MEDIUM": 102,
+      "MEDIUM": 112,
       "LOW": 9,
-      "INFO": 24
+      "INFO": 36
     }
   },
   "repair": {
     "before": {
       "CRITICAL": 0,
       "HIGH": 10,
-      "MEDIUM": 102,
+      "MEDIUM": 112,
       "LOW": 9,
-      "INFO": 24,
-      "TOTAL": 145
+      "INFO": 36,
+      "TOTAL": 167
     },
     "after": {
       "CRITICAL": 0,
       "HIGH": 0,
       "MEDIUM": 80,
       "LOW": 0,
-      "INFO": 12,
-      "TOTAL": 92
+      "INFO": 19,
+      "TOTAL": 99
     },
-    "contracts": 23
+    "contracts": 28
   },
   "convergence": [
     {
@@ -6182,74 +6858,144 @@
       "critical_high": 0
     },
     {
-      "contract": "demonstrates",
+      "contract": "Lottery",
       "iteration": 0,
       "critical_high": 1
     },
     {
-      "contract": "demonstrates",
-      "iteration": 1,
-      "critical_high": 2
-    },
-    {
-      "contract": "demonstrates",
-      "iteration": 2,
-      "critical_high": 0
-    },
-    {
-      "contract": "demonstrates",
-      "iteration": 3,
-      "critical_high": 0
-    },
-    {
-      "contract": "GasDoS",
-      "iteration": 0,
-      "critical_high": 2
-    },
-    {
-      "contract": "GasDoS",
-      "iteration": 1,
-      "critical_high": 3
-    },
-    {
-      "contract": "GasDoS",
-      "iteration": 2,
-      "critical_high": 0
-    },
-    {
-      "contract": "GasDoS",
-      "iteration": 3,
-      "critical_high": 0
-    },
-    {
-      "contract": "Overflow",
-      "iteration": 0,
-      "critical_high": 0
-    },
-    {
-      "contract": "Overflow",
-      "iteration": 1,
-      "critical_high": 1
-    },
-    {
-      "contract": "Overflow",
-      "iteration": 2,
-      "critical_high": 0
-    },
-    {
-      "contract": "Overflow",
-      "iteration": 3,
-      "critical_high": 0
-    },
-    {
-      "contract": "demonstrates",
-      "iteration": 0,
-      "critical_high": 3
-    },
-    {
-      "contract": "demonstrates",
+      "contract": "Lottery",
       "iteration": 1,
       "critical_high": 4
+    },
+    {
+      "contract": "Lottery",
+      "iteration": 2,
+      "critical_high": 2
+    },
+    {
+      "contract": "Lottery",
+      "iteration": 3,
+      "critical_high": 0
+    },
+    {
+      "contract": "demonstrates",
+      "iteration": 0,
+      "critical_high": 1
+    },
+    {
+      "contract": "demonstrates",
+      "iteration": 1,
+      "critical_high": 9
+    },
+    {
+      "contract": "demonstrates",
+      "iteration": 2,
+      "critical_high": 0
+    },
+    {
+      "contract": "demonstrates",
+      "iteration": 3,
+      "critical_high": 0
+    },
+    {
+      "contract": "bad_style",
+      "iteration": 0,
+      "critical_high": 0
+    },
+    {
+      "contract": "bad_style",
+      "iteration": 1,
+      "critical_high": 0
+    },
+    {
+      "contract": "bad_style",
+      "iteration": 2,
+      "critical_high": 0
+    },
+    {
+      "contract": "GasDoS",
+      "iteration": 0,
+      "critical_high": 2
+    },
+    {
+      "contract": "GasDoS",
+      "iteration": 1,
+      "critical_high": 3
+    },
+    {
+      "contract": "GasDoS",
+      "iteration": 2,
+      "critical_high": 0
+    },
+    {
+      "contract": "GasDoS",
+      "iteration": 3,
+      "critical_high": 0
+    },
+    {
+      "contract": "InefficientLoop",
+      "iteration": 0,
+      "critical_high": 0
+    },
+    {
+      "contract": "InefficientLoop",
+      "iteration": 1,
+      "critical_high": 0
+    },
+    {
+      "contract": "InefficientLoop",
+      "iteration": 2,
+      "critical_high": 0
+    },
+    {
+      "contract": "MissingEvents",
+      "iteration": 0,
+      "critical_high": 0
+    },
+    {
+      "contract": "MissingEvents",
+      "iteration": 1,
+      "critical_high": 0
+    },
+    {
+      "contract": "NoAccessControl",
+      "iteration": 0,
+      "critical_high": 0
+    },
+    {
+      "contract": "NoAccessControl",
+      "iteration": 1,
+      "critical_high": 0
+    },
+    {
+      "contract": "Overflow",
+      "iteration": 0,
+      "critical_high": 0
+    },
+    {
+      "contract": "Overflow",
+      "iteration": 1,
+      "critical_high": 1
+    },
+    {
+      "contract": "Overflow",
+      "iteration": 2,
+      "critical_high": 0
+    },
+    {
+      "contract": "Overflow",
+      "iteration": 3,
+      "critical_high": 0
+    },
+    {
+      "contract": "demonstrates",
+      "iteration": 0,
+      "critical_high": 3
+    },
+    {
+      "contract": "demonstrates",
+      "iteration": 1,
+      "critical_high": 1
     },
     {
       "contract": "demonstrates",
@@ -6307,36 +7053,31 @@
       "critical_high": 0
     },
     {
-      "contract": "Lottery",
+      "contract": "UnusedVariables",
       "iteration": 0,
-      "critical_high": 1
+      "critical_high": 0
     },
     {
-      "contract": "Lottery",
+      "contract": "UnusedVariables",
       "iteration": 1,
-      "critical_high": 4
+      "critical_high": 0
     },
     {
-      "contract": "Lottery",
+      "contract": "UnusedVariables",
       "iteration": 2,
-      "critical_high": 2
-    },
-    {
-      "contract": "Lottery",
-      "iteration": 3,
       "critical_high": 0
     }
   ],
   "complementarity": {
     "semgrep": 10,
-    "solhint": 98,
-    "slither": 29,
+    "solhint": 108,
+    "slither": 41,
     "mythril": 8
   },
   "stability": {
-    "avg_iterations": 0.5652173913043478,
+    "avg_iterations": 0.5714285714285714,
     "new_issues": 9,
-    "contracts": 23
+    "contracts": 28
   },
   "comparison": [
     [

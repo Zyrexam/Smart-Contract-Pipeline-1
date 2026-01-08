@@ -155,74 +155,144 @@
     "critical_high": 0
   },
   {
-    "contract": "demonstrates",
+    "contract": "Lottery",
     "iteration": 0,
     "critical_high": 1
   },
   {
-    "contract": "demonstrates",
-    "iteration": 1,
-    "critical_high": 2
-  },
-  {
-    "contract": "demonstrates",
-    "iteration": 2,
-    "critical_high": 0
-  },
-  {
-    "contract": "demonstrates",
-    "iteration": 3,
-    "critical_high": 0
-  },
-  {
-    "contract": "GasDoS",
-    "iteration": 0,
-    "critical_high": 2
-  },
-  {
-    "contract": "GasDoS",
-    "iteration": 1,
-    "critical_high": 3
-  },
-  {
-    "contract": "GasDoS",
-    "iteration": 2,
-    "critical_high": 0
-  },
-  {
-    "contract": "GasDoS",
-    "iteration": 3,
-    "critical_high": 0
-  },
-  {
-    "contract": "Overflow",
-    "iteration": 0,
-    "critical_high": 0
-  },
-  {
-    "contract": "Overflow",
-    "iteration": 1,
-    "critical_high": 1
-  },
-  {
-    "contract": "Overflow",
-    "iteration": 2,
-    "critical_high": 0
-  },
-  {
-    "contract": "Overflow",
-    "iteration": 3,
-    "critical_high": 0
-  },
-  {
-    "contract": "demonstrates",
-    "iteration": 0,
-    "critical_high": 3
-  },
-  {
-    "contract": "demonstrates",
+    "contract": "Lottery",
     "iteration": 1,
     "critical_high": 4
+  },
+  {
+    "contract": "Lottery",
+    "iteration": 2,
+    "critical_high": 2
+  },
+  {
+    "contract": "Lottery",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 0,
+    "critical_high": 1
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 1,
+    "critical_high": 9
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "bad_style",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "bad_style",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "bad_style",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 0,
+    "critical_high": 2
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 1,
+    "critical_high": 3
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "InefficientLoop",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "InefficientLoop",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "InefficientLoop",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "MissingEvents",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "MissingEvents",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "NoAccessControl",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "NoAccessControl",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 1,
+    "critical_high": 1
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 0,
+    "critical_high": 3
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 1,
+    "critical_high": 1
   },
   {
     "contract": "demonstrates",
@@ -280,23 +350,18 @@
     "critical_high": 0
   },
   {
-    "contract": "Lottery",
+    "contract": "UnusedVariables",
     "iteration": 0,
-    "critical_high": 1
+    "critical_high": 0
   },
   {
-    "contract": "Lottery",
+    "contract": "UnusedVariables",
     "iteration": 1,
-    "critical_high": 4
+    "critical_high": 0
   },
   {
-    "contract": "Lottery",
+    "contract": "UnusedVariables",
     "iteration": 2,
-    "critical_high": 2
-  },
-  {
-    "contract": "Lottery",
-    "iteration": 3,
     "critical_high": 0
   }
 ]

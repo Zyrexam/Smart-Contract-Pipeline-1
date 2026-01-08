@@ -1,7 +1,7 @@
 Metric,Before,After,Resolved,%
 Critical,0,0,0,0.0%
 High,10,0,10,100.0%
-Medium,102,80,22,21.6%
+Medium,112,80,32,28.6%
 Low,9,0,9,100.0%
-Info,24,12,12,50.0%
-Total,145,92,53,36.6%
+Info,36,19,17,47.2%
+Total,167,99,68,40.7%
