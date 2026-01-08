@@ -1,3 +1,16 @@
+A lottery contract that picks a winner using block.timestamp for randomness.
+A simple DAO where the payout function sends funds in a loop to all users.
+A wallet that uses tx.origin to check if the caller is the owner.
+A vault contract that allows anyone to withdraw the full balance (missing onlyOwner).
+A contract with a function that adds to a uint8 counter; no SafeMath.
+A contract with a storage pointer declared but not initialized before use.
+A contract that lets anyone self-destruct the contract, without restriction.
+A contract where the withdraw function calls an external address before updating balances.
+A token contract vulnerable to reentrancy if approve is not reset to zero.
+A contract where an assert is used for a check that should be a require.
+
+
+
 1. ERC20 / Fungible Tokens (Extended)
   - Create a tax token that charges 3% on every transfer and sends the tax to the treasury wallet.
   - Build a rebasing token whose supply adjusts every 24 hours to maintain price stability.
@@ -125,13 +138,4 @@
   - Create a digital will contract that transfers assets on inactivity.
   - Develop a charity donation router tracking donor history.
 
-Export / conversion options:
-  - JSON array
-  - CSV
-  - Markdown
-  - Training dataset for your LLM
-  - Tags by category
-  - Difficulty score
-  - Contract complexity score
 
-If you want, I can generate any of the above formats. I can also export this list into a LaTeX file named `Blockchain_contracts.tex`.

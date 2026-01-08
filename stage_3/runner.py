@@ -1,10 +1,3 @@
-"""
-Stage 3 Runner
-==============
-
-Main entry point for Stage 3 security analysis and auto-fix
-"""
-
 from typing import Dict, List, Optional
 
 from .analyzer import SecurityAnalyzer
@@ -18,22 +11,9 @@ def run_stage3(
     stage2_metadata: Optional[Dict] = None,
     max_iterations: int = 2,
     tools: Optional[List[str]] = None,
-    skip_auto_fix: bool = False
+    skip_auto_fix: bool = False,
+    fix_medium: bool = True 
 ) -> Stage3Result:
-    """
-    Run Stage 3: Security Analysis & Auto-Fix
-    
-    Args:
-        solidity_code: Solidity code from Stage 2
-        contract_name: Name of the contract
-        stage2_metadata: Stage 2 metadata (profile, coverage, etc.)
-        max_iterations: Maximum number of fix iterations
-        tools: List of tools to use (default: ["slither", "mythril", "semgrep", "solhint"])
-        skip_auto_fix: If True, only run analysis (no fixing)
-    
-    Returns:
-        Stage3Result with analysis and fix results
-    """
     print("\n" + "="*80)
     print("STAGE 3: SECURITY ANALYSIS" + (" & AUTO-FIX" if not skip_auto_fix else ""))
     print("Mode: Docker-based execution (Windows compatible)")
@@ -100,10 +80,14 @@ def run_stage3(
     current_analysis = initial_analysis
     
     while iteration < max_iterations:
-        high_priority = current_analysis.get_critical_high()
+        # Always fix CRITICAL, HIGH, and MEDIUM severity issues
+        critical = current_analysis.get_by_severity(Severity.CRITICAL)
+        high = current_analysis.get_by_severity(Severity.HIGH)
+        medium = current_analysis.get_by_severity(Severity.MEDIUM)
+        high_priority = critical + high + medium
         
         if not high_priority:
-            print(f"\n  ✓ No critical/high issues after {iteration} iterations")
+            print(f"\n  ✓ No critical/high/medium issues after {iteration} iterations")
             break
         
         iteration += 1
@@ -130,10 +114,15 @@ def run_stage3(
             current_code = original_code
             break
         
+        # Count issues after fix (CRITICAL + HIGH + MEDIUM)
+        issues_after = (len(current_analysis.get_by_severity(Severity.CRITICAL)) +
+                       len(current_analysis.get_by_severity(Severity.HIGH)) +
+                       len(current_analysis.get_by_severity(Severity.MEDIUM)))
+        
         fixes_applied.append({
             "iteration": iteration,
             "issues_before": len(high_priority),
-            "issues_after": len(current_analysis.get_critical_high())
+            "issues_after": issues_after
         })
         
         print(f"  ✓ Iteration {iteration}: {len(current_analysis.issues)} issues remain")

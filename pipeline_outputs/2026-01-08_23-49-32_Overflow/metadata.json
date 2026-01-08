@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "Overflow",
+  "source_file": "vulnerable_dataset\\Overflow.sol",
+  "vulnerability_type": "Unknown",
+  "swc_id": "SWC-101",
+  "expected_severity": "Unknown",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}

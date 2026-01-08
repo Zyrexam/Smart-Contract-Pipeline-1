@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "bad_style",
+  "source_file": "vulnerable_dataset\\bad_style.sol",
+  "vulnerability_type": "Weak Randomness",
+  "swc_id": null,
+  "expected_severity": "Medium",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}

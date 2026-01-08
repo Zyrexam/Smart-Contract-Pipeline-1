@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "demonstrates",
+  "source_file": "vulnerable_dataset\\BadLottery.sol",
+  "vulnerability_type": "Weak Randomness",
+  "swc_id": "SWC-120",
+  "expected_severity": "Medium",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}

@@ -1,0 +1,107 @@
+{
+  "contract_name": "Lottery",
+  "contract_type": "Lottery",
+  "description": "A lottery contract that picks a winner using block.timestamp for randomness.",
+  "state_variables": [
+    {
+      "name": "participants",
+      "type": "address[]",
+      "visibility": "public",
+      "initial_value": "[]"
+    },
+    {
+      "name": "winner",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "name": "lotteryEndTime",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "startLottery",
+        "pickWinner"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "enterLottery",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "participant",
+          "type": "address"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows a participant to enter the lottery."
+    },
+    {
+      "name": "startLottery",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Starts the lottery and sets the end time."
+    },
+    {
+      "name": "pickWinner",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "winner",
+          "type": "address"
+        }
+      ],
+      "restricted_to": "owner",
+      "description": "Picks a winner using block.timestamp for randomness."
+    }
+  ],
+  "events": [
+    {
+      "name": "LotteryEntered",
+      "parameters": [
+        {
+          "name": "participant",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "WinnerPicked",
+      "parameters": [
+        {
+          "name": "winner",
+          "type": "address"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender == owner",
+      "description": "Restricts function access to the owner."
+    },
+    {
+      "name": "lotteryEnded",
+      "condition": "block.timestamp >= lotteryEndTime",
+      "description": "Ensures the lottery has ended before picking a winner."
+    }
+  ]
+}

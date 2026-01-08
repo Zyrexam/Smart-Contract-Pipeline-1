@@ -130,33 +130,49 @@ class SecurityAnalyzer:
                 
                 if output and tool_config.output:
                     # Tool writes to file (e.g., Slither -> /output.json)
+                    # IMPORTANT: For file-based tools like Slither, we ONLY use the extracted JSON file
+                    # We ignore stdout/stderr entirely to avoid mixing text output with JSON
                     # Output is a tar archive, extract it
                     output_content = self._extract_output_from_tar(output, tool_config.output)
                     if output_content:
                         if self.verbose:
                             print(f"    [DEBUG] Extracted output file, size: {len(output_content)} bytes")
                             print(f"    [DEBUG] Output preview: {output_content[:200]}")
+                        # For file-based tools, ONLY pass the extracted JSON file content
+                        # Do NOT pass logs/stdout as it may contain human-readable text
                         parse_result = parser.parse(
                             exit_code=exit_code,
-                            stdout=output_content,
+                            stdout=output_content,  # This is the JSON file content, not stdout
                             stderr=""
                         )
                     else:
                         # Fallback to logs - check if JSON is in logs
+                        # This should rarely happen if file extraction works correctly
                         if self.verbose:
-                            print(f"    [DEBUG] Output file not found, checking logs for JSON")
+                            print(f"    [DEBUG] Output file not found in tar, checking logs for JSON")
+                            print(f"    [DEBUG] Log lines: {len(log_lines)}")
+                            if log_lines:
+                                print(f"    [DEBUG] First 5 log lines:")
+                                for i, line in enumerate(log_lines[:5]):
+                                    print(f"      [{i}] {line[:100]}")
                             # Look for JSON in logs
                             for line in log_lines:
                                 if line.strip().startswith('{'):
                                     print(f"    [DEBUG] Found JSON-like line in logs: {line[:100]}")
+                        # Combine all logs as stdout (fallback only)
+                        stdout = "\n".join(log_lines) if log_lines else ""
                         parse_result = parser.parse(
                             exit_code=exit_code,
-                            stdout="\n".join(log_lines),
+                            stdout=stdout,
                             stderr=""
                         )
                 else:
                     # Tool outputs to stdout (e.g., Mythril, Semgrep)
                     stdout = "\n".join(log_lines) if log_lines else ""
+                    if self.verbose:
+                        print(f"    [DEBUG] Using stdout from logs, length: {len(stdout)}")
+                        if stdout:
+                            print(f"    [DEBUG] First 200 chars: {stdout[:200]}")
                     parse_result = parser.parse(
                         exit_code=exit_code,
                         stdout=stdout,
@@ -168,16 +184,28 @@ class SecurityAnalyzer:
                     all_warnings.append(f"{tool_id}: parsing failed")
                     # Graceful degradation: mark as partial success
                     tools_succeeded.append(f"{tool_id}-failed")
+                    if self.verbose:
+                        print(f"    [DEBUG] Parse result is None - parser returned nothing")
+                        print(f"    [DEBUG] Exit code: {exit_code}")
+                        print(f"    [DEBUG] Output size: {len(output) if output else 0} bytes")
+                        print(f"    [DEBUG] Log lines: {len(logs)}")
+                        if logs:
+                            print(f"    [DEBUG] Last 5 log lines:")
+                            for line in logs[-5:]:
+                                print(f"      {line[:100]}")
                     continue
                 
                 if parse_result.fails:
                     fail_msg = list(parse_result.fails)[:1]
                     if self.verbose:
                         print(f"    [DEBUG] Parse fails: {fail_msg}")
+                        print(f"    [DEBUG] All fails: {parse_result.fails}")
                         if output:
                             print(f"    [DEBUG] Output size: {len(output)} bytes")
                         if logs:
                             print(f"    [DEBUG] Log lines: {len(logs)}")
+                            if len(logs) > 0:
+                                print(f"    [DEBUG] Last log line: {logs[-1][:200]}")
                     print(f"⚠️  (partial: {fail_msg})")
                     all_warnings.append(f"{tool_id}: parsing issues - {fail_msg}")
                     # Still add any issues found, even with parse failures
@@ -187,13 +215,25 @@ class SecurityAnalyzer:
                         print(f"    → Found {len(parse_result.issues)} issues despite errors")
                     else:
                         tools_succeeded.append(f"{tool_id}-failed")
+                        if self.verbose:
+                            print(f"    [DEBUG] No issues found despite parse result existing")
+                            print(f"    [DEBUG] Errors: {parse_result.errors}")
+                            print(f"    [DEBUG] Infos: {parse_result.infos}")
                     continue
                 
                 # Add issues
                 all_issues.extend(parse_result.issues)
                 tools_succeeded.append(tool_id)
                 
-                print(f"✓ ({len(parse_result.issues)} issues)")
+                if len(parse_result.issues) > 0:
+                    print(f"✓ ({len(parse_result.issues)} issues)")
+                else:
+                    print(f"✓ (0 issues)")
+                    if self.verbose:
+                        print(f"    [DEBUG] Tool completed but found no issues")
+                        print(f"    [DEBUG] Errors: {parse_result.errors}")
+                        print(f"    [DEBUG] Infos: {parse_result.infos}")
+                        print(f"    [DEBUG] Exit code: {exit_code}")
             
             except Exception as e:
                 error_msg = str(e)[:50]

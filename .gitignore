@@ -1,5 +1,5 @@
 .env
 _pycache__/
 *.log
-ICBC_Results_Work/
+# ICBC_Results_Work/
 run_stage3_on_existing_contracts.py

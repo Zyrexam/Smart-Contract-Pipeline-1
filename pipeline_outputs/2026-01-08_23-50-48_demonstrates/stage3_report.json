@@ -1,0 +1,286 @@
+{
+  "iterations": 2,
+  "issues_resolved": 17,
+  "initial_analysis": {
+    "contract_name": "demonstrates",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 18,
+    "critical": 0,
+    "high": 3,
+    "medium": 4,
+    "low": 4,
+    "info": 7,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "arbitrary-send-eth",
+        "description": "PhishableWallet.withdraw(address,uint256) (contract.sol#22-27) sends eth to arbitrary user\n\tDangerous calls:\n\t- _recipient.transfer(_amount) (contract.sol#26)\n",
+        "line": 22,
+        "line_end": 27,
+        "filename": "PhishableWallet.withdraw(address,uint256) (contract.sol",
+        "contract": "PhishableWallet",
+        "function": "withdraw",
+        "recommendation": "Add access control and input validation"
+      },
+      {
+        "tool": "slither",
+        "severity": "MEDIUM",
+        "title": "tx-origin",
+        "description": "PhishableWallet.withdraw(address,uint256) (contract.sol#22-27) uses tx.origin for authorization: require(bool,string)(tx.origin == owner,Not authorized) (contract.sol#23)\n",
+        "line": 22,
+        "line_end": 27,
+        "filename": "PhishableWallet.withdraw(address,uint256) (contract.sol",
+        "contract": "PhishableWallet",
+        "function": "withdraw",
+        "recommendation": "Replace tx.origin with msg.sender"
+      },
+      {
+        "tool": "slither",
+        "severity": "MEDIUM",
+        "title": "tx-origin",
+        "description": "PhishableWallet.setOwner(address) (contract.sol#29-33) uses tx.origin for authorization: require(bool,string)(tx.origin == owner,Not authorized) (contract.sol#31)\n",
+        "line": 29,
+        "line_end": 33,
+        "filename": "PhishableWallet.setOwner(address) (contract.sol",
+        "contract": "PhishableWallet",
+        "function": "setOwner",
+        "recommendation": "Replace tx.origin with msg.sender"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "missing-zero-check",
+        "description": "PhishableWallet.setOwner(address)._newOwner (contract.sol#29) lacks a zero-check on :\n\t\t- owner = _newOwner (contract.sol#32)\n",
+        "line": 29,
+        "line_end": null,
+        "filename": "PhishableWallet.setOwner(address)._newOwner (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "missing-zero-check",
+        "description": "PhishableWallet.withdraw(address,uint256)._recipient (contract.sol#22) lacks a zero-check on :\n\t\t- _recipient.transfer(_amount) (contract.sol#26)\n",
+        "line": 22,
+        "line_end": null,
+        "filename": "PhishableWallet.withdraw(address,uint256)._recipient (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "naming-convention",
+        "description": "Parameter PhishableWallet.setOwner(address)._newOwner (contract.sol#29) is not in mixedCase\n",
+        "line": 29,
+        "line_end": null,
+        "filename": "Parameter PhishableWallet.setOwner(address)._newOwner (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "naming-convention",
+        "description": "Parameter PhishableWallet.withdraw(address,uint256)._amount (contract.sol#22) is not in mixedCase\n",
+        "line": 22,
+        "line_end": null,
+        "filename": "Parameter PhishableWallet.withdraw(address,uint256)._amount (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "naming-convention",
+        "description": "Parameter PhishableWallet.withdraw(address,uint256)._recipient (contract.sol#22) is not in mixedCase\n",
+        "line": 22,
+        "line_end": null,
+        "filename": "Parameter PhishableWallet.withdraw(address,uint256)._recipient (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "mythril",
+        "severity": "LOW",
+        "title": "Dependence on tx.origin (SWC 115)",
+        "description": "Use of tx.origin as a part of authorization control.\nThe tx.origin environment variable has been found to influence a control flow decision. Note that using tx.origin as a security control might cause a situation where a user inadvertently authorizes a smart contract to perform an action on their behalf. It is recommended to use msg.sender instead.\nClassification: SWC-115",
+        "line": 31,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": "PhishableWallet",
+        "function": "setOwner(address)",
+        "recommendation": "Replace tx.origin with msg.sender"
+      },
+      {
+        "tool": "mythril",
+        "severity": "LOW",
+        "title": "Dependence on tx.origin (SWC 115)",
+        "description": "Use of tx.origin as a part of authorization control.\nThe tx.origin environment variable has been found to influence a control flow decision. Note that using tx.origin as a security control might cause a situation where a user inadvertently authorizes a smart contract to perform an action on their behalf. It is recommended to use msg.sender instead.\nClassification: SWC-115",
+        "line": 23,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": "PhishableWallet",
+        "function": "withdraw(address,uint256)",
+        "recommendation": "Replace tx.origin with msg.sender"
+      },
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "tx-origin-usage",
+        "description": "tx-origin-usage detected",
+        "line": 23,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Replace tx.origin with msg.sender"
+      },
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 26,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "tx-origin-usage",
+        "description": "tx-origin-usage detected",
+        "line": 31,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Replace tx.origin with msg.sender"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 23,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "HIGH",
+        "title": "avoid-tx-origin",
+        "description": "Avoid to use tx.origin",
+        "line": 23,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Replace tx.origin with msg.sender"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 31,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "HIGH",
+        "title": "avoid-tx-origin",
+        "description": "Avoid to use tx.origin",
+        "line": 31,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Replace tx.origin with msg.sender"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "demonstrates",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 28,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [
+    {
+      "iteration": 1,
+      "issues_before": 7,
+      "issues_after": 1
+    },
+    {
+      "iteration": 2,
+      "issues_before": 1,
+      "issues_after": 0
+    }
+  ],
+  "stage2_metadata": null,
+  "compiles": null
+}

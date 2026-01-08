@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "UnusedVariables",
+  "source_file": "vulnerable_dataset\\unusedVariable.sol",
+  "vulnerability_type": "Unknown",
+  "swc_id": null,
+  "expected_severity": "Unknown",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "contract": "DecentralizedTicketingPlatform",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "DecentralizedTicketingPlatform",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "RateLimitedTokenVault",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "RateLimitedTokenVault",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "DualStaking",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "DualStaking",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": ".sol",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": ".sol",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "DualStaking",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "DualStaking",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": ".sol",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": ".sol",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "Counter",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "Counter",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "DualStaking",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "DualStaking",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "EtherVault",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "EtherVault",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "ElectionSystem",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "ElectionSystem",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "TokenStaking",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "TokenStaking",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "SimpleToken",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "SimpleToken",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "TaxToken",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "TaxToken",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "RentalNFTSystem",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "RentalNFTSystem",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "RentalNFTSystem",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "RentalNFTSystem",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "RentalNFTSystem",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 0,
+    "critical_high": 1
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 1,
+    "critical_high": 2
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 0,
+    "critical_high": 2
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 1,
+    "critical_high": 3
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "GasDoS",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 1,
+    "critical_high": 1
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "Overflow",
+    "iteration": 3,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 0,
+    "critical_high": 3
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 1,
+    "critical_high": 4
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 4,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 0,
+    "critical_high": 1
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 1,
+    "critical_high": 1
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 2,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 5,
+    "critical_high": 0
+  },
+  {
+    "contract": "UninitializedStorage",
+    "iteration": 0,
+    "critical_high": 0
+  },
+  {
+    "contract": "UninitializedStorage",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 0,
+    "critical_high": 2
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 1,
+    "critical_high": 0
+  },
+  {
+    "contract": "demonstrates",
+    "iteration": 6,
+    "critical_high": 0
+  },
+  {
+    "contract": "Lottery",
+    "iteration": 0,
+    "critical_high": 1
+  },
+  {
+    "contract": "Lottery",
+    "iteration": 1,
+    "critical_high": 4
+  },
+  {
+    "contract": "Lottery",
+    "iteration": 2,
+    "critical_high": 2
+  },
+  {
+    "contract": "Lottery",
+    "iteration": 3,
+    "critical_high": 0
+  }
+]

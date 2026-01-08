@@ -1,0 +1,46 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "participants": "Custom state variable",
+      "winner": "Custom state variable",
+      "lotteryEndTime": "Custom state variable"
+    },
+    "functions": {
+      "enterLottery": "Custom function",
+      "startLottery": "Custom function",
+      "pickWinner": "Custom function"
+    },
+    "events": {
+      "LotteryEntered": "Custom event",
+      "WinnerPicked": "Custom event"
+    },
+    "roles": {
+      "owner": "Custom role"
+    },
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: lottery\n\nReasoning: The contract is designed to facilitate a lottery system, which involves participants entering, a lottery period, and selecting a winner. This does not fit into any standard template like ERC20, ERC721, or Governor. It involves unique business logic specific to lotteries.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": false,
+  "subtype": "lottery",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "lottery",
+    "confidence": 0.9,
+    "reasoning": "The contract is designed to facilitate a lottery system, which involves participants entering, a lottery period, and selecting a winner. This does not fit into any standard template like ERC20, ERC721, or Governor. It involves unique business logic specific to lotteries.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

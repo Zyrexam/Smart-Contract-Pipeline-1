@@ -65,6 +65,12 @@ class SlitherParser(Parser):
             try:
                 output_dict = json.loads(stdout)
             except json.JSONDecodeError as e:
+                # Debug: log the error and stdout preview
+                import sys
+                if hasattr(sys, 'stderr'):
+                    print(f"[SLITHER PARSER DEBUG] JSON decode error: {str(e)[:100]}", file=sys.stderr)
+                    print(f"[SLITHER PARSER DEBUG] stdout length: {len(stdout)}", file=sys.stderr)
+                    print(f"[SLITHER PARSER DEBUG] stdout first 500: {stdout[:500]}", file=sys.stderr)
                 # Try to find JSON in lines
                 json_lines = []
                 in_json = False
@@ -123,26 +129,42 @@ class SlitherParser(Parser):
                 infos=infos
             )
         
-        # Check success flag - but don't fail if success is False, just note it
-        if not output_dict.get("success", False):
-            error_msg = output_dict.get("error", "analysis unsuccessful")
-            if error_msg and error_msg != "analysis unsuccessful":
-                infos.add(f"slither reported: {error_msg}")
-            else:
-                infos.add("analysis completed with warnings")
-        
-        # Only add as error if there's a specific error message
-        if output_dict.get("error") and output_dict.get("error") != "Slither execution failed":
-            errors.add(f"slither error: {output_dict.get('error', 'unknown')[:50]}")
-        
-        # Extract findings
+        # Extract findings FIRST - check for detectors regardless of success flag
+        # Slither may set success=false even when detectors are found
         results = output_dict.get("results", {})
         detectors = results.get("detectors", [])
         
+        # Debug: log detector count
+        import sys
+        if hasattr(sys, 'stderr'):
+            print(f"[SLITHER PARSER DEBUG] Found {len(detectors)} detectors", file=sys.stderr)
+            if detectors:
+                print(f"[SLITHER PARSER DEBUG] First detector: {detectors[0].get('check', 'unknown')}", file=sys.stderr)
+        
+        # Parse all detectors
         for detector in detectors:
             issue = self._parse_detector(detector)
             if issue:
                 issues.append(issue)
+        
+        # Check success flag - but don't fail if success is False, just note it
+        # IMPORTANT: We parse detectors FIRST, so even if success=false, we still get issues
+        if not output_dict.get("success", False):
+            error_msg = output_dict.get("error", "analysis unsuccessful")
+            # If we found detectors, success=false is not a problem
+            if len(detectors) > 0:
+                # Slither found issues but marked success=false - this is OK
+                infos.add("slither found detectors despite success=false")
+            elif error_msg and error_msg not in ["analysis unsuccessful", "Slither execution failed"]:
+                # No detectors and a specific error message
+                infos.add(f"slither reported: {error_msg}")
+        
+        # Only add as error if there's a specific error message (not the generic fallback)
+        # AND no detectors were found (if detectors exist, it's not really an error)
+        if (output_dict.get("error") and 
+            output_dict.get("error") not in ["Slither execution failed", "analysis unsuccessful"] and
+            len(detectors) == 0):
+            errors.add(f"slither error: {output_dict.get('error', 'unknown')[:50]}")
         
         return ParseResult(
             issues=issues,

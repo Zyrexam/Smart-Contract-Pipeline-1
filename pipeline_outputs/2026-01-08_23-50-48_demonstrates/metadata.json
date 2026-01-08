@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "demonstrates",
+  "source_file": "vulnerable_dataset\\PhishableWallet.sol",
+  "vulnerability_type": "tx.origin Usage",
+  "swc_id": "SWC-115",
+  "expected_severity": "Medium",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}

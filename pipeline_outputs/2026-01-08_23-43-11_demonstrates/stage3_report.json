@@ -1,0 +1,178 @@
+{
+  "iterations": 2,
+  "issues_resolved": 8,
+  "initial_analysis": {
+    "contract_name": "demonstrates",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 9,
+    "critical": 0,
+    "high": 1,
+    "medium": 6,
+    "low": 0,
+    "info": 2,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "weak-prng",
+        "description": "BadLottery.pickWinner(address[]) (contract.sol#22-40) uses a weak PRNG: \"randomIndex = uint256(keccak256(bytes)(abi.encodePacked(block.timestamp,block.prevrandao,players.length))) % players.length (contract.sol#28-36)\" \n",
+        "line": 22,
+        "line_end": 40,
+        "filename": "BadLottery.pickWinner(address[]) (contract.sol",
+        "contract": "BadLottery",
+        "function": "pickWinner",
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "MEDIUM",
+        "title": "locked-ether",
+        "description": "Contract locking ether found:\n\tContract BadLottery (contract.sol#11-41) has payable functions:\n\t - BadLottery.enter() (contract.sol#16-19)\n\tBut does not have a function to withdraw the ether\n",
+        "line": 11,
+        "line_end": 41,
+        "filename": "Contract locking ether found:\n\tContract BadLottery (contract.sol",
+        "contract": "BadLottery",
+        "function": "enter",
+        "recommendation": "Add withdrawal function or make contract payable"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "constable-states",
+        "description": "BadLottery.ticketPrice (contract.sol#12) should be constant \n",
+        "line": 12,
+        "line_end": null,
+        "filename": "BadLottery.ticketPrice (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 17,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 18,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-calldata-parameters",
+        "description": "GC: [players] argument on Function [pickWinner] could be [calldata] if it's not being updated",
+        "line": 22,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 23,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 24,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "demonstrates",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 65,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [
+    {
+      "iteration": 1,
+      "issues_before": 7,
+      "issues_after": 9
+    },
+    {
+      "iteration": 2,
+      "issues_before": 9,
+      "issues_after": 0
+    }
+  ],
+  "stage2_metadata": null,
+  "compiles": null
+}

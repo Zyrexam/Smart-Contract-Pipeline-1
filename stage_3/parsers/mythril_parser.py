@@ -192,10 +192,15 @@ class MythrilParser(Parser):
                 if debug_info:
                     debug_msg += f" | Debug: {'; '.join(debug_info[:5])}"  # Limit to first 5 debug messages
                 fails.add(debug_msg)
-                # Print debug info to stderr for troubleshooting (when verbose mode is on)
+                # Print debug info to stderr for troubleshooting
                 import sys
                 if hasattr(sys, 'stderr'):
                     print(f"[MYTHRIL PARSER DEBUG] {' | '.join(debug_info)}", file=sys.stderr)
+                    # Also print a summary
+                    print(f"[MYTHRIL PARSER DEBUG] stdout length: {len(stdout) if stdout else 0}", file=sys.stderr)
+                    if stdout:
+                        print(f"[MYTHRIL PARSER DEBUG] stdout first 500: {stdout[:500]}", file=sys.stderr)
+                        print(f"[MYTHRIL PARSER DEBUG] stdout last 500: {stdout[-500:] if len(stdout) > 500 else stdout}", file=sys.stderr)
         except Exception as e:
             fails.add(f"error parsing JSON output: {str(e)}")
             import sys

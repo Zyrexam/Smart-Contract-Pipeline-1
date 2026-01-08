@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "demonstrates",
+  "source_file": "vulnerable_dataset\\UnprotectedVault.sol",
+  "vulnerability_type": "Access Control",
+  "swc_id": "SWC-105",
+  "expected_severity": "Critical",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}

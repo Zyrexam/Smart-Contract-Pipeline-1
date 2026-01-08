@@ -1,13 +1,3 @@
-"""
-Pipeline Runner
-===============
-
-Runs the complete pipeline (Stage 1 → Stage 2 V2 → Stage 3) with user input.
-Edit the USER_INPUT variable below to specify your contract description.
-
-Stage 2 V2 uses LLM-powered classification for generalized contract generation.
-"""
-
 import os
 import json
 import sys
@@ -19,15 +9,8 @@ from stage_2_v2.generator_v2 import generate_solidity_v2
 from stage_3 import run_stage3
 
 
-# ============================================================================
-# CONFIGURATION - Edit these values to customize the pipeline
-# ============================================================================
 
-# User input: Natural language description of the smart contract
-# You can include main description and conditions like:
-#   "Create a token vault where users can deposit tokens."
-#   Conditions: Only the owner can withdraw. Users can check their balance.
-USER_INPUT = """Create a rental NFT system where users can rent NFTs for a fixed duration."""
+USER_INPUT = """A lottery contract that picks a winner using block.timestamp for randomness."""
 
 # Stage 3 Configuration
 STAGE3_CONFIG = {
@@ -37,24 +20,11 @@ STAGE3_CONFIG = {
     "verbose": False             # Set to True to see detailed tool execution logs
 }
 
-# ============================================================================
-
 
 def ensure(path: str):
-    """Ensure directory exists"""
     os.makedirs(path, exist_ok=True)
 
-
-
-
 def run_full_pipeline(user_input: str, stage3_options: dict):
-    """
-    Run complete pipeline: Stage 1 → Stage 2 → Stage 3
-    
-    Args:
-        user_input: Natural language description of contract
-        stage3_options: Dictionary with Stage 3 configuration
-    """
     print("\n" + "="*80)
     print("RUNNING FULL PIPELINE (Stage 1 → Stage 2 → Stage 3)")
     print("="*80)

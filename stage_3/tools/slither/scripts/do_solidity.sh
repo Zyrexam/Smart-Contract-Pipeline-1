@@ -42,25 +42,44 @@ ensure_output() {
     fi
 }
 
-# Initialize output file first (in case of early failure)
-ensure_output
+# CRITICAL FIX: Do NOT initialize fallback JSON before running Slither
+# This was overwriting Slither's actual output. We only create fallback if Slither fails.
+# Slither will create /output.json itself, so we don't need to pre-create it.
 
-# Try Slither with minimal requirements and capture both stdout and stderr
-# Redirect stderr to stdout so we can capture all errors
-SLITHER_OUTPUT=$(slither "$FILENAME" \
+# Run Slither and silence stdout/stderr completely
+# Slither writes JSON to /output.json, but also prints human-readable text to stdout
+# We ONLY want the JSON file, so we redirect stdout/stderr to /dev/null
+slither "$FILENAME" \
   --json /output.json \
   --solc-disable-warnings \
   --skip-clean \
-  --filter-paths "node_modules" 2>&1)
+  --filter-paths "node_modules" \
+  > /dev/null 2>&1
 SLITHER_EXIT=$?
 
+# Debug: Log exit code only (not the text output which we've silenced)
+echo "Slither exit code: $SLITHER_EXIT" >&2
+
 # Check if output file was created and is valid JSON
+# IMPORTANT: We check for file existence and validity, but we do NOT overwrite
+# Slither's output even if success=false, because detectors may still be present
 if [ ! -f /output.json ] || [ ! -s /output.json ]; then
-    # File doesn't exist or is empty - create fallback
+    # File doesn't exist or is empty - create fallback ONLY in this case
+    echo "Output file missing or empty, creating fallback" >&2
     ensure_output
 elif ! python3 -c "import json; json.load(open('/output.json'))" 2>/dev/null; then
-    # File exists but is not valid JSON - create fallback
+    # File exists but is not valid JSON - create fallback ONLY if invalid JSON
+    echo "Output file is not valid JSON, creating fallback" >&2
     echo '{"success":false,"error":"Invalid JSON output from Slither","results":{"detectors":[]}}' > /output.json
+else
+    # File is valid JSON - validate structure for debugging
+    # NOTE: We do NOT overwrite even if success=false, because detectors may exist
+    # The parser will handle success=false correctly by still parsing detectors
+    echo "Output file is valid JSON" >&2
+    # Check structure and count detectors for debugging
+    if python3 -c "import json; d=json.load(open('/output.json')); detectors=d.get('results', {}).get('detectors', []); print(f'Detectors found: {len(detectors)}')" 2>&1; then
+        echo "Output file structure validated" >&2
+    fi
 fi
 
 # Always exit 0 to not block pipeline

@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "demonstrates",
+  "source_file": "vulnerable_dataset\\ReentrancyBank.sol",
+  "vulnerability_type": "Reentrancy",
+  "swc_id": "SWC-107",
+  "expected_severity": "High",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}

@@ -1,0 +1,11 @@
+{
+  "category": "Vulnerable",
+  "base_standard": "Custom",
+  "contract_name": "GasDoS",
+  "source_file": "vulnerable_dataset\\GasDoS.sol",
+  "vulnerability_type": "Unknown",
+  "swc_id": "SWC-113",
+  "expected_severity": "Unknown",
+  "is_vulnerable": true,
+  "source": "vulnerable_dataset"
+}
