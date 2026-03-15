@@ -216,7 +216,7 @@ class ContractClassifier:
         context_parts.append("Classify this contract:")
         
         return "\n".join(context_parts)
-    
+
     def _validate_classification(self, result: Dict) -> Dict:
         """Validate and normalize classification result"""
         
