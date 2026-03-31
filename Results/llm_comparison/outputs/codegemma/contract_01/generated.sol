@@ -1,0 +1,70 @@
+contract should have the following functionalities:
+- Users can rent NFTs for a fixed duration.
+- Users can return NFTs once they are no longer rented.
+- Users can view the NFTs they have rented.
+- Users can view the NFTs they have returned.
+- Users can view the NFTs they have not rented.
+- Users can view the NFTs they have not returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view the NFTs they have not returned but have not yet been returned.
+- Users can view

@@ -1,0 +1,111 @@
+{
+  "contract_name": "RentalNFT",
+  "contract_type": "NFT",
+  "description": "A rental NFT system where users can rent NFTs for a fixed duration.",
+  "name": "",
+  "symbol": "NFT",
+  "roles": [],
+  "state_variables": [
+    {
+      "name": "nftOwner",
+      "type": "address",
+      "visibility": "public"
+    },
+    {
+      "name": "renter",
+      "type": "address",
+      "visibility": "public"
+    },
+    {
+      "name": "rentalEndTime",
+      "type": "uint256",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "rentNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows a user to rent an NFT for a specified duration."
+    },
+    {
+      "name": "endRental",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Ends the rental period for a specific NFT."
+    },
+    {
+      "name": "getRentalInfo",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "renter",
+          "type": "address"
+        },
+        {
+          "name": "rentalEndTime",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Returns the rental information for a specific NFT."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTLent",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "renter",
+          "type": "address"
+        },
+        {
+          "name": "rentalEndTime",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RentalEnded",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "contract_01",
+    "task_name": "NFT Rental",
+    "category": "NFT",
+    "prompt": "Build a rental NFT system where users can rent NFTs for a fixed duration."
+  },
+  {
+    "id": "contract_02",
+    "task_name": "ERC20 Token",
+    "category": "Token",
+    "prompt": "Create an ERC20 token with minting and burning functionality."
+  },
+  {
+    "id": "contract_03",
+    "task_name": "Voting Contract",
+    "category": "Governance",
+    "prompt": "Build a smart contract for decentralized voting where users can vote for proposals."
+  },
+  {
+    "id": "contract_04",
+    "task_name": "Crowdfunding",
+    "category": "Finance",
+    "prompt": "Create a crowdfunding smart contract where users can contribute funds until a funding goal is reached."
+  },
+  {
+    "id": "contract_05",
+    "task_name": "Escrow Contract",
+    "category": "Finance",
+    "prompt": "Develop an escrow smart contract that holds funds until both parties approve the transaction."
+  },
+  {
+    "id": "contract_06",
+    "task_name": "MultiSig Wallet",
+    "category": "Security",
+    "prompt": "Build a multi-signature wallet where multiple owners must approve transactions."
+  },
+  {
+    "id": "contract_07",
+    "task_name": "DAO Governance",
+    "category": "Governance",
+    "prompt": "Create a DAO governance contract where token holders can propose and vote on decisions."
+  },
+  {
+    "id": "contract_08",
+    "task_name": "NFT Marketplace",
+    "category": "NFT",
+    "prompt": "Develop an NFT marketplace where users can list, buy, and sell NFTs."
+  },
+  {
+    "id": "contract_09",
+    "task_name": "TimeLock Contract",
+    "category": "Utility",
+    "prompt": "Build a timelock smart contract where funds can only be withdrawn after a specific time."
+  },
+  {
+    "id": "contract_10",
+    "task_name": "Auction Contract",
+    "category": "Finance",
+    "prompt": "Create a smart contract for a decentralized auction where users can place bids."
+  }
+]

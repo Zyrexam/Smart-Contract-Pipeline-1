@@ -1,0 +1,44 @@
+{
+  "category": "Timelock",
+  "base_standard": "Timelock",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "releaseTime": "Template state variable",
+      "beneficiary": "Template state variable",
+      "lockedAmount": "Template state variable"
+    },
+    "functions": {
+      "deposit": "Template function",
+      "withdraw": "Template function",
+      "setReleaseTime": "Template function"
+    },
+    "events": {
+      "Deposited": "Template event",
+      "Withdrawn": "Template event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Timelock\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin Timelock\n\nReasoning: The contract's primary function is to lock funds until a specified time, which aligns with the concept of a timelock. This is a well-known pattern for delaying fund withdrawals.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Timelock",
+    "subtype": null,
+    "confidence": 0.9,
+    "reasoning": "The contract's primary function is to lock funds until a specified time, which aligns with the concept of a timelock. This is a well-known pattern for delaying fund withdrawals.",
+    "is_template": true,
+    "recommended_approach": "template"
+  },
+  "fixes_applied": []
+}

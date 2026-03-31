@@ -1,0 +1,215 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 7,
+    "critical": 0,
+    "high": 0,
+    "medium": 5,
+    "low": 0,
+    "info": 2,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "MEDIUM",
+        "title": "locked-ether",
+        "description": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol#4-25) has payable functions:\n\t - Crowdfunding.contribute() (contract.sol#14-21)\n\tBut does not have a function to withdraw the ether\n",
+        "line": 4,
+        "line_end": 25,
+        "filename": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol",
+        "contract": "Crowdfunding",
+        "function": "contribute",
+        "recommendation": "Add withdrawal function or make contract payable"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Crowdfunding.goal (contract.sol#5) should be immutable \n",
+        "line": 5,
+        "line_end": null,
+        "filename": "Crowdfunding.goal (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "reason-string",
+        "description": "Error message for require is too long: 33 counted / 32 allowed",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 18,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 7,
+    "critical": 0,
+    "high": 0,
+    "medium": 5,
+    "low": 0,
+    "info": 2,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "MEDIUM",
+        "title": "locked-ether",
+        "description": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol#4-25) has payable functions:\n\t - Crowdfunding.contribute() (contract.sol#14-21)\n\tBut does not have a function to withdraw the ether\n",
+        "line": 4,
+        "line_end": 25,
+        "filename": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol",
+        "contract": "Crowdfunding",
+        "function": "contribute",
+        "recommendation": "Add withdrawal function or make contract payable"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Crowdfunding.goal (contract.sol#5) should be immutable \n",
+        "line": 5,
+        "line_end": null,
+        "filename": "Crowdfunding.goal (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "reason-string",
+        "description": "Error message for require is too long: 33 counted / 32 allowed",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 18,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": null,
+  "compiles": null
+}

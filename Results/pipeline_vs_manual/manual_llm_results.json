@@ -1,0 +1,241 @@
+[
+  {
+    "id": "contract_01",
+    "task_name": "NFT Rental",
+    "category": "NFT",
+    "prompt": "Build a rental NFT system where users can rent NFTs for a fixed duration.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 36.74632269999984,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_01",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_01\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_01\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 17,
+      "low": 0,
+      "info": 1,
+      "total": 18
+    },
+    "loc": 58,
+    "function_count": 7,
+    "validation_success": false,
+    "validation_errors": [
+      "CRITICAL: OpenZeppelin v5 deprecated token transfer hooks are still used",
+      "CRITICAL: Ownable constructor must be initialized with initialOwner"
+    ],
+    "validation_warnings": [
+      "WARNING: Contract handles ETH but doesn't use ReentrancyGuard. Consider adding it."
+    ],
+    "compilation_success": null
+  },
+  {
+    "id": "contract_02",
+    "task_name": "ERC20 Token",
+    "category": "Token",
+    "prompt": "Create an ERC20 token with minting and burning functionality.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 29.357790699999896,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_02",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_02\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_02\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 0,
+      "info": 0,
+      "total": 2
+    },
+    "loc": 13,
+    "function_count": 2,
+    "validation_success": false,
+    "validation_errors": [
+      "CRITICAL: Ownable constructor must be initialized with initialOwner"
+    ],
+    "validation_warnings": [],
+    "compilation_success": null
+  },
+  {
+    "id": "contract_03",
+    "task_name": "Voting Contract",
+    "category": "Governance",
+    "prompt": "Build a smart contract for decentralized voting where users can vote for proposals.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 57.86910679999983,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_03",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_03\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_03\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 16,
+      "low": 1,
+      "info": 3,
+      "total": 20
+    },
+    "loc": 52,
+    "function_count": 4,
+    "validation_success": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "compilation_success": null
+  },
+  {
+    "id": "contract_04",
+    "task_name": "Crowdfunding",
+    "category": "Finance",
+    "prompt": "Create a crowdfunding smart contract where users can contribute funds until a funding goal is reached.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 96.33634660000007,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_04",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_04\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_04\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 23,
+      "low": 0,
+      "info": 5,
+      "total": 28
+    },
+    "loc": 43,
+    "function_count": 3,
+    "validation_success": true,
+    "validation_errors": [],
+    "validation_warnings": [
+      "WARNING: Contract handles ETH but doesn't use ReentrancyGuard. Consider adding it."
+    ],
+    "compilation_success": null
+  },
+  {
+    "id": "contract_05",
+    "task_name": "Escrow Contract",
+    "category": "Finance",
+    "prompt": "Develop an escrow smart contract that holds funds until both parties approve the transaction.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 44.23020209999959,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_05",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_05\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_05\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 11,
+      "low": 2,
+      "info": 8,
+      "total": 21
+    },
+    "loc": 53,
+    "function_count": 5,
+    "validation_success": true,
+    "validation_errors": [],
+    "validation_warnings": [
+      "WARNING: Contract handles ETH but doesn't use ReentrancyGuard. Consider adding it."
+    ],
+    "compilation_success": null
+  },
+  {
+    "id": "contract_06",
+    "task_name": "MultiSig Wallet",
+    "category": "Security",
+    "prompt": "Build a multi-signature wallet where multiple owners must approve transactions.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 48.753715899999406,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_06",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_06\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_06\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 43,
+      "low": 1,
+      "info": 11,
+      "total": 55
+    },
+    "loc": 100,
+    "function_count": 7,
+    "validation_success": true,
+    "validation_errors": [],
+    "validation_warnings": [
+      "WARNING: Contract handles ETH but doesn't use ReentrancyGuard. Consider adding it."
+    ],
+    "compilation_success": null
+  },
+  {
+    "id": "contract_07",
+    "task_name": "DAO Governance",
+    "category": "Governance",
+    "prompt": "Create a DAO governance contract where token holders can propose and vote on decisions.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 44.346705400000246,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_07",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_07\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_07\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 14,
+      "low": 0,
+      "info": 0,
+      "total": 14
+    },
+    "loc": 58,
+    "function_count": 5,
+    "validation_success": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "compilation_success": null
+  },
+  {
+    "id": "contract_08",
+    "task_name": "NFT Marketplace",
+    "category": "NFT",
+    "prompt": "Develop an NFT marketplace where users can list, buy, and sell NFTs.",
+    "method": "manual_llm",
+    "status": "success",
+    "user_steps": 3,
+    "runtime_seconds": 46.19717850000052,
+    "model": "gpt-4o",
+    "output_dir": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_08",
+    "contract_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_08\\manual_generated.sol",
+    "analysis_report_path": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_outputs\\contract_08\\stage3_report.json",
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 26,
+      "low": 0,
+      "info": 2,
+      "total": 28
+    },
+    "loc": 161,
+    "function_count": 7,
+    "validation_success": true,
+    "validation_errors": [],
+    "validation_warnings": [
+      "WARNING: OpenZeppelin v5 moved security contracts to utils/"
+    ],
+    "compilation_success": null
+  }
+]

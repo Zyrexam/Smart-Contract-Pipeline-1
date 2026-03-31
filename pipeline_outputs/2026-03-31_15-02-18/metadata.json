@@ -1,0 +1,48 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "fundingGoal": "Custom state variable",
+      "totalFunds": "Custom state variable",
+      "deadline": "Custom state variable",
+      "owner": "Custom state variable"
+    },
+    "functions": {
+      "contribute": "Custom function",
+      "checkGoalReached": "Custom function",
+      "withdrawFunds": "Custom function",
+      "refund": "Custom function"
+    },
+    "events": {
+      "ContributionReceived": "Custom event",
+      "GoalReached": "Custom event",
+      "FundsWithdrawn": "Custom event",
+      "RefundIssued": "Custom event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: crowdfunding\n\nReasoning: The contract involves managing contributions towards a funding goal, which does not fit any standard template like ERC20, ERC721, or Governor. It is a unique business logic for crowdfunding.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": false,
+  "subtype": "crowdfunding",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "crowdfunding",
+    "confidence": 0.9,
+    "reasoning": "The contract involves managing contributions towards a funding goal, which does not fit any standard template like ERC20, ERC721, or Governor. It is a unique business logic for crowdfunding.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

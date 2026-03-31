@@ -1,21 +1,17 @@
-# Custom Slither image with pre-installed Solidity compilers
-FROM smartbugs/slither:0.11.3
+# Custom Slither image built on top of the Mythril image so we inherit a working solc binary.
+FROM smartbugs/mythril:0.24.7
 
-# Disable solc-select completely to avoid network/download issues
+USER root
+
 ENV SOLC_SELECT_DISABLED=1
 ENV SLITHER_DISABLE_SOLC_DOWNLOAD=1
-
-# Install py-solc-x (but don't install solc versions during build - let it happen at runtime if needed)
-# This avoids long build times and network timeouts
-RUN pip3 install py-solc-x --quiet || echo "py-solc-x installation skipped"
-
-# Note: solc versions will be auto-detected/installed by Slither at runtime if needed
-# The base image should already have solc available
-# Set PATH to include common solc locations
 ENV PATH="/usr/local/bin:/root/.solcx/bin:$PATH"
 
-# Verify Slither works (this doesn't require solc)
-RUN slither --version || echo "Slither available"
+# Install Slither on top of the existing Python + solc toolchain.
+RUN python3 -m pip install --no-cache-dir slither-analyzer==0.11.3
 
-# Keep working
 WORKDIR /sb
+
+# Verify toolchain
+RUN solc --version
+RUN slither --version

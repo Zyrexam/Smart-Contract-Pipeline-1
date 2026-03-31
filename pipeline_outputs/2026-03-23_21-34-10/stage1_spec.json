@@ -1,0 +1,162 @@
+{
+  "contract_name": "GeneratedContract",
+  "contract_type": "ERC20",
+  "description": "An ERC20 token with minting and burning functionality.",
+  "name": "GeneratedContract",
+  "symbol": "TKN",
+  "roles": [],
+  "state_variables": [
+    {
+      "name": "totalSupply",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "balances",
+      "type": "mapping(address => uint256)",
+      "visibility": "private"
+    }
+  ],
+  "functions": [
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Mints new tokens to the specified address."
+    },
+    {
+      "name": "burn",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Burns tokens from the specified address."
+    },
+    {
+      "name": "transfer",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Transfers tokens to the specified address."
+    },
+    {
+      "name": "approve",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Approves the specified address to spend a certain amount of tokens."
+    },
+    {
+      "name": "transferFrom",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Transfers tokens from one address to another using allowance."
+    }
+  ],
+  "events": [
+    {
+      "name": "Transfer",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "Approval",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "contract_name": "DecentralizedVoting",
+  "contract_type": "voting",
+  "description": "A smart contract for decentralized voting where users can vote for proposals.",
+  "name": "",
+  "symbol": "",
+  "roles": [
+    {
+      "name": "admin",
+      "permissions": [
+        "createProposal",
+        "endVoting"
+      ]
+    },
+    {
+      "name": "voter",
+      "permissions": [
+        "vote"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "proposals",
+      "type": "Proposal[]",
+      "visibility": "public"
+    },
+    {
+      "name": "voters",
+      "type": "mapping(address => bool)",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "createProposal",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ],
+      "restricted_to": "admin",
+      "description": "Allows an admin to create a new proposal."
+    },
+    {
+      "name": "vote",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "voter",
+      "description": "Allows a voter to vote for a proposal."
+    },
+    {
+      "name": "endVoting",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "admin",
+      "description": "Allows an admin to end the voting for a proposal."
+    },
+    {
+      "name": "getProposalResults",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "results",
+          "type": "uint"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Returns the results of a proposal."
+    }
+  ],
+  "events": [
+    {
+      "name": "ProposalCreated",
+      "parameters": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "VoteCast",
+      "parameters": [
+        {
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ]
+    },
+    {
+      "name": "VotingEnded",
+      "parameters": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ]
+    }
+  ]
+}

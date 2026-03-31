@@ -1,0 +1,115 @@
+{
+  "contract_name": "Crowdfunding",
+  "contract_type": "fundraising",
+  "description": "A crowdfunding smart contract where users can contribute funds until a funding goal is reached.",
+  "name": "",
+  "symbol": "",
+  "roles": [],
+  "state_variables": [
+    {
+      "name": "fundingGoal",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "totalFunds",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "deadline",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "owner",
+      "type": "address",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "contribute",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to contribute funds to the campaign."
+    },
+    {
+      "name": "withdrawFunds",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to withdraw funds if the funding goal is reached."
+    },
+    {
+      "name": "refund",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows contributors to get a refund if the funding goal is not reached by the deadline."
+    },
+    {
+      "name": "checkGoalReached",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "goalReached",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Checks if the funding goal has been reached."
+    }
+  ],
+  "events": [
+    {
+      "name": "ContributionReceived",
+      "parameters": [
+        {
+          "name": "contributor",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "FundsWithdrawn",
+      "parameters": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "RefundIssued",
+      "parameters": [
+        {
+          "name": "contributor",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

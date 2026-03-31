@@ -1,0 +1,81 @@
+{
+  "contract_name": "Timelock",
+  "contract_type": "smart_contract",
+  "description": "A timelock contract where funds can only be withdrawn after a specific time.",
+  "name": "",
+  "symbol": "",
+  "roles": [],
+  "state_variables": [
+    {
+      "name": "releaseTime",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "beneficiary",
+      "type": "address",
+      "visibility": "public"
+    },
+    {
+      "name": "lockedAmount",
+      "type": "uint256",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "deposit",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows depositing funds into the contract."
+    },
+    {
+      "name": "withdraw",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "beneficiary",
+      "description": "Allows the beneficiary to withdraw funds after the release time."
+    },
+    {
+      "name": "setReleaseTime",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Sets the release time for the funds."
+    }
+  ],
+  "events": [
+    {
+      "name": "Deposited",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "Withdrawn",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

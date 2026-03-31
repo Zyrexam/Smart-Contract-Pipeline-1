@@ -1,0 +1,91 @@
+{
+  "total_runs": 8,
+  "successful_end_to_end_runs": 8,
+  "end_to_end_success_rate": 100.0,
+  "validation_pass_count": 8,
+  "compilation_pass_count": 8,
+  "warning_count": 3,
+  "stage_success_rates": {
+    "stage1_success": {
+      "count": 8,
+      "rate": 100.0
+    },
+    "stage2_success": {
+      "count": 8,
+      "rate": 100.0
+    },
+    "compilation_success": {
+      "count": 8,
+      "rate": 100.0
+    },
+    "stage3_success": {
+      "count": 8,
+      "rate": 100.0
+    },
+    "validation_success": {
+      "count": 8,
+      "rate": 100.0
+    },
+    "final_contract_success": {
+      "count": 8,
+      "rate": 100.0
+    },
+    "end_to_end_success": {
+      "count": 8,
+      "rate": 100.0
+    }
+  },
+  "failure_breakdown": {},
+  "category_summary": [
+    {
+      "category": "Finance",
+      "total_runs": 2,
+      "end_to_end_success_count": 2,
+      "end_to_end_success_rate": 100.0,
+      "validation_success_count": 2,
+      "validation_success_rate": 100.0,
+      "compilation_success_count": 2,
+      "compilation_success_rate": 100.0
+    },
+    {
+      "category": "Governance",
+      "total_runs": 2,
+      "end_to_end_success_count": 2,
+      "end_to_end_success_rate": 100.0,
+      "validation_success_count": 2,
+      "validation_success_rate": 100.0,
+      "compilation_success_count": 2,
+      "compilation_success_rate": 100.0
+    },
+    {
+      "category": "NFT",
+      "total_runs": 2,
+      "end_to_end_success_count": 2,
+      "end_to_end_success_rate": 100.0,
+      "validation_success_count": 2,
+      "validation_success_rate": 100.0,
+      "compilation_success_count": 2,
+      "compilation_success_rate": 100.0
+    },
+    {
+      "category": "Security",
+      "total_runs": 1,
+      "end_to_end_success_count": 1,
+      "end_to_end_success_rate": 100.0,
+      "validation_success_count": 1,
+      "validation_success_rate": 100.0,
+      "compilation_success_count": 1,
+      "compilation_success_rate": 100.0
+    },
+    {
+      "category": "Token",
+      "total_runs": 1,
+      "end_to_end_success_count": 1,
+      "end_to_end_success_rate": 100.0,
+      "validation_success_count": 1,
+      "validation_success_rate": 100.0,
+      "compilation_success_count": 1,
+      "compilation_success_rate": 100.0
+    }
+  ]
+}

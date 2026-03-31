@@ -1,0 +1,117 @@
+{
+  "contract_name": "NFTMarketplace",
+  "contract_type": "marketplace",
+  "description": "A smart contract for an NFT marketplace where users can list, buy, and sell NFTs.",
+  "state_variables": [
+    {
+      "name": "nfts",
+      "type": "mapping(uint256 => address)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "nftPrices",
+      "type": "mapping(uint256 => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "nftOwners",
+      "type": "mapping(uint256 => address)",
+      "visibility": "private",
+      "initial_value": "{}"
+    }
+  ],
+  "roles": [
+    {
+      "name": "user",
+      "permissions": [
+        "list",
+        "buy",
+        "sell"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "listNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to list an NFT for sale at a specified price."
+    },
+    {
+      "name": "buyNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to buy a listed NFT by paying the specified price."
+    },
+    {
+      "name": "sellNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to sell their NFT, transferring ownership to the buyer."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTListed",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTSold",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

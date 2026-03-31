@@ -1,0 +1,38 @@
+{
+  "category": "Marketplace",
+  "base_standard": "Marketplace",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {},
+    "functions": {
+      "listnft": "Create listing with price and token",
+      "buynft": "Purchase with payment handling",
+      "sellnft": "Marketplace function",
+      "withdrawfunds": "Marketplace function"
+    },
+    "events": {},
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Marketplace\nClassification Confidence: 95%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin Marketplace\n\nReasoning: The contract is described as an NFT marketplace with functions for listing, buying, and selling NFTs, which aligns with the standard functionality of a Marketplace template.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Marketplace",
+    "subtype": null,
+    "confidence": 0.95,
+    "reasoning": "The contract is described as an NFT marketplace with functions for listing, buying, and selling NFTs, which aligns with the standard functionality of a Marketplace template.",
+    "is_template": true,
+    "recommended_approach": "template"
+  },
+  "fixes_applied": []
+}

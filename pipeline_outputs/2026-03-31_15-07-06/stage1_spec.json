@@ -1,0 +1,89 @@
+{
+  "contract_name": "DecentralizedAuction",
+  "contract_type": "auction",
+  "description": "A smart contract for a decentralized auction where users can place bids.",
+  "name": "",
+  "symbol": "",
+  "roles": [],
+  "state_variables": [
+    {
+      "name": "highestBid",
+      "type": "uint",
+      "visibility": "public"
+    },
+    {
+      "name": "highestBidder",
+      "type": "address",
+      "visibility": "public"
+    },
+    {
+      "name": "auctionEndTime",
+      "type": "uint",
+      "visibility": "public"
+    },
+    {
+      "name": "ended",
+      "type": "bool",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "bid",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to place a bid in the auction."
+    },
+    {
+      "name": "withdraw",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "amount",
+          "type": "uint"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Allows users to withdraw their bids if they are not the highest bidder."
+    },
+    {
+      "name": "endAuction",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Ends the auction and transfers the highest bid to the auction owner."
+    }
+  ],
+  "events": [
+    {
+      "name": "HighestBidIncreased",
+      "parameters": [
+        {
+          "name": "bidder",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint"
+        }
+      ]
+    },
+    {
+      "name": "AuctionEnded",
+      "parameters": [
+        {
+          "name": "winner",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint"
+        }
+      ]
+    }
+  ]
+}

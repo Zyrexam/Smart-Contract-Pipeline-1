@@ -1,0 +1,211 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "Timelock",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 5,
+    "critical": 0,
+    "high": 0,
+    "medium": 5,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/Ownable.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 13,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Deposited] could be Indexed",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawn] could be Indexed",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "Timelock",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 5,
+    "critical": 0,
+    "high": 0,
+    "medium": 5,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/Ownable.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "immutable-vars-naming",
+        "description": "Immutable variables name are set to be in capitalized SNAKE_CASE",
+        "line": 13,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Deposited] could be Indexed",
+        "line": 15,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [Withdrawn] could be Indexed",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Timelock",
+    "base_standard": "Timelock",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "releaseTime": "Template state variable",
+        "beneficiary": "Template state variable",
+        "lockedAmount": "Template state variable"
+      },
+      "functions": {
+        "deposit": "Template function",
+        "withdraw": "Template function",
+        "setReleaseTime": "Template function"
+      },
+      "events": {
+        "Deposited": "Template event",
+        "Withdrawn": "Template event"
+      },
+      "roles": {},
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Timelock\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin Timelock\n\nReasoning: The contract's primary function is to lock funds until a specified time, which aligns with the concept of a timelock. This is a well-known pattern for delaying fund withdrawals.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl"
+    ],
+    "is_template": true,
+    "subtype": null,
+    "classification": {
+      "contract_type": "Timelock",
+      "subtype": null,
+      "confidence": 0.9,
+      "reasoning": "The contract's primary function is to lock funds until a specified time, which aligns with the concept of a timelock. This is a well-known pattern for delaying fund withdrawals.",
+      "is_template": true,
+      "recommended_approach": "template"
+    },
+    "fixes_applied": [],
+    "_verbose": false
+  },
+  "compiles": null
+}

@@ -1,0 +1,73 @@
+{
+  "category": "Auction",
+  "base_standard": "Auction",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "highestBid": "Template state variable",
+      "highestBidder": "Template state variable",
+      "auctionEndTime": "Template state variable",
+      "auctionStarted": "Template state variable",
+      "owner": "Template state variable"
+    },
+    "functions": {
+      "startAuction": "Template function",
+      "placeBid": "Template function",
+      "endAuction": "Template function"
+    },
+    "events": {
+      "AuctionStarted": "Template event",
+      "BidPlaced": "Template event",
+      "AuctionEnded": "Template event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Auction\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin Auction\n\nReasoning: The contract is described as a decentralized auction where users can place bids, which aligns with the core functionality of an auction system.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Auction",
+    "subtype": null,
+    "confidence": 0.9,
+    "reasoning": "The contract is described as a decentralized auction where users can place bids, which aligns with the core functionality of an auction system.",
+    "is_template": true,
+    "recommended_approach": "template"
+  },
+  "fixes_applied": [
+    {
+      "attempt": 1,
+      "method": "constructor_resolver",
+      "description": "Applied constructor fixes for OpenZeppelin v5 compatibility",
+      "errors_before": 1,
+      "warnings_before": 2
+    },
+    {
+      "attempt": 1,
+      "method": "model_repair",
+      "description": "Applied LLM-based repair for remaining validation issues",
+      "errors_before": 1
+    },
+    {
+      "attempt": 2,
+      "method": "semantic_repair",
+      "description": "Fixed semantic/logic issues",
+      "errors_before": 1
+    },
+    {
+      "attempt": 2,
+      "method": "model_repair",
+      "description": "Applied LLM-based repair for remaining validation issues",
+      "errors_before": 1
+    }
+  ]
+}

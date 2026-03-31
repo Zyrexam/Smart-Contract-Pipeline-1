@@ -1,0 +1,142 @@
+{
+  "contract_name": "RentalNFT",
+  "contract_type": "NFT",
+  "description": "A rental NFT system where users can rent NFTs for a fixed duration.",
+  "name": "",
+  "symbol": "NFT",
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "mint",
+        "setRentalTerms"
+      ]
+    },
+    {
+      "name": "renter",
+      "permissions": [
+        "rentNFT"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "nftOwner",
+      "type": "address",
+      "visibility": "public"
+    },
+    {
+      "name": "renter",
+      "type": "address",
+      "visibility": "public"
+    },
+    {
+      "name": "rentalEndTime",
+      "type": "uint256",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Mints a new NFT to the specified address."
+    },
+    {
+      "name": "setRentalTerms",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Sets the rental terms for a specific NFT."
+    },
+    {
+      "name": "rentNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "renter",
+      "description": "Allows a user to rent an NFT for a fixed duration."
+    },
+    {
+      "name": "returnNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "renter",
+      "description": "Allows the renter to return the NFT after the rental period."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTMinted",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "NFTRented",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "renter",
+          "type": "address"
+        },
+        {
+          "name": "rentalEndTime",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTReturned",
+      "parameters": [
+        {
+          "name": "nftId",
+          "type": "uint256"
+        },
+        {
+          "name": "renter",
+          "type": "address"
+        }
+      ]
+    }
+  ]
+}

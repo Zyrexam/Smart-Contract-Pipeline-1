@@ -1,0 +1,191 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 6,
+    "critical": 0,
+    "high": 0,
+    "medium": 5,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 25,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsContributed] could be Indexed",
+        "line": 9,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "reason-string",
+        "description": "Error message for require is too long: 35 counted / 32 allowed",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 6,
+    "critical": 0,
+    "high": 0,
+    "medium": 5,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 25,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsContributed] could be Indexed",
+        "line": 9,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "reason-string",
+        "description": "Error message for require is too long: 35 counted / 32 allowed",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": null,
+  "compiles": null
+}

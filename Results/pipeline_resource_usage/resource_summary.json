@@ -1,0 +1,58 @@
+{
+  "contracts": 10,
+  "avg_runtime_seconds": 43.2878,
+  "avg_cpu_time_seconds": 0.5125,
+  "avg_memory_peak_mb": 1.0289,
+  "avg_loc": 70.2,
+  "avg_function_count": 4.7,
+  "by_category": {
+    "Finance": {
+      "contracts": 3,
+      "avg_runtime_seconds": 65.498,
+      "avg_cpu_time_seconds": 0.6615,
+      "avg_memory_peak_mb": 0.4369,
+      "avg_loc": 66.33,
+      "avg_function_count": 3.67
+    },
+    "Governance": {
+      "contracts": 2,
+      "avg_runtime_seconds": 30.6527,
+      "avg_cpu_time_seconds": 0.2969,
+      "avg_memory_peak_mb": 0.3195,
+      "avg_loc": 86.5,
+      "avg_function_count": 9.0
+    },
+    "NFT": {
+      "contracts": 2,
+      "avg_runtime_seconds": 46.1773,
+      "avg_cpu_time_seconds": 0.875,
+      "avg_memory_peak_mb": 3.6754,
+      "avg_loc": 69.5,
+      "avg_function_count": 4.0
+    },
+    "Security": {
+      "contracts": 1,
+      "avg_runtime_seconds": 35.068,
+      "avg_cpu_time_seconds": 0.2656,
+      "avg_memory_peak_mb": 0.3244,
+      "avg_loc": 95.0,
+      "avg_function_count": 5.0
+    },
+    "Token": {
+      "contracts": 1,
+      "avg_runtime_seconds": 27.6571,
+      "avg_cpu_time_seconds": 0.25,
+      "avg_memory_peak_mb": 0.3464,
+      "avg_loc": 47.0,
+      "avg_function_count": 2.0
+    },
+    "Utility": {
+      "contracts": 1,
+      "avg_runtime_seconds": 19.9994,
+      "avg_cpu_time_seconds": 0.2812,
+      "avg_memory_peak_mb": 0.3175,
+      "avg_loc": 49.0,
+      "avg_function_count": 3.0
+    }
+  }
+}

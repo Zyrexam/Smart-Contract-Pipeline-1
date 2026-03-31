@@ -1,0 +1,45 @@
+{
+  "category": "Auction",
+  "base_standard": "Auction",
+  "extensions": [],
+  "access_control": "single_owner",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "highestBid": "Template state variable",
+      "highestBidder": "Template state variable",
+      "auctionEndTime": "Template state variable",
+      "ended": "Template state variable"
+    },
+    "functions": {
+      "bid": "Template function",
+      "withdraw": "Template function",
+      "endAuction": "Template function"
+    },
+    "events": {
+      "HighestBidIncreased": "Template event",
+      "AuctionEnded": "Template event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Auction\nClassification Confidence: 90%\nAccess Control: single_owner\nSecurity Features: Standard\nBased on: OpenZeppelin Auction\n\nReasoning: The contract is described as a decentralized auction with functions for bidding, withdrawing, and ending the auction, which aligns with the typical functionality of an auction system.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/Ownable.sol"
+  ],
+  "inheritance_chain": [
+    "Ownable"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "Auction",
+    "subtype": null,
+    "confidence": 0.9,
+    "reasoning": "The contract is described as a decentralized auction with functions for bidding, withdrawing, and ending the auction, which aligns with the typical functionality of an auction system.",
+    "is_template": true,
+    "recommended_approach": "template"
+  },
+  "fixes_applied": []
+}

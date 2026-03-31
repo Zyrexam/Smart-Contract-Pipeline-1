@@ -1,0 +1,488 @@
+{
+  "result_id": "result_05",
+  "title": "Pipeline vs GPT, Gemini, Grok, and Perplexity",
+  "source_file": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\llm_comparison\\llm_results.json",
+  "models": {
+    "codellama": {
+      "contracts": 2,
+      "avg_runtime_seconds": 61.82,
+      "contracts_per_minute": 0.97,
+      "avg_loc": 28.0,
+      "avg_function_count": 4.0,
+      "validation_pass_count": 2,
+      "severity_totals": {
+        "critical": 0,
+        "high": 0,
+        "medium": 16,
+        "low": 0,
+        "info": 5,
+        "total": 21
+      },
+      "tool_breakdown": {
+        "semgrep": {
+          "total": 1,
+          "severity_counts": {
+            "info": 1
+          }
+        },
+        "slither": {
+          "total": 5,
+          "severity_counts": {
+            "info": 4,
+            "medium": 1
+          }
+        },
+        "solhint": {
+          "total": 15,
+          "severity_counts": {
+            "medium": 15
+          }
+        }
+      }
+    },
+    "gemma": {
+      "contracts": 2,
+      "avg_runtime_seconds": 28.89,
+      "contracts_per_minute": 2.08,
+      "avg_loc": 30.0,
+      "avg_function_count": 2.0,
+      "validation_pass_count": 1,
+      "severity_totals": {
+        "critical": 0,
+        "high": 1,
+        "medium": 13,
+        "low": 2,
+        "info": 7,
+        "total": 23
+      },
+      "tool_breakdown": {
+        "semgrep": {
+          "total": 2,
+          "severity_counts": {
+            "info": 2
+          }
+        },
+        "slither": {
+          "total": 8,
+          "severity_counts": {
+            "high": 1,
+            "info": 5,
+            "low": 2
+          }
+        },
+        "solhint": {
+          "total": 13,
+          "severity_counts": {
+            "medium": 13
+          }
+        }
+      }
+    },
+    "gpt": {
+      "contracts": 2,
+      "avg_runtime_seconds": 36.25,
+      "contracts_per_minute": 1.66,
+      "avg_loc": 48.0,
+      "avg_function_count": 4.0,
+      "validation_pass_count": 2,
+      "severity_totals": {
+        "critical": 0,
+        "high": 0,
+        "medium": 32,
+        "low": 2,
+        "info": 11,
+        "total": 45
+      },
+      "tool_breakdown": {
+        "semgrep": {
+          "total": 3,
+          "severity_counts": {
+            "info": 3
+          }
+        },
+        "slither": {
+          "total": 10,
+          "severity_counts": {
+            "info": 8,
+            "low": 2
+          }
+        },
+        "solhint": {
+          "total": 32,
+          "severity_counts": {
+            "medium": 32
+          }
+        }
+      }
+    },
+    "grok": {
+      "contracts": 2,
+      "avg_runtime_seconds": 25.62,
+      "contracts_per_minute": 2.34,
+      "avg_loc": 52.5,
+      "avg_function_count": 2.5,
+      "validation_pass_count": 2,
+      "severity_totals": {
+        "critical": 0,
+        "high": 2,
+        "medium": 33,
+        "low": 1,
+        "info": 8,
+        "total": 44
+      },
+      "tool_breakdown": {
+        "semgrep": {
+          "total": 1,
+          "severity_counts": {
+            "info": 1
+          }
+        },
+        "slither": {
+          "total": 10,
+          "severity_counts": {
+            "high": 2,
+            "info": 7,
+            "low": 1
+          }
+        },
+        "solhint": {
+          "total": 33,
+          "severity_counts": {
+            "medium": 33
+          }
+        }
+      }
+    },
+    "llama2": {
+      "contracts": 2,
+      "avg_runtime_seconds": 55.07,
+      "contracts_per_minute": 1.09,
+      "avg_loc": 23.5,
+      "avg_function_count": 3.0,
+      "validation_pass_count": 2,
+      "severity_totals": {
+        "critical": 0,
+        "high": 0,
+        "medium": 6,
+        "low": 1,
+        "info": 4,
+        "total": 11
+      },
+      "tool_breakdown": {
+        "semgrep": {
+          "total": 1,
+          "severity_counts": {
+            "info": 1
+          }
+        },
+        "slither": {
+          "total": 4,
+          "severity_counts": {
+            "info": 3,
+            "low": 1
+          }
+        },
+        "solhint": {
+          "total": 6,
+          "severity_counts": {
+            "medium": 6
+          }
+        }
+      }
+    },
+    "mistral": {
+      "contracts": 2,
+      "avg_runtime_seconds": 61.43,
+      "contracts_per_minute": 0.98,
+      "avg_loc": 25.5,
+      "avg_function_count": 2.0,
+      "validation_pass_count": 2,
+      "severity_totals": {
+        "critical": 0,
+        "high": 0,
+        "medium": 27,
+        "low": 0,
+        "info": 5,
+        "total": 32
+      },
+      "tool_breakdown": {
+        "semgrep": {
+          "total": 3,
+          "severity_counts": {
+            "info": 3
+          }
+        },
+        "slither": {
+          "total": 3,
+          "severity_counts": {
+            "info": 2,
+            "medium": 1
+          }
+        },
+        "solhint": {
+          "total": 26,
+          "severity_counts": {
+            "medium": 26
+          }
+        }
+      }
+    },
+    "pipeline": {
+      "contracts": 2,
+      "avg_runtime_seconds": 53.7,
+      "contracts_per_minute": 1.12,
+      "avg_loc": 68.0,
+      "avg_function_count": 4.0,
+      "validation_pass_count": 2,
+      "severity_totals": {
+        "critical": 0,
+        "high": 3,
+        "medium": 10,
+        "low": 3,
+        "info": 11,
+        "total": 27
+      },
+      "tool_breakdown": {
+        "mythril": {
+          "total": 2,
+          "severity_counts": {
+            "high": 1,
+            "medium": 1
+          }
+        },
+        "semgrep": {
+          "total": 3,
+          "severity_counts": {
+            "info": 3
+          }
+        },
+        "slither": {
+          "total": 13,
+          "severity_counts": {
+            "high": 2,
+            "info": 8,
+            "low": 3
+          }
+        },
+        "solhint": {
+          "total": 9,
+          "severity_counts": {
+            "medium": 9
+          }
+        }
+      }
+    }
+  },
+  "per_contract": [
+    {
+      "id": "contract_04",
+      "task_name": "Crowdfunding",
+      "category": "Finance",
+      "results": {
+        "codellama": {
+          "status": "success",
+          "provider_model": "codellama:latest",
+          "runtime_seconds": 62.25,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 3,
+            "low": 0,
+            "info": 4,
+            "total": 7
+          }
+        },
+        "gemma": {
+          "status": "success",
+          "provider_model": "gemma:2b",
+          "runtime_seconds": 24.55,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 5,
+            "low": 0,
+            "info": 1,
+            "total": 6
+          }
+        },
+        "gpt": {
+          "status": "success",
+          "provider_model": "gpt-4o",
+          "runtime_seconds": 42.42,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 21,
+            "low": 0,
+            "info": 4,
+            "total": 25
+          }
+        },
+        "grok": {
+          "status": "success",
+          "provider_model": "llama-3.1-8b-instant",
+          "runtime_seconds": 13.94,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 9,
+            "low": 0,
+            "info": 5,
+            "total": 14
+          }
+        },
+        "llama2": {
+          "status": "success",
+          "provider_model": "llama2:latest",
+          "runtime_seconds": 53.83,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 1,
+            "total": 1
+          }
+        },
+        "mistral": {
+          "status": "success",
+          "provider_model": "mistral:latest",
+          "runtime_seconds": 75.85,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 5,
+            "low": 0,
+            "info": 2,
+            "total": 7
+          }
+        },
+        "pipeline": {
+          "status": "success",
+          "provider_model": "pipeline",
+          "runtime_seconds": 40.99,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 5,
+            "low": 1,
+            "info": 4,
+            "total": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "contract_05",
+      "task_name": "Escrow Contract",
+      "category": "Finance",
+      "results": {
+        "codellama": {
+          "status": "success",
+          "provider_model": "codellama:latest",
+          "runtime_seconds": 61.4,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 13,
+            "low": 0,
+            "info": 1,
+            "total": 14
+          }
+        },
+        "gemma": {
+          "status": "success",
+          "provider_model": "gemma:2b",
+          "runtime_seconds": 33.24,
+          "validation_success": false,
+          "severity": {
+            "critical": 0,
+            "high": 1,
+            "medium": 8,
+            "low": 2,
+            "info": 6,
+            "total": 17
+          }
+        },
+        "gpt": {
+          "status": "success",
+          "provider_model": "gpt-4o",
+          "runtime_seconds": 30.08,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 11,
+            "low": 2,
+            "info": 7,
+            "total": 20
+          }
+        },
+        "grok": {
+          "status": "success",
+          "provider_model": "llama-3.1-8b-instant",
+          "runtime_seconds": 37.31,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 2,
+            "medium": 24,
+            "low": 1,
+            "info": 3,
+            "total": 30
+          }
+        },
+        "llama2": {
+          "status": "success",
+          "provider_model": "llama2:latest",
+          "runtime_seconds": 56.32,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 6,
+            "low": 1,
+            "info": 3,
+            "total": 10
+          }
+        },
+        "mistral": {
+          "status": "success",
+          "provider_model": "mistral:latest",
+          "runtime_seconds": 47.01,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 22,
+            "low": 0,
+            "info": 3,
+            "total": 25
+          }
+        },
+        "pipeline": {
+          "status": "success",
+          "provider_model": "pipeline",
+          "runtime_seconds": 66.42,
+          "validation_success": true,
+          "severity": {
+            "critical": 0,
+            "high": 3,
+            "medium": 5,
+            "low": 2,
+            "info": 7,
+            "total": 17
+          }
+        }
+      }
+    }
+  ]
+}

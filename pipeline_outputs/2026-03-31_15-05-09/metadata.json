@@ -1,0 +1,48 @@
+{
+  "category": "MultiSig",
+  "base_standard": "MultiSig",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "owners": "Template state variable",
+      "requiredApprovals": "Template state variable",
+      "transactions": "Template state variable"
+    },
+    "functions": {
+      "submitTransaction": "Template function",
+      "approveTransaction": "Template function",
+      "revokeApproval": "Template function",
+      "executeTransaction": "Template function",
+      "getTransactionDetails": "Template function"
+    },
+    "events": {
+      "TransactionSubmitted": "Template event",
+      "TransactionApproved": "Template event",
+      "TransactionExecuted": "Template event",
+      "ApprovalRevoked": "Template event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: MultiSig\nClassification Confidence: 95%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin MultiSig\n\nReasoning: The contract is described as a multi-signature wallet, which matches the MultiSig template type. It involves multiple owners approving transactions, a core feature of MultiSig wallets.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "MultiSig",
+    "subtype": null,
+    "confidence": 0.95,
+    "reasoning": "The contract is described as a multi-signature wallet, which matches the MultiSig template type. It involves multiple owners approving transactions, a core feature of MultiSig wallets.",
+    "is_template": true,
+    "recommended_approach": "template"
+  },
+  "fixes_applied": []
+}

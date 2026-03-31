@@ -1,0 +1,81 @@
+{
+  "contract_name": "Crowdfunding",
+  "contract_type": "Crowdfunding",
+  "description": "A crowdfunding smart contract where users can contribute funds until a funding goal is reached.",
+  "state_variables": [
+    {
+      "name": "fundingGoal",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "totalFunds",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "isGoalReached",
+      "type": "bool",
+      "visibility": "public",
+      "initial_value": "false"
+    }
+  ],
+  "roles": [
+    {
+      "name": "user",
+      "permissions": [
+        "contribute"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "contribute",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows users to contribute funds to the crowdfunding campaign."
+    },
+    {
+      "name": "checkGoalReached",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "goalReached",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Checks if the funding goal has been reached."
+    }
+  ],
+  "events": [
+    {
+      "name": "ContributionReceived",
+      "parameters": [
+        {
+          "name": "contributor",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "GoalReached",
+      "parameters": []
+    }
+  ],
+  "modifiers": []
+}

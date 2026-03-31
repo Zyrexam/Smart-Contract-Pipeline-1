@@ -1,0 +1,95 @@
+{
+  "contract_name": "DecentralizedVoting",
+  "contract_type": "Voting",
+  "description": "A smart contract for decentralized voting where users can vote for proposals.",
+  "state_variables": [
+    {
+      "name": "proposals",
+      "type": "Proposal[]",
+      "visibility": "public",
+      "initial_value": "[]"
+    },
+    {
+      "name": "voters",
+      "type": "mapping(address => bool)",
+      "visibility": "private",
+      "initial_value": "{}"
+    },
+    {
+      "name": "votes",
+      "type": "mapping(uint256 => uint256)",
+      "visibility": "public",
+      "initial_value": "{}"
+    }
+  ],
+  "roles": [
+    {
+      "name": "user",
+      "permissions": [
+        "vote"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "vote",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to vote for a proposal identified by proposalId."
+    },
+    {
+      "name": "addProposal",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Adds a new proposal to the list of proposals."
+    }
+  ],
+  "events": [
+    {
+      "name": "VoteCast",
+      "parameters": [
+        {
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "ProposalAdded",
+      "parameters": [
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

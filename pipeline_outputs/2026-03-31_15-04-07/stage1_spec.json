@@ -1,0 +1,125 @@
+{
+  "contract_name": "Escrow",
+  "contract_type": "smart contract",
+  "description": "An escrow smart contract that holds funds until both parties approve the transaction.",
+  "name": "",
+  "symbol": "",
+  "roles": [
+    {
+      "name": "partyA",
+      "permissions": [
+        "approveTransaction"
+      ]
+    },
+    {
+      "name": "partyB",
+      "permissions": [
+        "approveTransaction"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "funds",
+      "type": "uint256",
+      "visibility": "private"
+    },
+    {
+      "name": "partyAApproved",
+      "type": "bool",
+      "visibility": "private"
+    },
+    {
+      "name": "partyBApproved",
+      "type": "bool",
+      "visibility": "private"
+    },
+    {
+      "name": "partyA",
+      "type": "address",
+      "visibility": "private"
+    },
+    {
+      "name": "partyB",
+      "type": "address",
+      "visibility": "private"
+    }
+  ],
+  "functions": [
+    {
+      "name": "depositFunds",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows a party to deposit funds into the escrow."
+    },
+    {
+      "name": "approveTransaction",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "partyA, partyB",
+      "description": "Allows a party to approve the transaction."
+    },
+    {
+      "name": "releaseFunds",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Releases funds to the designated party if both parties have approved."
+    },
+    {
+      "name": "withdrawFunds",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows a party to withdraw funds if the transaction is not approved."
+    }
+  ],
+  "events": [
+    {
+      "name": "FundsDeposited",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "TransactionApproved",
+      "parameters": [
+        {
+          "name": "party",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "FundsReleased",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "FundsWithdrawn",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

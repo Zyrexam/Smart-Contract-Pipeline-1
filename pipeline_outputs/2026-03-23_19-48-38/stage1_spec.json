@@ -1,0 +1,98 @@
+{
+  "contract_name": "DAOGovernance",
+  "contract_type": "Governance",
+  "description": "A DAO governance contract where token holders can propose and vote on decisions.",
+  "state_variables": [
+    {
+      "name": "proposals",
+      "type": "Proposal[]",
+      "visibility": "private",
+      "initial_value": "[]"
+    },
+    {
+      "name": "tokenHolders",
+      "type": "mapping(address => uint256)",
+      "visibility": "private",
+      "initial_value": "{}"
+    }
+  ],
+  "roles": [
+    {
+      "name": "tokenHolder",
+      "permissions": [
+        "propose",
+        "vote"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "propose",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalDescription",
+          "type": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "tokenHolder",
+      "description": "Allows a token holder to propose a new decision."
+    },
+    {
+      "name": "vote",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        },
+        {
+          "name": "support",
+          "type": "bool"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "tokenHolder",
+      "description": "Allows a token holder to vote on a proposal."
+    }
+  ],
+  "events": [
+    {
+      "name": "ProposalCreated",
+      "parameters": [
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "VoteCast",
+      "parameters": [
+        {
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "name": "proposalId",
+          "type": "uint256"
+        },
+        {
+          "name": "support",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

@@ -1,0 +1,121 @@
+{
+  "contract_name": "RentalNFT",
+  "contract_type": "NFT",
+  "description": "A rental NFT system where users can rent NFTs for a fixed duration.",
+  "name": "",
+  "symbol": "NFT",
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "mint",
+        "setRentalTerms"
+      ]
+    },
+    {
+      "name": "renter",
+      "permissions": [
+        "rentNFT"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "nftOwner",
+      "type": "address",
+      "visibility": "public"
+    },
+    {
+      "name": "rentalPrice",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "rentalDuration",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "rentalEndTime",
+      "type": "uint256",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Mint a new NFT to the specified address."
+    },
+    {
+      "name": "setRentalTerms",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Set the rental price and duration for the NFT."
+    },
+    {
+      "name": "rentNFT",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "renter",
+      "description": "Rent the NFT for the specified duration."
+    },
+    {
+      "name": "returnNFT",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "renter",
+      "description": "Return the rented NFT after the rental period."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTMinted",
+      "parameters": [
+        {
+          "name": "to",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "NFTLeased",
+      "parameters": [
+        {
+          "name": "renter",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "NFTReturned",
+      "parameters": [
+        {
+          "name": "renter",
+          "type": "address"
+        }
+      ]
+    }
+  ]
+}

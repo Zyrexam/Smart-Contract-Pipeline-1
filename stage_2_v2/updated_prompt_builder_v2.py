@@ -299,6 +299,25 @@ REQUIREMENTS:
 
         # Build user prompt
         contract_name = json_spec.get('contract_name', 'Contract')
+        asset_name = json_spec.get('name', '')
+        asset_symbol = json_spec.get('symbol', '')
+        functions = json_spec.get('functions', [])
+        custom_function_names = [
+            f.get('name', '')
+            for f in functions
+            if f.get('name', '') not in {
+                'transfer', 'transferFrom', 'approve', 'balanceOf', 'allowance',
+                'ownerOf', 'safeTransferFrom'
+            }
+        ]
+        inherited_function_names = [
+            f.get('name', '')
+            for f in functions
+            if f.get('name', '') in {
+                'transfer', 'transferFrom', 'approve', 'balanceOf', 'allowance',
+                'ownerOf', 'safeTransferFrom'
+            }
+        ]
         
         user_prompt = f"""Generate a complete, compilable Solidity {profile.category} contract.
 
@@ -309,6 +328,10 @@ IMPLEMENTATION MAPPING:
 {json.dumps(coverage.to_dict(), indent=2)}
 
 CONTRACT NAME: {contract_name}
+ASSET NAME: {asset_name or 'use a sensible default'}
+ASSET SYMBOL: {asset_symbol or 'use a sensible default'}
+CUSTOM FUNCTIONS TO IMPLEMENT: {', '.join(custom_function_names) if custom_function_names else 'none'}
+STANDARD INHERITED FUNCTIONS TO KEEP INHERITED: {', '.join(inherited_function_names) if inherited_function_names else 'none'}
 
 CRITICAL REQUIREMENTS:
 1. Inherit from appropriate OpenZeppelin contracts
@@ -317,6 +340,9 @@ CRITICAL REQUIREMENTS:
 4. Add proper access control
 5. Use custom errors exclusively
 6. Emit events for state changes
+7. If the contract inherits Ownable, the constructor MUST include Ownable(msg.sender)
+8. For ERC20 and ERC721, do NOT reimplement standard inherited functions unless custom transfer logic is explicitly required
+9. If a standard function is inherited from OpenZeppelin, leave it inherited
 
 OUTPUT: Complete Solidity source code only, no markdown.
 """

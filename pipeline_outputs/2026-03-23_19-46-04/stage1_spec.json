@@ -1,0 +1,113 @@
+{
+  "contract_name": "Escrow",
+  "contract_type": "escrow",
+  "description": "An escrow smart contract that holds funds until both parties approve the transaction.",
+  "state_variables": [
+    {
+      "name": "buyer",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": null
+    },
+    {
+      "name": "seller",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": null
+    },
+    {
+      "name": "amount",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": 0
+    },
+    {
+      "name": "buyerApproved",
+      "type": "bool",
+      "visibility": "private",
+      "initial_value": false
+    },
+    {
+      "name": "sellerApproved",
+      "type": "bool",
+      "visibility": "private",
+      "initial_value": false
+    }
+  ],
+  "roles": [
+    {
+      "name": "buyer",
+      "permissions": [
+        "approveTransaction",
+        "depositFunds"
+      ]
+    },
+    {
+      "name": "seller",
+      "permissions": [
+        "approveTransaction"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "depositFunds",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "buyer",
+      "description": "Allows the buyer to deposit funds into the escrow."
+    },
+    {
+      "name": "approveTransaction",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "buyer or seller",
+      "description": "Allows either party to approve the transaction. Funds are released when both parties approve."
+    },
+    {
+      "name": "releaseFunds",
+      "visibility": "private",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Automatically releases funds to the seller when both parties have approved the transaction."
+    }
+  ],
+  "events": [
+    {
+      "name": "FundsDeposited",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "TransactionApproved",
+      "parameters": [
+        {
+          "name": "approver",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "name": "FundsReleased",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": []
+}

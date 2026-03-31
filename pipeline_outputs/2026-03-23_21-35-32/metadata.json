@@ -1,0 +1,52 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [
+    "ReentrancyGuard"
+  ],
+  "coverage": {
+    "state_variables": {
+      "proposals": "Election state - Design appropriate type",
+      "voters": "Election state - Design appropriate type",
+      "_REQUIREMENT_hasVoted": "MUST create: mapping(address => bool) public hasVoted - SEPARATE mapping for tracking if voter voted",
+      "_REQUIREMENT_candidateVotes": "MUST create: mapping(address => uint256) public candidateVotes - SEPARATE mapping for vote counts per candidate"
+    },
+    "functions": {
+      "createProposal": "Election function - Implement with proper data structures",
+      "vote": "Vote casting - MUST: 1) Check auto-tabulate at START, 2) Check hasVoted[msg.sender], 3) Set hasVoted[msg.sender]=true, 4) Increment candidateVotes[candidate] - Use SEPARATE mappings",
+      "endVoting": "Election function - Implement with proper data structures",
+      "getProposalResults": "Result calculation - MUST be internal _autoTabulate() called automatically, NOT external manual function",
+      "_REQUIREMENT_autoTabulate": "MUST create internal _autoTabulate() function, check at START of vote() function, NOT as external manual function"
+    },
+    "events": {
+      "ProposalCreated": "Election event for transparency",
+      "VoteCast": "Election event for transparency",
+      "VotingEnded": "Election event for transparency"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\nSubtype: election\n\nReasoning: The contract involves voting on proposals, which aligns with an election system rather than full DAO governance. It lacks elements like voting power, quorum, and execution typical of a Governor contract.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol",
+    "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl",
+    "ReentrancyGuard"
+  ],
+  "is_template": false,
+  "subtype": "election",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "election",
+    "confidence": 0.9,
+    "reasoning": "The contract involves voting on proposals, which aligns with an election system rather than full DAO governance. It lacks elements like voting power, quorum, and execution typical of a Governor contract.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

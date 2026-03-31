@@ -1,0 +1,120 @@
+{
+  "contract_name": "DAOGovernance",
+  "contract_type": "governance",
+  "description": "A DAO governance contract where token holders can propose and vote on decisions.",
+  "name": "DAOGovernance",
+  "symbol": "TKN",
+  "roles": [
+    {
+      "name": "tokenHolder",
+      "permissions": [
+        "propose",
+        "vote"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "proposals",
+      "type": "Proposal[]",
+      "visibility": "public"
+    },
+    {
+      "name": "votes",
+      "type": "mapping(uint => uint)",
+      "visibility": "public"
+    },
+    {
+      "name": "token",
+      "type": "address",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "propose",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ],
+      "restricted_to": "tokenHolder",
+      "description": "Allows a token holder to propose a new decision."
+    },
+    {
+      "name": "vote",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        },
+        {
+          "name": "support",
+          "type": "bool"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "tokenHolder",
+      "description": "Allows a token holder to vote on a proposal."
+    },
+    {
+      "name": "getProposal",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "proposal",
+          "type": "Proposal"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Retrieves details of a specific proposal."
+    }
+  ],
+  "events": [
+    {
+      "name": "ProposalCreated",
+      "parameters": [
+        {
+          "name": "proposalId",
+          "type": "uint"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "VoteCast",
+      "parameters": [
+        {
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "name": "proposalId",
+          "type": "uint"
+        },
+        {
+          "name": "support",
+          "type": "bool"
+        }
+      ]
+    }
+  ]
+}

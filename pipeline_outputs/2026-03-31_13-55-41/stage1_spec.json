@@ -1,0 +1,106 @@
+{
+  "contract_name": "Crowdfunding",
+  "contract_type": "fundraising",
+  "description": "A crowdfunding smart contract where users can contribute funds until a funding goal is reached.",
+  "name": "",
+  "symbol": "",
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "setGoal",
+        "withdrawFunds"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "fundingGoal",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "totalFunds",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "isGoalReached",
+      "type": "bool",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "contribute",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to contribute funds to the campaign."
+    },
+    {
+      "name": "setGoal",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "goal",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Sets the funding goal for the campaign."
+    },
+    {
+      "name": "withdrawFunds",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to withdraw funds if the goal is reached."
+    },
+    {
+      "name": "checkGoalReached",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "goalReached",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Checks if the funding goal has been reached."
+    }
+  ],
+  "events": [
+    {
+      "name": "ContributionReceived",
+      "parameters": [
+        {
+          "name": "contributor",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "GoalReached",
+      "parameters": [
+        {
+          "name": "totalFunds",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

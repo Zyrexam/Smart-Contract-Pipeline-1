@@ -8,18 +8,20 @@ Applies fixes intelligently based on contract profile:
 """
 
 import os
-import sys
+import re
 from typing import Tuple, List
 from dotenv import load_dotenv
 from openai import OpenAI
 
-# Import from stage_2 (parent module)
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from stage_2.repair import strip_markdown_fences, ensure_headers, repair_with_model_if_needed
-from stage_2.constructor_resolver import ConstructorResolver
-from stage_2.validator import validate_generated_code
-from stage_2.semantic_validator import validate_semantics
-from stage_2.logic_repair import repair_semantic_issues
+from .helpers_v2 import (
+    ConstructorResolver,
+    ensure_headers,
+    repair_semantic_issues,
+    repair_with_model_if_needed,
+    strip_markdown_fences,
+    validate_generated_code,
+    validate_semantics,
+)
 from .llm_utils import call_chat_completion, estimate_tokens, truncate_spec_for_prompt
 
 load_dotenv()
@@ -31,6 +33,71 @@ _client = OpenAI(api_key=_API_KEY)
 
 # Token limits (conservative estimate)
 MAX_PROMPT_TOKENS = 120000  # ~480k chars, leaving room for response
+
+
+def _build_generation_spec(json_spec: dict, profile: 'ContractProfile') -> dict:
+    generation_spec = dict(json_spec)
+
+    contract_name = generation_spec.get("contract_name", "Contract")
+    asset_name = generation_spec.get("name") or contract_name
+    asset_symbol = generation_spec.get("symbol")
+
+    if not asset_symbol:
+        if profile.category == "ERC20":
+            asset_symbol = "TKN"
+        elif profile.category == "ERC721":
+            asset_symbol = "NFT"
+        else:
+            asset_symbol = ""
+
+    generation_spec.setdefault("name", asset_name)
+    generation_spec.setdefault("symbol", asset_symbol)
+
+    if profile.category == "ERC20":
+        generation_spec.setdefault("token_name", asset_name)
+        generation_spec.setdefault("token_symbol", asset_symbol)
+    elif profile.category == "ERC721":
+        generation_spec.setdefault("nft_name", asset_name)
+        generation_spec.setdefault("nft_symbol", asset_symbol)
+
+    return generation_spec
+
+
+def _apply_basic_template_fixes(solidity_code: str, generation_spec: dict, profile: 'ContractProfile', debug: bool = False) -> str:
+    if not profile.is_template:
+        return solidity_code
+
+    resolver = ConstructorResolver(debug=debug)
+    solidity_code = resolver.process(solidity_code, generation_spec)
+    solidity_code = _cleanup_template_code(solidity_code, profile)
+    return solidity_code
+
+
+def _remove_function_override(code: str, function_name: str) -> str:
+    pattern = re.compile(
+        rf"\n\s*function\s+{function_name}\s*\([^{{]*\{{(?:[^{{}}]*|\{{[^{{}}]*\}})*\s*\n\s*\}}",
+        flags=re.DOTALL,
+    )
+    return pattern.sub("\n", code)
+
+
+def _cleanup_template_code(solidity_code: str, profile: 'ContractProfile') -> str:
+    code = solidity_code
+
+    # Rewrite old OZ v5 import paths when they appear.
+    code = code.replace("@openzeppelin/contracts/security/ReentrancyGuard.sol", "@openzeppelin/contracts/utils/ReentrancyGuard.sol")
+    code = code.replace("@openzeppelin/contracts/security/Pausable.sol", "@openzeppelin/contracts/utils/Pausable.sol")
+
+    if profile.category == "ERC20":
+        for function_name in ["transfer", "approve", "transferFrom", "balanceOf", "allowance"]:
+            code = _remove_function_override(code, function_name)
+    elif profile.category == "ERC721":
+        for function_name in ["ownerOf", "balanceOf", "transferFrom", "safeTransferFrom"]:
+            code = _remove_function_override(code, function_name)
+
+    # Normalize excessive blank lines left after cleanup.
+    code = re.sub(r"\n{3,}", "\n\n", code)
+    return code
 
 
 def generate_solidity_code(
@@ -70,6 +137,8 @@ def generate_solidity_code(
         print(f"Is Template: {profile.is_template}")
         print(f"Will apply fixes: {profile.is_template}")
     
+    generation_spec = _build_generation_spec(json_spec, profile)
+
     # Check prompt size and truncate if needed
     total_prompt = system_prompt + user_prompt
     estimated_tokens = estimate_tokens(total_prompt)
@@ -114,6 +183,7 @@ def generate_solidity_code(
     # Clean up markdown fences and ensure headers
     solidity_code = strip_markdown_fences(solidity_code)
     solidity_code = ensure_headers(solidity_code)
+    solidity_code = _apply_basic_template_fixes(solidity_code, generation_spec, profile, debug=debug)
     
     # Initialize fixes tracking
     fixes_applied = []
@@ -127,7 +197,7 @@ def generate_solidity_code(
         
         # Validate both syntax and semantics (but don't apply constructor fixes)
         syntax_result = validate_generated_code(solidity_code, debug=debug)
-        semantic_result = validate_semantics(solidity_code, json_spec, debug=debug)
+        semantic_result = validate_semantics(solidity_code, generation_spec, debug=debug)
         
         if debug:
             syntax_status = "✅ VALID" if syntax_result['is_valid'] else "⚠️  HAS ISSUES"
@@ -155,12 +225,12 @@ def generate_solidity_code(
                 _client,
                 solidity_code,
                 semantic_result['errors'],
-                json_spec,
+                generation_spec,
                 debug=debug
             )
             
             # Re-validate after repair
-            semantic_result_after = validate_semantics(solidity_code, json_spec, debug=debug)
+            semantic_result_after = validate_semantics(solidity_code, generation_spec, debug=debug)
             
             if code_before != solidity_code:
                 fixes_applied.append({
@@ -189,7 +259,7 @@ def generate_solidity_code(
         
         # Validate both syntax and semantics
         syntax_result = validate_generated_code(solidity_code, debug=debug)
-        semantic_result = validate_semantics(solidity_code, json_spec, debug=debug)
+        semantic_result = validate_semantics(solidity_code, generation_spec, debug=debug)
         
         if debug:
             print(f"[{attempt + 2}] Syntax: {syntax_result['error_count']} errors")
@@ -227,7 +297,7 @@ def generate_solidity_code(
                 _client,
                 solidity_code,
                 semantic_result['errors'],
-                json_spec,
+                generation_spec,
                 debug=debug
             )
             
@@ -240,7 +310,7 @@ def generate_solidity_code(
                 })
             
             # Re-validate after semantic repair
-            semantic_result = validate_semantics(solidity_code, json_spec, debug=debug)
+            semantic_result = validate_semantics(solidity_code, generation_spec, debug=debug)
             if semantic_result['is_valid']:
                 if debug:
                     print(f"[{attempt + 2}] ✅ Semantic issues resolved!")
@@ -252,7 +322,7 @@ def generate_solidity_code(
             
             code_before = solidity_code
             resolver = ConstructorResolver(debug=debug)
-            solidity_code = resolver.process(solidity_code, json_spec)
+            solidity_code = resolver.process(solidity_code, generation_spec)
             
             # Track fix
             if code_before != solidity_code:
@@ -289,7 +359,7 @@ def generate_solidity_code(
     
     # Final validation report
     final_syntax = validate_generated_code(solidity_code, debug=debug)
-    final_semantic = validate_semantics(solidity_code, json_spec, debug=debug)
+    final_semantic = validate_semantics(solidity_code, generation_spec, debug=debug)
     
     if debug:
         print("\n" + "="*80)

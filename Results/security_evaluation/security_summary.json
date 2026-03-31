@@ -1,0 +1,152 @@
+{
+  "total_runs_with_reports": 81,
+  "successful_analyses": 77,
+  "contracts_with_findings": 76,
+  "contracts_with_findings_percentage": 98.7,
+  "contracts_improved_after_fix": 10,
+  "avg_initial_issues_per_contract": 9.32,
+  "avg_total_issues_per_contract": 8.44,
+  "avg_final_issues_per_contract": 8.44,
+  "total_issues_resolved": 68,
+  "fix_rate_percentage": 9.47,
+  "severity_totals": {
+    "critical": 0,
+    "high": 16,
+    "medium": 459,
+    "low": 57,
+    "info": 118,
+    "total": 650
+  },
+  "top_tools_by_issue_count": [
+    {
+      "tool": "solhint",
+      "count": 452
+    },
+    {
+      "tool": "slither",
+      "count": 126
+    },
+    {
+      "tool": "semgrep",
+      "count": 37
+    },
+    {
+      "tool": "mythril",
+      "count": 35
+    }
+  ],
+  "top_issue_titles": [
+    {
+      "title": "gas-indexed-events",
+      "count": 136
+    },
+    {
+      "title": "no-global-import",
+      "count": 126
+    },
+    {
+      "title": "explicit-types",
+      "count": 63
+    },
+    {
+      "title": "gas-strict-inequalities",
+      "count": 50
+    },
+    {
+      "title": "immutable-states",
+      "count": 28
+    },
+    {
+      "title": "gas-custom-errors",
+      "count": 24
+    },
+    {
+      "title": "dependence on predictable environment variable (swc 116)",
+      "count": 24
+    },
+    {
+      "title": "solc-version",
+      "count": 18
+    },
+    {
+      "title": "gas-increment-by-one",
+      "count": 14
+    },
+    {
+      "title": "unchecked-transfer",
+      "count": 12
+    }
+  ],
+  "category_summary": [
+    {
+      "category": "Auction",
+      "contracts": 2,
+      "avg_total_issues": 14.0,
+      "avg_high": 0.0,
+      "avg_medium": 12.0
+    },
+    {
+      "category": "Custom",
+      "contracts": 34,
+      "avg_total_issues": 8.62,
+      "avg_high": 0.47,
+      "avg_medium": 3.79
+    },
+    {
+      "category": "ERC20",
+      "contracts": 10,
+      "avg_total_issues": 5.9,
+      "avg_high": 0.0,
+      "avg_medium": 5.9
+    },
+    {
+      "category": "ERC721",
+      "contracts": 1,
+      "avg_total_issues": 4.0,
+      "avg_high": 0.0,
+      "avg_medium": 4.0
+    },
+    {
+      "category": "Governor",
+      "contracts": 8,
+      "avg_total_issues": 15.38,
+      "avg_high": 0.0,
+      "avg_medium": 15.38
+    },
+    {
+      "category": "Marketplace",
+      "contracts": 3,
+      "avg_total_issues": 7.33,
+      "avg_high": 0.0,
+      "avg_medium": 6.0
+    },
+    {
+      "category": "MultiSig",
+      "contracts": 3,
+      "avg_total_issues": 25.33,
+      "avg_high": 0.0,
+      "avg_medium": 24.33
+    },
+    {
+      "category": "Staking",
+      "contracts": 2,
+      "avg_total_issues": 9.0,
+      "avg_high": 0.0,
+      "avg_medium": 9.0
+    },
+    {
+      "category": "Timelock",
+      "contracts": 2,
+      "avg_total_issues": 5.5,
+      "avg_high": 0.0,
+      "avg_medium": 5.5
+    },
+    {
+      "category": "Vulnerable",
+      "contracts": 12,
+      "avg_total_issues": 1.33,
+      "avg_high": 0.0,
+      "avg_medium": 0.0
+    }
+  ]
+}

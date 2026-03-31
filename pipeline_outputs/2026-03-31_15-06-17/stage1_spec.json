@@ -1,0 +1,116 @@
+{
+  "contract_name": "NFTMarketplace",
+  "contract_type": "marketplace",
+  "description": "A marketplace for listing, buying, and selling NFTs.",
+  "name": "",
+  "symbol": "NFT",
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "manageMarketplace"
+      ]
+    },
+    {
+      "name": "user",
+      "permissions": [
+        "listNFT",
+        "buyNFT",
+        "sellNFT"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "nfts",
+      "type": "mapping(uint256 => address)",
+      "visibility": "private"
+    },
+    {
+      "name": "listings",
+      "type": "mapping(uint256 => uint256)",
+      "visibility": "private"
+    }
+  ],
+  "functions": [
+    {
+      "name": "listNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to list an NFT for sale."
+    },
+    {
+      "name": "buyNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to buy a listed NFT."
+    },
+    {
+      "name": "sellNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to sell their NFT."
+    },
+    {
+      "name": "withdrawFunds",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to withdraw funds from the marketplace."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTListed",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTSold",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "buyer",
+          "type": "address"
+        }
+      ]
+    }
+  ]
+}

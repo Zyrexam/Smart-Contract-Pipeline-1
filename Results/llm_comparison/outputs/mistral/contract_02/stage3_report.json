@@ -1,0 +1,195 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "ERC20Token",
+    "tools_used": [
+      "slither",
+      "mythril-failed",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 6,
+    "critical": 0,
+    "high": 0,
+    "medium": 6,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/ERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/Ownable.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 17,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 17,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": [
+      "mythril: parsing issues - ['error parsing JSON output - no valid JSON found | Debug: stdout length: 239; stdout first 500: {\"success\": false, \"error\": \"Solc experienced a fatal error.\\n\\nParserError: Expected identifier but got \\'{\\'\\n  --> /sb/contract.sol:32:34:\\n   |\\n32 |     function (_) override public {\\n   |                                  ^\\n\\n\", \"issues\": []}; stdout_lines count: 9; first line (first 200): {\"success\": false, \"error\": \"Solc experienced a fatal error.; last line (first 200): \", \"issues\": []}']"
+    ]
+  },
+  "final_analysis": {
+    "contract_name": "ERC20Token",
+    "tools_used": [
+      "slither",
+      "mythril-failed",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 6,
+    "critical": 0,
+    "high": 0,
+    "medium": 6,
+    "low": 0,
+    "info": 0,
+    "issues": [
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/ERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/Ownable.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 17,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 17,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": [
+      "mythril: parsing issues - ['error parsing JSON output - no valid JSON found | Debug: stdout length: 239; stdout first 500: {\"success\": false, \"error\": \"Solc experienced a fatal error.\\n\\nParserError: Expected identifier but got \\'{\\'\\n  --> /sb/contract.sol:32:34:\\n   |\\n32 |     function (_) override public {\\n   |                                  ^\\n\\n\", \"issues\": []}; stdout_lines count: 9; first line (first 200): {\"success\": false, \"error\": \"Solc experienced a fatal error.; last line (first 200): \", \"issues\": []}']"
+    ]
+  },
+  "fixes_applied": [],
+  "stage2_metadata": null,
+  "compiles": null
+}

@@ -1,0 +1,142 @@
+{
+  "contract_name": "NFTMarketplace",
+  "contract_type": "marketplace",
+  "description": "A smart contract for an NFT marketplace where users can list, buy, and sell NFTs.",
+  "name": "",
+  "symbol": "NFT",
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "manageMarketplace"
+      ]
+    },
+    {
+      "name": "user",
+      "permissions": [
+        "listNFT",
+        "buyNFT",
+        "sellNFT"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "nfts",
+      "type": "mapping(uint256 => address)",
+      "visibility": "private"
+    },
+    {
+      "name": "listings",
+      "type": "mapping(uint256 => uint256)",
+      "visibility": "private"
+    },
+    {
+      "name": "balances",
+      "type": "mapping(address => uint256)",
+      "visibility": "private"
+    }
+  ],
+  "functions": [
+    {
+      "name": "listNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to list an NFT for sale at a specified price."
+    },
+    {
+      "name": "buyNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to buy a listed NFT."
+    },
+    {
+      "name": "withdrawFunds",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to withdraw their balance from the marketplace."
+    },
+    {
+      "name": "cancelListing",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "user",
+      "description": "Allows a user to cancel their NFT listing."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTListed",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTSold",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "ListingCancelled",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "seller",
+          "type": "address"
+        }
+      ]
+    }
+  ]
+}

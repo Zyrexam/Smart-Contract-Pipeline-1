@@ -1,0 +1,429 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "MultiSigWallet",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 14,
+    "critical": 0,
+    "high": 0,
+    "medium": 13,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "reentrancy-pattern",
+        "description": "reentrancy-pattern detected",
+        "line": 105,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Use ReentrancyGuard and checks-effects-interactions pattern"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/AccessControl.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-struct-packing",
+        "description": "GC: For [ Transaction ] struct, packing seems inefficient. Try rearranging to achieve 32bytes slots",
+        "line": 12,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [value] on Event [TransactionSubmitted] could be Indexed",
+        "line": 26,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 37,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "reason-string",
+        "description": "Error message for require is too long: 36 counted / 32 allowed",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 40,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ transactionCount ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 72,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ transactions ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 91,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 106,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "MultiSigWallet",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 14,
+    "critical": 0,
+    "high": 0,
+    "medium": 13,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "reentrancy-pattern",
+        "description": "reentrancy-pattern detected",
+        "line": 105,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Use ReentrancyGuard and checks-effects-interactions pattern"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/access/AccessControl.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 4,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "no-global-import",
+        "description": "global import of path @openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol is not allowed. Specify names to import individually or bind all exports of the module into a name (import \"path\" as Name)",
+        "line": 5,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-struct-packing",
+        "description": "GC: For [ Transaction ] struct, packing seems inefficient. Try rearranging to achieve 32bytes slots",
+        "line": 12,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [value] on Event [TransactionSubmitted] could be Indexed",
+        "line": 26,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 37,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "reason-string",
+        "description": "Error message for require is too long: 36 counted / 32 allowed",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-small-strings",
+        "description": "GC: String exceeds 32 bytes",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 38,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ i ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 40,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ transactionCount ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 72,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ transactions ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 91,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 106,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "MultiSig",
+    "base_standard": "MultiSig",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "owners": "Template state variable",
+        "requiredApprovals": "Template state variable",
+        "transactions": "Template state variable",
+        "transactionCount": "Template state variable"
+      },
+      "functions": {
+        "submitTransaction": "Template function",
+        "approveTransaction": "Template function",
+        "executeTransaction": "Template function"
+      },
+      "events": {
+        "TransactionSubmitted": "Template event",
+        "TransactionApproved": "Template event",
+        "TransactionExecuted": "Template event"
+      },
+      "roles": {},
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: MultiSig\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nBased on: OpenZeppelin MultiSig\n\nReasoning: The contract is described as a multi-signature wallet, which aligns with the MultiSig template type. It involves multiple owners approving transactions, a core feature of MultiSig wallets.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl"
+    ],
+    "is_template": true,
+    "subtype": null,
+    "classification": {
+      "contract_type": "MultiSig",
+      "subtype": null,
+      "confidence": 0.9,
+      "reasoning": "The contract is described as a multi-signature wallet, which aligns with the MultiSig template type. It involves multiple owners approving transactions, a core feature of MultiSig wallets.",
+      "is_template": true,
+      "recommended_approach": "template"
+    },
+    "fixes_applied": [],
+    "_verbose": false
+  },
+  "compiles": null
+}

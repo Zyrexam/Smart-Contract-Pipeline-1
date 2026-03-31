@@ -1,0 +1,80 @@
+{
+  "dataset_size": 10,
+  "success_count": 10,
+  "success_rate": 100.0,
+  "overall": {
+    "avg_runtime_seconds": 43.2878,
+    "avg_cpu_time_seconds": 0.5125,
+    "avg_memory_peak_mb": 1.0289,
+    "avg_loc": 70.2,
+    "avg_function_count": 4.7
+  },
+  "category_comparison": [
+    {
+      "category": "Finance",
+      "runtime_seconds": 65.498,
+      "cpu_time_seconds": 0.6615,
+      "memory_peak_mb": 0.4369,
+      "loc": 66.3333,
+      "function_count": 3.6667,
+      "stage3_issue_count": 18.0,
+      "issue_density": 0.2714,
+      "runtime_per_loc": 0.9874
+    },
+    {
+      "category": "Governance",
+      "runtime_seconds": 30.6526,
+      "cpu_time_seconds": 0.2969,
+      "memory_peak_mb": 0.3195,
+      "loc": 86.5,
+      "function_count": 9.0,
+      "stage3_issue_count": 12.5,
+      "issue_density": 0.1445,
+      "runtime_per_loc": 0.3544
+    },
+    {
+      "category": "NFT",
+      "runtime_seconds": 46.1772,
+      "cpu_time_seconds": 0.875,
+      "memory_peak_mb": 3.6754,
+      "loc": 69.5,
+      "function_count": 4.0,
+      "stage3_issue_count": 6.5,
+      "issue_density": 0.0935,
+      "runtime_per_loc": 0.6644
+    },
+    {
+      "category": "Security",
+      "runtime_seconds": 35.068,
+      "cpu_time_seconds": 0.2656,
+      "memory_peak_mb": 0.3244,
+      "loc": 95.0,
+      "function_count": 5.0,
+      "stage3_issue_count": 33.0,
+      "issue_density": 0.3474,
+      "runtime_per_loc": 0.3691
+    },
+    {
+      "category": "Token",
+      "runtime_seconds": 27.6571,
+      "cpu_time_seconds": 0.25,
+      "memory_peak_mb": 0.3464,
+      "loc": 47.0,
+      "function_count": 2.0,
+      "stage3_issue_count": 6.0,
+      "issue_density": 0.1277,
+      "runtime_per_loc": 0.5884
+    },
+    {
+      "category": "Utility",
+      "runtime_seconds": 19.9994,
+      "cpu_time_seconds": 0.2812,
+      "memory_peak_mb": 0.3175,
+      "loc": 49.0,
+      "function_count": 3.0,
+      "stage3_issue_count": 5.0,
+      "issue_density": 0.102,
+      "runtime_per_loc": 0.4082
+    }
+  ]
+}

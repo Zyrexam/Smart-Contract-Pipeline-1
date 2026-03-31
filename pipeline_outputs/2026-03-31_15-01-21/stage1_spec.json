@@ -1,0 +1,149 @@
+{
+  "contract_name": "MyToken",
+  "contract_type": "ERC20",
+  "description": "An ERC20 token with minting and burning functionality.",
+  "name": "MyToken",
+  "symbol": "TKN",
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "mint",
+        "burn"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "totalSupply",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "balances",
+      "type": "mapping(address => uint256)",
+      "visibility": "private"
+    }
+  ],
+  "functions": [
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Mints new tokens to the specified address."
+    },
+    {
+      "name": "burn",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Burns tokens from the specified address."
+    },
+    {
+      "name": "transfer",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Transfers tokens to a specified address."
+    },
+    {
+      "name": "balanceOf",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Returns the balance of the specified address."
+    }
+  ],
+  "events": [
+    {
+      "name": "Transfer",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "Mint",
+      "parameters": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "Burn",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

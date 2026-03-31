@@ -1,0 +1,159 @@
+{
+  "contract_name": "RentalNFT",
+  "contract_type": "NFT",
+  "description": "A rental NFT system where users can rent NFTs for a fixed duration.",
+  "name": "",
+  "symbol": "NFT",
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "mint",
+        "setRentalPrice"
+      ]
+    },
+    {
+      "name": "renter",
+      "permissions": [
+        "rentNFT"
+      ]
+    }
+  ],
+  "state_variables": [
+    {
+      "name": "rentalPrice",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "rentalDuration",
+      "type": "uint256",
+      "visibility": "public"
+    },
+    {
+      "name": "rentedUntil",
+      "type": "mapping(uint256 => uint256)",
+      "visibility": "public"
+    }
+  ],
+  "functions": [
+    {
+      "name": "mint",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Mint a new NFT to a specified address."
+    },
+    {
+      "name": "setRentalPrice",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Set the rental price for a specific NFT."
+    },
+    {
+      "name": "rentNFT",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "renter",
+      "description": "Rent an NFT for the specified duration."
+    },
+    {
+      "name": "getRentalInfo",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "name": "duration",
+          "type": "uint256"
+        },
+        {
+          "name": "rentedUntil",
+          "type": "uint256"
+        }
+      ],
+      "restricted_to": "",
+      "description": "Get rental information for a specific NFT."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFTMinted",
+      "parameters": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTPriceSet",
+      "parameters": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "NFTRented",
+      "parameters": [
+        {
+          "name": "renter",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "rentedUntil",
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

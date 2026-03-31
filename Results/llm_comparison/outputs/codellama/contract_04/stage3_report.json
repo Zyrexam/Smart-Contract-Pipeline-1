@@ -1,0 +1,215 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 7,
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 0,
+    "info": 4,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "MEDIUM",
+        "title": "locked-ether",
+        "description": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol#4-33) has payable functions:\n\t - Crowdfunding.contribute() (contract.sol#15-19)\n\tBut does not have a function to withdraw the ether\n",
+        "line": 4,
+        "line_end": 33,
+        "filename": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol",
+        "contract": "Crowdfunding",
+        "function": "contribute",
+        "recommendation": "Add withdrawal function or make contract payable"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "naming-convention",
+        "description": "Parameter Crowdfunding.getContributions(address)._contributor (contract.sol#29) is not in mixedCase\n",
+        "line": 29,
+        "line_end": null,
+        "filename": "Parameter Crowdfunding.getContributions(address)._contributor (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Crowdfunding.owner (contract.sol#5) should be immutable \n",
+        "line": 5,
+        "line_end": null,
+        "filename": "Crowdfunding.owner (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Crowdfunding.fundingGoal (contract.sol#6) should be immutable \n",
+        "line": 6,
+        "line_end": null,
+        "filename": "Crowdfunding.fundingGoal (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 22,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 7,
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 0,
+    "info": 4,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "MEDIUM",
+        "title": "locked-ether",
+        "description": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol#4-33) has payable functions:\n\t - Crowdfunding.contribute() (contract.sol#15-19)\n\tBut does not have a function to withdraw the ether\n",
+        "line": 4,
+        "line_end": 33,
+        "filename": "Contract locking ether found:\n\tContract Crowdfunding (contract.sol",
+        "contract": "Crowdfunding",
+        "function": "contribute",
+        "recommendation": "Add withdrawal function or make contract payable"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "naming-convention",
+        "description": "Parameter Crowdfunding.getContributions(address)._contributor (contract.sol#29) is not in mixedCase\n",
+        "line": 29,
+        "line_end": null,
+        "filename": "Parameter Crowdfunding.getContributions(address)._contributor (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Crowdfunding.owner (contract.sol#5) should be immutable \n",
+        "line": 5,
+        "line_end": null,
+        "filename": "Crowdfunding.owner (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Crowdfunding.fundingGoal (contract.sol#6) should be immutable \n",
+        "line": 6,
+        "line_end": null,
+        "filename": "Crowdfunding.fundingGoal (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-custom-errors",
+        "description": "GC: Use Custom Errors instead of require statements",
+        "line": 16,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-strict-inequalities",
+        "description": "GC: Non strict inequality found. Try converting to a strict one",
+        "line": 22,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": null,
+  "compiles": null
+}

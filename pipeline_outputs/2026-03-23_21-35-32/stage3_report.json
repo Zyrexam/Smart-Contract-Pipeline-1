@@ -1,0 +1,315 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "DecentralizedVoting",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 9,
+    "critical": 0,
+    "high": 1,
+    "medium": 5,
+    "low": 1,
+    "info": 2,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "uninitialized-state",
+        "description": "DecentralizedVoting.voters (contract.sol#18) is never initialized. It is used in:\n",
+        "line": 18,
+        "line_end": null,
+        "filename": "DecentralizedVoting.voters (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "timestamp",
+        "description": "DecentralizedVoting.vote(uint256) (contract.sol#75-90) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp > block.timestamp + 604800 && ! proposal.votingEnded (contract.sol#79)\n",
+        "line": 75,
+        "line_end": 90,
+        "filename": "DecentralizedVoting.vote(uint256) (contract.sol",
+        "contract": "DecentralizedVoting",
+        "function": "vote",
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "DecentralizedVoting.admin (contract.sol#24) should be immutable \n",
+        "line": 24,
+        "line_end": null,
+        "filename": "DecentralizedVoting.admin (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [proposalId] on Event [ProposalCreated] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [voter] on Event [VoteCast] could be Indexed",
+        "line": 30,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [proposalId] on Event [VoteCast] could be Indexed",
+        "line": 30,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [proposalId] on Event [VotingEnded] could be Indexed",
+        "line": 33,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ proposal ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 88,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "DecentralizedVoting",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 9,
+    "critical": 0,
+    "high": 1,
+    "medium": 5,
+    "low": 1,
+    "info": 2,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "uninitialized-state",
+        "description": "DecentralizedVoting.voters (contract.sol#18) is never initialized. It is used in:\n",
+        "line": 18,
+        "line_end": null,
+        "filename": "DecentralizedVoting.voters (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "timestamp",
+        "description": "DecentralizedVoting.vote(uint256) (contract.sol#75-90) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp > block.timestamp + 604800 && ! proposal.votingEnded (contract.sol#79)\n",
+        "line": 75,
+        "line_end": 90,
+        "filename": "DecentralizedVoting.vote(uint256) (contract.sol",
+        "contract": "DecentralizedVoting",
+        "function": "vote",
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "DecentralizedVoting.admin (contract.sol#24) should be immutable \n",
+        "line": 24,
+        "line_end": null,
+        "filename": "DecentralizedVoting.admin (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [proposalId] on Event [ProposalCreated] could be Indexed",
+        "line": 27,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [voter] on Event [VoteCast] could be Indexed",
+        "line": 30,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [proposalId] on Event [VoteCast] could be Indexed",
+        "line": 30,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [proposalId] on Event [VotingEnded] could be Indexed",
+        "line": 33,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-increment-by-one",
+        "description": "GC: For [ proposal ] variable, increment/decrement by 1 using: [ ++variable ] to save gas",
+        "line": 88,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [
+      "ReentrancyGuard"
+    ],
+    "coverage": {
+      "state_variables": {
+        "proposals": "Election state - Design appropriate type",
+        "voters": "Election state - Design appropriate type",
+        "_REQUIREMENT_hasVoted": "MUST create: mapping(address => bool) public hasVoted - SEPARATE mapping for tracking if voter voted",
+        "_REQUIREMENT_candidateVotes": "MUST create: mapping(address => uint256) public candidateVotes - SEPARATE mapping for vote counts per candidate"
+      },
+      "functions": {
+        "createProposal": "Election function - Implement with proper data structures",
+        "vote": "Vote casting - MUST: 1) Check auto-tabulate at START, 2) Check hasVoted[msg.sender], 3) Set hasVoted[msg.sender]=true, 4) Increment candidateVotes[candidate] - Use SEPARATE mappings",
+        "endVoting": "Election function - Implement with proper data structures",
+        "getProposalResults": "Result calculation - MUST be internal _autoTabulate() called automatically, NOT external manual function",
+        "_REQUIREMENT_autoTabulate": "MUST create internal _autoTabulate() function, check at START of vote() function, NOT as external manual function"
+      },
+      "events": {
+        "ProposalCreated": "Election event for transparency",
+        "VoteCast": "Election event for transparency",
+        "VotingEnded": "Election event for transparency"
+      },
+      "roles": {},
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: ReentrancyGuard\nImplementation: Custom from scratch\nSubtype: election\n\nReasoning: The contract involves voting on proposals, which aligns with an election system rather than full DAO governance. It lacks elements like voting power, quorum, and execution typical of a Governor contract.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol",
+      "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl",
+      "ReentrancyGuard"
+    ],
+    "is_template": false,
+    "subtype": "election",
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": "election",
+      "confidence": 0.9,
+      "reasoning": "The contract involves voting on proposals, which aligns with an election system rather than full DAO governance. It lacks elements like voting power, quorum, and execution typical of a Governor contract.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": [],
+    "_verbose": false
+  },
+  "compiles": null
+}

@@ -1,0 +1,376 @@
+{
+  "result_id": "result_04",
+  "title": "Automated Pipeline vs Manual LLM Workflow",
+  "source_files": {
+    "pipeline_results": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\pipeline_results.json",
+    "manual_llm_results": "C:\\Users\\mohit\\Desktop\\BTP\\Results\\pipeline_vs_manual\\manual_llm_results.json"
+  },
+  "methods": {
+    "pipeline": {
+      "workflow": [
+        "stage_1",
+        "stage_2",
+        "stage_3"
+      ],
+      "contracts": 8,
+      "avg_runtime_seconds": 73.99,
+      "avg_loc": 74.25,
+      "avg_function_count": 5.0,
+      "validation_pass_count": 8,
+      "user_steps": 1,
+      "severity_totals": {
+        "critical": 0,
+        "high": 3,
+        "medium": 89,
+        "low": 16,
+        "info": 19,
+        "total": 127
+      },
+      "tool_breakdown": {
+        "mythril": {
+          "total": 11,
+          "severity_counts": {
+            "high": 1,
+            "low": 8,
+            "medium": 2
+          }
+        },
+        "semgrep": {
+          "total": 6,
+          "severity_counts": {
+            "info": 6
+          }
+        },
+        "slither": {
+          "total": 23,
+          "severity_counts": {
+            "high": 2,
+            "info": 13,
+            "low": 8
+          }
+        },
+        "solhint": {
+          "total": 87,
+          "severity_counts": {
+            "medium": 87
+          }
+        }
+      }
+    },
+    "manual_llm": {
+      "workflow": [
+        "direct_llm_generation",
+        "stage_3"
+      ],
+      "contracts": 8,
+      "avg_runtime_seconds": 50.48,
+      "avg_loc": 67.25,
+      "avg_function_count": 5.0,
+      "validation_pass_count": 6,
+      "user_steps": 3,
+      "severity_totals": {
+        "critical": 0,
+        "high": 0,
+        "medium": 152,
+        "low": 4,
+        "info": 30,
+        "total": 186
+      },
+      "tool_breakdown": {
+        "semgrep": {
+          "total": 8,
+          "severity_counts": {
+            "info": 8
+          }
+        },
+        "slither": {
+          "total": 26,
+          "severity_counts": {
+            "info": 22,
+            "low": 4
+          }
+        },
+        "solhint": {
+          "total": 152,
+          "severity_counts": {
+            "medium": 152
+          }
+        }
+      }
+    }
+  },
+  "per_contract": [
+    {
+      "id": "contract_01",
+      "task_name": "NFT Rental",
+      "category": "NFT",
+      "pipeline": {
+        "runtime_seconds": 89.06,
+        "loc": 59,
+        "function_count": 3,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 1,
+          "low": 5,
+          "info": 2,
+          "total": 8
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 36.75,
+        "loc": 58,
+        "function_count": 7,
+        "validation_success": false,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 17,
+          "low": 0,
+          "info": 1,
+          "total": 18
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "id": "contract_02",
+      "task_name": "ERC20 Token",
+      "category": "Token",
+      "pipeline": {
+        "runtime_seconds": 45.18,
+        "loc": 50,
+        "function_count": 2,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 6,
+          "low": 0,
+          "info": 0,
+          "total": 6
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 29.36,
+        "loc": 13,
+        "function_count": 2,
+        "validation_success": false,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 2,
+          "low": 0,
+          "info": 0,
+          "total": 2
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "id": "contract_03",
+      "task_name": "Voting Contract",
+      "category": "Governance",
+      "pipeline": {
+        "runtime_seconds": 48.15,
+        "loc": 84,
+        "function_count": 8,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 24,
+          "low": 0,
+          "info": 0,
+          "total": 24
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 57.87,
+        "loc": 52,
+        "function_count": 4,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 16,
+          "low": 1,
+          "info": 3,
+          "total": 20
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "id": "contract_04",
+      "task_name": "Crowdfunding",
+      "category": "Finance",
+      "pipeline": {
+        "runtime_seconds": 144.95,
+        "loc": 77,
+        "function_count": 4,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 9,
+          "low": 9,
+          "info": 8,
+          "total": 26
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 96.34,
+        "loc": 43,
+        "function_count": 3,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 23,
+          "low": 0,
+          "info": 5,
+          "total": 28
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "id": "contract_05",
+      "task_name": "Escrow Contract",
+      "category": "Finance",
+      "pipeline": {
+        "runtime_seconds": 83.24,
+        "loc": 84,
+        "function_count": 4,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 3,
+          "medium": 2,
+          "low": 2,
+          "info": 7,
+          "total": 14
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 44.23,
+        "loc": 53,
+        "function_count": 5,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 11,
+          "low": 2,
+          "info": 8,
+          "total": 21
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "id": "contract_06",
+      "task_name": "MultiSig Wallet",
+      "category": "Security",
+      "pipeline": {
+        "runtime_seconds": 49.92,
+        "loc": 80,
+        "function_count": 5,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 28,
+          "low": 0,
+          "info": 1,
+          "total": 29
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 48.75,
+        "loc": 100,
+        "function_count": 7,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 43,
+          "low": 1,
+          "info": 11,
+          "total": 55
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "id": "contract_07",
+      "task_name": "DAO Governance",
+      "category": "Governance",
+      "pipeline": {
+        "runtime_seconds": 60.58,
+        "loc": 87,
+        "function_count": 10,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 13,
+          "low": 0,
+          "info": 0,
+          "total": 13
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 44.35,
+        "loc": 58,
+        "function_count": 5,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 14,
+          "low": 0,
+          "info": 0,
+          "total": 14
+        },
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "id": "contract_08",
+      "task_name": "NFT Marketplace",
+      "category": "NFT",
+      "pipeline": {
+        "runtime_seconds": 70.84,
+        "loc": 73,
+        "function_count": 4,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 6,
+          "low": 0,
+          "info": 1,
+          "total": 7
+        }
+      },
+      "manual_llm": {
+        "runtime_seconds": 46.2,
+        "loc": 161,
+        "function_count": 7,
+        "validation_success": true,
+        "severity": {
+          "critical": 0,
+          "high": 0,
+          "medium": 26,
+          "low": 0,
+          "info": 2,
+          "total": 28
+        },
+        "model": "gpt-4o"
+      }
+    }
+  ]
+}

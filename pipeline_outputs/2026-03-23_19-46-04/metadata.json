@@ -1,0 +1,50 @@
+{
+  "category": "Custom",
+  "base_standard": "Custom",
+  "extensions": [],
+  "access_control": "role_based",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "buyer": "Custom state variable",
+      "seller": "Custom state variable",
+      "amount": "Custom state variable",
+      "buyerApproved": "Custom state variable",
+      "sellerApproved": "Custom state variable"
+    },
+    "functions": {
+      "depositFunds": "Custom function",
+      "approveTransaction": "Custom function",
+      "releaseFunds": "Custom function"
+    },
+    "events": {
+      "FundsDeposited": "Custom event",
+      "TransactionApproved": "Custom event",
+      "FundsReleased": "Custom event"
+    },
+    "roles": {
+      "buyer": "Custom role",
+      "seller": "Custom role"
+    },
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: escrow\n\nReasoning: The contract involves holding funds and requires approval from both parties before releasing the funds, which is characteristic of an escrow system. This does not fit into any standard template like ERC20, ERC721, etc.",
+  "imports_used": [
+    "@openzeppelin/contracts/access/AccessControl.sol"
+  ],
+  "inheritance_chain": [
+    "AccessControl"
+  ],
+  "is_template": false,
+  "subtype": "escrow",
+  "classification": {
+    "contract_type": "Custom",
+    "subtype": "escrow",
+    "confidence": 0.9,
+    "reasoning": "The contract involves holding funds and requires approval from both parties before releasing the funds, which is characteristic of an escrow system. This does not fit into any standard template like ERC20, ERC721, etc.",
+    "is_template": false,
+    "recommended_approach": "custom"
+  },
+  "fixes_applied": []
+}

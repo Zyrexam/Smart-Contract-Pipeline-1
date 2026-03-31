@@ -1,0 +1,126 @@
+{
+  "contract_name": "DecentralizedAuction",
+  "contract_type": "Auction",
+  "description": "A smart contract for a decentralized auction where users can place bids.",
+  "state_variables": [
+    {
+      "name": "highestBid",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "highestBidder",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "name": "auctionEndTime",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": "0"
+    },
+    {
+      "name": "auctionStarted",
+      "type": "bool",
+      "visibility": "public",
+      "initial_value": "false"
+    },
+    {
+      "name": "owner",
+      "type": "address",
+      "visibility": "private",
+      "initial_value": "msg.sender"
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "startAuction",
+        "endAuction"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "startAuction",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "duration",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Starts the auction and sets the auction end time based on the provided duration."
+    },
+    {
+      "name": "placeBid",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "",
+      "description": "Allows users to place a bid. The bid must be higher than the current highest bid."
+    },
+    {
+      "name": "endAuction",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Ends the auction and transfers the highest bid to the owner."
+    }
+  ],
+  "events": [
+    {
+      "name": "AuctionStarted",
+      "parameters": [
+        {
+          "name": "endTime",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "BidPlaced",
+      "parameters": [
+        {
+          "name": "bidder",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "AuctionEnded",
+      "parameters": [
+        {
+          "name": "winner",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyOwner",
+      "condition": "msg.sender == owner",
+      "description": "Restricts function access to the contract owner."
+    },
+    {
+      "name": "auctionActive",
+      "condition": "block.timestamp < auctionEndTime && auctionStarted",
+      "description": "Ensures the auction is active."
+    }
+  ]
+}

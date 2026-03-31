@@ -1,0 +1,202 @@
+{
+  "dataset_size": 10,
+  "successful_runs": 10,
+  "overall_success_rate": 100.0,
+  "avg_runtime_seconds": 43.29,
+  "avg_loc": 70.2,
+  "avg_function_count": 4.7,
+  "avg_issue_count": 13.6,
+  "highest_issue_category": {
+    "category": "Security",
+    "avg_issue_count": 33.0
+  },
+  "highest_runtime_category": {
+    "category": "Finance",
+    "avg_runtime_seconds": 65.5
+  },
+  "largest_code_category": {
+    "category": "Security",
+    "avg_loc": 95.0
+  },
+  "category_count": 6,
+  "category_summary": [
+    {
+      "category": "Finance",
+      "total_runs": 3,
+      "successful_runs": 3,
+      "success_rate": 100.0,
+      "avg_runtime_seconds": 65.5,
+      "avg_loc": 66.33,
+      "avg_function_count": 3.67,
+      "avg_issue_count": 18.0,
+      "max_issue_count": 21,
+      "contracts": [
+        {
+          "id": "contract_04",
+          "task_name": "Crowdfunding",
+          "contract_name": "Crowdfunding",
+          "runtime_seconds": 109.06,
+          "loc": 86,
+          "function_count": 4,
+          "stage3_issue_count": 21,
+          "output_dir": "pipeline_outputs/2026-03-31_15-02-18"
+        },
+        {
+          "id": "contract_05",
+          "task_name": "Escrow Contract",
+          "contract_name": "Escrow",
+          "runtime_seconds": 62.39,
+          "loc": 65,
+          "function_count": 4,
+          "stage3_issue_count": 17,
+          "output_dir": "pipeline_outputs/2026-03-31_15-04-07"
+        },
+        {
+          "id": "contract_10",
+          "task_name": "Auction Contract",
+          "contract_name": "DecentralizedAuction",
+          "runtime_seconds": 25.04,
+          "loc": 48,
+          "function_count": 3,
+          "stage3_issue_count": 16,
+          "output_dir": "pipeline_outputs/2026-03-31_15-07-06"
+        }
+      ]
+    },
+    {
+      "category": "Governance",
+      "total_runs": 2,
+      "successful_runs": 2,
+      "success_rate": 100.0,
+      "avg_runtime_seconds": 30.65,
+      "avg_loc": 86.5,
+      "avg_function_count": 9.0,
+      "avg_issue_count": 12.5,
+      "max_issue_count": 14,
+      "contracts": [
+        {
+          "id": "contract_03",
+          "task_name": "Voting Contract",
+          "contract_name": "DecentralizedVoting",
+          "runtime_seconds": 28.91,
+          "loc": 90,
+          "function_count": 9,
+          "stage3_issue_count": 11,
+          "output_dir": "pipeline_outputs/2026-03-31_15-01-49"
+        },
+        {
+          "id": "contract_07",
+          "task_name": "DAO Governance",
+          "contract_name": "DAOGovernance",
+          "runtime_seconds": 32.4,
+          "loc": 83,
+          "function_count": 9,
+          "stage3_issue_count": 14,
+          "output_dir": "pipeline_outputs/2026-03-31_15-05-44"
+        }
+      ]
+    },
+    {
+      "category": "NFT",
+      "total_runs": 2,
+      "successful_runs": 2,
+      "success_rate": 100.0,
+      "avg_runtime_seconds": 46.18,
+      "avg_loc": 69.5,
+      "avg_function_count": 4.0,
+      "avg_issue_count": 6.5,
+      "max_issue_count": 8,
+      "contracts": [
+        {
+          "id": "contract_01",
+          "task_name": "NFT Rental",
+          "contract_name": "RentalNFT",
+          "runtime_seconds": 62.79,
+          "loc": 69,
+          "function_count": 4,
+          "stage3_issue_count": 5,
+          "output_dir": "pipeline_outputs/2026-03-31_15-00-18"
+        },
+        {
+          "id": "contract_08",
+          "task_name": "NFT Marketplace",
+          "contract_name": "NFTMarketplace",
+          "runtime_seconds": 29.57,
+          "loc": 70,
+          "function_count": 4,
+          "stage3_issue_count": 8,
+          "output_dir": "pipeline_outputs/2026-03-31_15-06-17"
+        }
+      ]
+    },
+    {
+      "category": "Security",
+      "total_runs": 1,
+      "successful_runs": 1,
+      "success_rate": 100.0,
+      "avg_runtime_seconds": 35.07,
+      "avg_loc": 95.0,
+      "avg_function_count": 5.0,
+      "avg_issue_count": 33.0,
+      "max_issue_count": 33,
+      "contracts": [
+        {
+          "id": "contract_06",
+          "task_name": "MultiSig Wallet",
+          "contract_name": "MultiSigWallet",
+          "runtime_seconds": 35.07,
+          "loc": 95,
+          "function_count": 5,
+          "stage3_issue_count": 33,
+          "output_dir": "pipeline_outputs/2026-03-31_15-05-09"
+        }
+      ]
+    },
+    {
+      "category": "Token",
+      "total_runs": 1,
+      "successful_runs": 1,
+      "success_rate": 100.0,
+      "avg_runtime_seconds": 27.66,
+      "avg_loc": 47.0,
+      "avg_function_count": 2.0,
+      "avg_issue_count": 6.0,
+      "max_issue_count": 6,
+      "contracts": [
+        {
+          "id": "contract_02",
+          "task_name": "ERC20 Token",
+          "contract_name": "MyToken",
+          "runtime_seconds": 27.66,
+          "loc": 47,
+          "function_count": 2,
+          "stage3_issue_count": 6,
+          "output_dir": "pipeline_outputs/2026-03-31_15-01-21"
+        }
+      ]
+    },
+    {
+      "category": "Utility",
+      "total_runs": 1,
+      "successful_runs": 1,
+      "success_rate": 100.0,
+      "avg_runtime_seconds": 20.0,
+      "avg_loc": 49.0,
+      "avg_function_count": 3.0,
+      "avg_issue_count": 5.0,
+      "max_issue_count": 5,
+      "contracts": [
+        {
+          "id": "contract_09",
+          "task_name": "TimeLock Contract",
+          "contract_name": "Timelock",
+          "runtime_seconds": 20.0,
+          "loc": 49,
+          "function_count": 3,
+          "stage3_issue_count": 5,
+          "output_dir": "pipeline_outputs/2026-03-31_15-06-46"
+        }
+      ]
+    }
+  ]
+}

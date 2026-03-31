@@ -1,0 +1,88 @@
+{
+  "contract_name": "Timelock",
+  "contract_type": "Smart Contract",
+  "description": "A timelock smart contract where funds can only be withdrawn after a specific time.",
+  "state_variables": [
+    {
+      "name": "lockedUntil",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": null
+    },
+    {
+      "name": "beneficiary",
+      "type": "address",
+      "visibility": "public",
+      "initial_value": null
+    },
+    {
+      "name": "amount",
+      "type": "uint256",
+      "visibility": "public",
+      "initial_value": null
+    }
+  ],
+  "roles": [
+    {
+      "name": "owner",
+      "permissions": [
+        "setLockTime",
+        "withdrawFunds"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "setLockTime",
+      "visibility": "public",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "uint256"
+        }
+      ],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Sets the time until which the funds are locked."
+    },
+    {
+      "name": "withdrawFunds",
+      "visibility": "public",
+      "inputs": [],
+      "outputs": [],
+      "restricted_to": "owner",
+      "description": "Allows the owner to withdraw funds after the lock time has passed."
+    }
+  ],
+  "events": [
+    {
+      "name": "FundsWithdrawn",
+      "parameters": [
+        {
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "name": "LockTimeSet",
+      "parameters": [
+        {
+          "name": "time",
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "onlyAfterLockTime",
+      "condition": "block.timestamp >= lockedUntil",
+      "description": "Ensures that the function can only be executed after the lock time has passed."
+    }
+  ]
+}

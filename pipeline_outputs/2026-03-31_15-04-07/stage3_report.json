@@ -1,0 +1,507 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "Escrow",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 17,
+    "critical": 0,
+    "high": 3,
+    "medium": 5,
+    "low": 2,
+    "info": 7,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "arbitrary-send-eth",
+        "description": "Escrow.releaseFunds() (contract.sol#57-63) sends eth to arbitrary user\n\tDangerous calls:\n\t- address(partyA).transfer(amount) (contract.sol#61)\n",
+        "line": 57,
+        "line_end": 63,
+        "filename": "Escrow.releaseFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "releaseFunds",
+        "recommendation": "Add access control and input validation"
+      },
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "arbitrary-send-eth",
+        "description": "Escrow.withdrawFunds() (contract.sol#66-72) sends eth to arbitrary user\n\tDangerous calls:\n\t- address(msg.sender).transfer(amount) (contract.sol#70)\n",
+        "line": 66,
+        "line_end": 72,
+        "filename": "Escrow.withdrawFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds",
+        "recommendation": "Add access control and input validation"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "missing-zero-check",
+        "description": "Escrow.constructor(address,address)._partyB (contract.sol#30) lacks a zero-check on :\n\t\t- partyB = _partyB (contract.sol#32)\n",
+        "line": 30,
+        "line_end": null,
+        "filename": "Escrow.constructor(address,address)._partyB (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "missing-zero-check",
+        "description": "Escrow.constructor(address,address)._partyA (contract.sol#30) lacks a zero-check on :\n\t\t- partyA = _partyA (contract.sol#31)\n",
+        "line": 30,
+        "line_end": null,
+        "filename": "Escrow.constructor(address,address)._partyA (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "reentrancy-unlimited-gas",
+        "description": "Reentrancy in Escrow.withdrawFunds() (contract.sol#66-72):\n\tExternal calls:\n\t- address(msg.sender).transfer(amount) (contract.sol#70)\n\tEvent emitted after the call(s):\n\t- FundsWithdrawn(amount) (contract.sol#71)\n",
+        "line": 66,
+        "line_end": 72,
+        "filename": "Reentrancy in Escrow.withdrawFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds",
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "reentrancy-unlimited-gas",
+        "description": "Reentrancy in Escrow.releaseFunds() (contract.sol#57-63):\n\tExternal calls:\n\t- address(partyA).transfer(amount) (contract.sol#61)\n\tEvent emitted after the call(s):\n\t- FundsReleased(amount) (contract.sol#62)\n",
+        "line": 57,
+        "line_end": 63,
+        "filename": "Reentrancy in Escrow.releaseFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "releaseFunds",
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Escrow.partyA (contract.sol#11) should be immutable \n",
+        "line": 11,
+        "line_end": null,
+        "filename": "Escrow.partyA (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Escrow.partyB (contract.sol#12) should be immutable \n",
+        "line": 12,
+        "line_end": null,
+        "filename": "Escrow.partyB (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "mythril",
+        "severity": "MEDIUM",
+        "title": "Transaction Order Dependence (SWC 114)",
+        "description": "The value of the call is dependent on balance or storage write\nThis can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call\nClassification: SWC-114",
+        "line": 70,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds()",
+        "recommendation": "Review SWC documentation"
+      },
+      {
+        "tool": "mythril",
+        "severity": "HIGH",
+        "title": "Unprotected Ether Withdrawal (SWC 105)",
+        "description": "Any sender can withdraw Ether from the contract account.\nArbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.\nClassification: SWC-105",
+        "line": 70,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds()",
+        "recommendation": "Add access control to withdrawal functions"
+      },
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 61,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 70,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsDeposited] could be Indexed",
+        "line": 22,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [party] on Event [TransactionApproved] could be Indexed",
+        "line": 23,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsReleased] could be Indexed",
+        "line": 24,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsWithdrawn] could be Indexed",
+        "line": 25,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "final_analysis": {
+    "contract_name": "Escrow",
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 17,
+    "critical": 0,
+    "high": 3,
+    "medium": 5,
+    "low": 2,
+    "info": 7,
+    "issues": [
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "arbitrary-send-eth",
+        "description": "Escrow.releaseFunds() (contract.sol#57-63) sends eth to arbitrary user\n\tDangerous calls:\n\t- address(partyA).transfer(amount) (contract.sol#61)\n",
+        "line": 57,
+        "line_end": 63,
+        "filename": "Escrow.releaseFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "releaseFunds",
+        "recommendation": "Add access control and input validation"
+      },
+      {
+        "tool": "slither",
+        "severity": "HIGH",
+        "title": "arbitrary-send-eth",
+        "description": "Escrow.withdrawFunds() (contract.sol#66-72) sends eth to arbitrary user\n\tDangerous calls:\n\t- address(msg.sender).transfer(amount) (contract.sol#70)\n",
+        "line": 66,
+        "line_end": 72,
+        "filename": "Escrow.withdrawFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds",
+        "recommendation": "Add access control and input validation"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "missing-zero-check",
+        "description": "Escrow.constructor(address,address)._partyB (contract.sol#30) lacks a zero-check on :\n\t\t- partyB = _partyB (contract.sol#32)\n",
+        "line": 30,
+        "line_end": null,
+        "filename": "Escrow.constructor(address,address)._partyB (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "LOW",
+        "title": "missing-zero-check",
+        "description": "Escrow.constructor(address,address)._partyA (contract.sol#30) lacks a zero-check on :\n\t\t- partyA = _partyA (contract.sol#31)\n",
+        "line": 30,
+        "line_end": null,
+        "filename": "Escrow.constructor(address,address)._partyA (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "solc-version",
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol#2)\n",
+        "line": 2,
+        "line_end": null,
+        "filename": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "reentrancy-unlimited-gas",
+        "description": "Reentrancy in Escrow.withdrawFunds() (contract.sol#66-72):\n\tExternal calls:\n\t- address(msg.sender).transfer(amount) (contract.sol#70)\n\tEvent emitted after the call(s):\n\t- FundsWithdrawn(amount) (contract.sol#71)\n",
+        "line": 66,
+        "line_end": 72,
+        "filename": "Reentrancy in Escrow.withdrawFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds",
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "reentrancy-unlimited-gas",
+        "description": "Reentrancy in Escrow.releaseFunds() (contract.sol#57-63):\n\tExternal calls:\n\t- address(partyA).transfer(amount) (contract.sol#61)\n\tEvent emitted after the call(s):\n\t- FundsReleased(amount) (contract.sol#62)\n",
+        "line": 57,
+        "line_end": 63,
+        "filename": "Reentrancy in Escrow.releaseFunds() (contract.sol",
+        "contract": "Escrow",
+        "function": "releaseFunds",
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Escrow.partyA (contract.sol#11) should be immutable \n",
+        "line": 11,
+        "line_end": null,
+        "filename": "Escrow.partyA (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "slither",
+        "severity": "INFO",
+        "title": "immutable-states",
+        "description": "Escrow.partyB (contract.sol#12) should be immutable \n",
+        "line": 12,
+        "line_end": null,
+        "filename": "Escrow.partyB (contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Review and apply security best practices"
+      },
+      {
+        "tool": "mythril",
+        "severity": "MEDIUM",
+        "title": "Transaction Order Dependence (SWC 114)",
+        "description": "The value of the call is dependent on balance or storage write\nThis can lead to race conditions. An attacker may be able to run a transaction after our transaction which can change the value of the call\nClassification: SWC-114",
+        "line": 70,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds()",
+        "recommendation": "Review SWC documentation"
+      },
+      {
+        "tool": "mythril",
+        "severity": "HIGH",
+        "title": "Unprotected Ether Withdrawal (SWC 105)",
+        "description": "Any sender can withdraw Ether from the contract account.\nArbitrary senders other than the contract creator can profitably extract Ether from the contract account. Verify the business logic carefully and make sure that appropriate security controls are in place to prevent unexpected loss of funds.\nClassification: SWC-105",
+        "line": 70,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": "Escrow",
+        "function": "withdrawFunds()",
+        "recommendation": "Add access control to withdrawal functions"
+      },
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 61,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 70,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsDeposited] could be Indexed",
+        "line": 22,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [party] on Event [TransactionApproved] could be Indexed",
+        "line": 23,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsReleased] could be Indexed",
+        "line": 24,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      },
+      {
+        "tool": "solhint",
+        "severity": "MEDIUM",
+        "title": "gas-indexed-events",
+        "description": "GC: [amount] on Event [FundsWithdrawn] could be Indexed",
+        "line": 25,
+        "line_end": null,
+        "filename": "contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Follow Solidity style guide"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": []
+  },
+  "fixes_applied": [],
+  "stage2_metadata": {
+    "category": "Custom",
+    "base_standard": "Custom",
+    "extensions": [],
+    "access_control": "role_based",
+    "security_features": [],
+    "coverage": {
+      "state_variables": {
+        "funds": "Custom state variable",
+        "partyAApproved": "Custom state variable",
+        "partyBApproved": "Custom state variable",
+        "partyA": "Custom state variable",
+        "partyB": "Custom state variable"
+      },
+      "functions": {
+        "depositFunds": "Custom function",
+        "approveTransaction": "Custom function",
+        "releaseFunds": "Custom function",
+        "withdrawFunds": "Custom function"
+      },
+      "events": {
+        "FundsDeposited": "Custom event",
+        "TransactionApproved": "Custom event",
+        "FundsReleased": "Custom event",
+        "FundsWithdrawn": "Custom event"
+      },
+      "roles": {
+        "partyA": "Custom role",
+        "partyB": "Custom role"
+      },
+      "modifiers": {}
+    },
+    "validation_errors": [],
+    "security_summary": "Contract Type: Custom\nClassification Confidence: 90%\nAccess Control: role_based\nSecurity Features: Standard\nImplementation: Custom from scratch\nSubtype: escrow\n\nReasoning: The contract involves holding funds and requires approval from both parties before releasing them, which is characteristic of an escrow system. This does not fit any standard template like ERC20 or Governor.",
+    "imports_used": [
+      "@openzeppelin/contracts/access/AccessControl.sol"
+    ],
+    "inheritance_chain": [
+      "AccessControl"
+    ],
+    "is_template": false,
+    "subtype": "escrow",
+    "classification": {
+      "contract_type": "Custom",
+      "subtype": "escrow",
+      "confidence": 0.9,
+      "reasoning": "The contract involves holding funds and requires approval from both parties before releasing them, which is characteristic of an escrow system. This does not fit any standard template like ERC20 or Governor.",
+      "is_template": false,
+      "recommended_approach": "custom"
+    },
+    "fixes_applied": [],
+    "_verbose": false
+  },
+  "compiles": null
+}

@@ -1,0 +1,51 @@
+{
+  "category": "ERC20",
+  "base_standard": "ERC20Burnable",
+  "extensions": [
+    "Burnable"
+  ],
+  "access_control": "single_owner",
+  "security_features": [],
+  "coverage": {
+    "state_variables": {
+      "totalSupply": "Dynamic via ERC20.totalSupply()",
+      "balances": "Custom state variable"
+    },
+    "functions": {
+      "mint": "Custom mint() with access control",
+      "burn": "Inherited from ERC20Burnable",
+      "transfer": "Inherited from ERC20",
+      "balanceOf": "Inherited from ERC20"
+    },
+    "events": {
+      "Transfer": "Custom or inherited event",
+      "Mint": "Custom or inherited event",
+      "Burn": "Custom or inherited event"
+    },
+    "roles": {},
+    "modifiers": {}
+  },
+  "validation_errors": [],
+  "security_summary": "Contract Type: ERC20\nClassification Confidence: 95%\nAccess Control: single_owner\nSecurity Features: Standard\nBased on: OpenZeppelin ERC20Burnable\n\nReasoning: The contract is described as an ERC20 token with additional minting and burning functionality, which are common extensions of the ERC20 standard.",
+  "imports_used": [
+    "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+    "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+    "@openzeppelin/contracts/access/Ownable.sol"
+  ],
+  "inheritance_chain": [
+    "ERC20",
+    "ERC20Burnable",
+    "Ownable"
+  ],
+  "is_template": true,
+  "subtype": null,
+  "classification": {
+    "contract_type": "ERC20",
+    "subtype": null,
+    "confidence": 0.95,
+    "reasoning": "The contract is described as an ERC20 token with additional minting and burning functionality, which are common extensions of the ERC20 standard.",
+    "is_template": true,
+    "recommended_approach": "template"
+  },
+  "fixes_applied": []
+}

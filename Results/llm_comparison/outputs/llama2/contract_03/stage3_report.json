@@ -1,0 +1,49 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "VotingContract",
+    "tools_used": [
+      "slither",
+      "mythril-failed",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0,
+    "issues": [],
+    "success": true,
+    "error": null,
+    "warnings": [
+      "mythril: parsing issues - ['error parsing JSON output - no valid JSON found | Debug: stdout length: 223; stdout first 500: {\"success\": false, \"error\": \"Solc experienced a fatal error.\\n\\nParserError: Function, variable, struct or modifier declaration expected.\\n  --> /sb/contract.sol:10:6:\\n   |\\n10 |     }[] proposals;\\n   |      ^\\n\\n\", \"issues\": []}; stdout_lines count: 9; first line (first 200): {\"success\": false, \"error\": \"Solc experienced a fatal error.; last line (first 200): \", \"issues\": []}']"
+    ]
+  },
+  "final_analysis": {
+    "contract_name": "VotingContract",
+    "tools_used": [
+      "slither",
+      "mythril-failed",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0,
+    "issues": [],
+    "success": true,
+    "error": null,
+    "warnings": [
+      "mythril: parsing issues - ['error parsing JSON output - no valid JSON found | Debug: stdout length: 223; stdout first 500: {\"success\": false, \"error\": \"Solc experienced a fatal error.\\n\\nParserError: Function, variable, struct or modifier declaration expected.\\n  --> /sb/contract.sol:10:6:\\n   |\\n10 |     }[] proposals;\\n   |      ^\\n\\n\", \"issues\": []}; stdout_lines count: 9; first line (first 200): {\"success\": false, \"error\": \"Solc experienced a fatal error.; last line (first 200): \", \"issues\": []}']"
+    ]
+  },
+  "fixes_applied": [],
+  "stage2_metadata": null,
+  "compiles": null
+}

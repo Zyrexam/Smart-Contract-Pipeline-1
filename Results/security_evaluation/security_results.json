@@ -1,0 +1,3463 @@
+[
+  {
+    "run_id": "2025-12-10_02-50-02",
+    "contract_name": "DecentralizedTicketingPlatform",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 67,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 5,
+    "final_total_issues": 5,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 4,
+      "low": 0,
+      "info": 1,
+      "total": 5
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "unchecked-transfer",
+        "count": 1
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 1
+      },
+      {
+        "title": "gas-increment-by-one",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_02-50-02\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_02-51-50",
+    "contract_name": "RateLimitedTokenVault",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 53,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 4,
+    "final_total_issues": 4,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 4,
+      "low": 0,
+      "info": 0,
+      "total": 4
+    },
+    "tool_issue_counts": {
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "gas-custom-errors",
+        "count": 1
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_02-51-50\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_02-53-55",
+    "contract_name": "DualStaking",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 106,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 4,
+    "final_total_issues": 4,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 4,
+      "low": 0,
+      "info": 0,
+      "total": 4
+    },
+    "tool_issue_counts": {
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_02-53-55\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-06-30",
+    "contract_name": ".sol",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 49,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 4,
+    "final_total_issues": 4,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 0,
+      "info": 1,
+      "total": 4
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 3
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-pattern",
+        "count": 1
+      },
+      {
+        "title": "gas-custom-errors",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-06-30\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-08-18",
+    "contract_name": "DualStaking",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 88,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 12,
+    "final_total_issues": 12,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 12,
+      "low": 0,
+      "info": 0,
+      "total": 12
+    },
+    "tool_issue_counts": {
+      "solhint": 12
+    },
+    "top_issue_titles": [
+      {
+        "title": "avoid-low-level-calls",
+        "count": 5
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "gas-custom-errors",
+        "count": 2
+      },
+      {
+        "title": "gas-small-strings",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-08-18\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-09-44",
+    "contract_name": ".sol",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 36,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 1,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "info": 0,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-09-44\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-10-51",
+    "contract_name": "Counter",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 56,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 5,
+    "final_total_issues": 5,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 5,
+      "low": 0,
+      "info": 0,
+      "total": 5
+    },
+    "tool_issue_counts": {
+      "solhint": 5
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 3
+      },
+      {
+        "title": "gas-increment-by-one",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-10-51\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-17-53",
+    "contract_name": "DualStaking",
+    "category": "Staking",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 96,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 12,
+    "final_total_issues": 12,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 12,
+      "low": 0,
+      "info": 0,
+      "total": 12
+    },
+    "tool_issue_counts": {
+      "solhint": 12
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 6
+      },
+      {
+        "title": "no-global-import",
+        "count": 3
+      },
+      {
+        "title": "immutable-vars-naming",
+        "count": 3
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-17-53\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-23-41",
+    "contract_name": "EtherVault",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 48,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 3,
+    "final_total_issues": 3,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 0,
+      "info": 1,
+      "total": 3
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "unchecked-transfer",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-23-41\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-25-42",
+    "contract_name": "ElectionSystem",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 92,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 11,
+    "final_total_issues": 11,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 11,
+      "low": 0,
+      "info": 0,
+      "total": 11
+    },
+    "tool_issue_counts": {
+      "solhint": 11
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-custom-errors",
+        "count": 8
+      },
+      {
+        "title": "gas-increment-by-one",
+        "count": 2
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-25-42\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_03-27-39",
+    "contract_name": "TokenStaking",
+    "category": "Staking",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 86,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 3
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 3
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_03-27-39\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_04-15-16",
+    "contract_name": "SimpleToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 35,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_04-15-16\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-10_16-41-35",
+    "contract_name": "TaxToken",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 106,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 3,
+    "final_total_issues": 3,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 0,
+      "info": 0,
+      "total": 3
+    },
+    "tool_issue_counts": {
+      "solhint": 3
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 3
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-10_16-41-35\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-31_18-32-26",
+    "contract_name": "RentalNFTSystem",
+    "category": "ERC721",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 90,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 4,
+    "final_total_issues": 4,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 4,
+      "low": 0,
+      "info": 0,
+      "total": 4
+    },
+    "tool_issue_counts": {
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 3
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-31_18-32-26\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-31_18-43-43",
+    "contract_name": "RentalNFTSystem",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 75,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 1,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "info": 0,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2025-12-31_18-43-43\\stage3_report.json"
+  },
+  {
+    "run_id": "2025-12-31_21-05-26",
+    "contract_name": "RentalNFTSystem",
+    "category": "Custom",
+    "analysis_success": false,
+    "tools_used": [],
+    "loc": 69,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 0,
+    "final_total_issues": 0,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0,
+      "total": 0
+    },
+    "tool_issue_counts": {},
+    "top_issue_titles": [],
+    "report_path": "pipeline_outputs\\2025-12-31_21-05-26\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_21-37-05",
+    "contract_name": "Lottery",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 66,
+    "iterations": 2,
+    "issues_resolved": 6,
+    "initial_total_issues": 8,
+    "final_total_issues": 2,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 0,
+      "info": 0,
+      "total": 2
+    },
+    "tool_issue_counts": {
+      "solhint": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-strict-inequalities",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_21-37-05\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-43-11_demonstrates",
+    "contract_name": "demonstrates",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 62,
+    "iterations": 2,
+    "issues_resolved": 8,
+    "initial_total_issues": 9,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "semgrep": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "unchecked-transfer",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-43-11_demonstrates\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-45-25_bad_style",
+    "contract_name": "bad_style",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 8,
+    "iterations": 1,
+    "issues_resolved": 11,
+    "initial_total_issues": 12,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "slither": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "solc-version",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-45-25_bad_style\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-46-21_GasDoS",
+    "contract_name": "GasDoS",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 24,
+    "iterations": 2,
+    "issues_resolved": 8,
+    "initial_total_issues": 9,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "semgrep": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "reentrancy-pattern",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-46-21_GasDoS\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-47-46_InefficientLoop",
+    "contract_name": "InefficientLoop",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 11,
+    "iterations": 1,
+    "issues_resolved": 2,
+    "initial_total_issues": 3,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "slither": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "solc-version",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-47-46_InefficientLoop\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-48-36_MissingEvents",
+    "contract_name": "MissingEvents",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 8,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 2,
+    "final_total_issues": 2,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 2,
+      "total": 2
+    },
+    "tool_issue_counts": {
+      "slither": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "naming-convention",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-48-36_MissingEvents\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-49-02_NoAccessControl",
+    "contract_name": "NoAccessControl",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 8,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 2,
+    "final_total_issues": 2,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 2,
+      "total": 2
+    },
+    "tool_issue_counts": {
+      "slither": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "naming-convention",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-49-02_NoAccessControl\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-49-32_Overflow",
+    "contract_name": "Overflow",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 12,
+    "iterations": 2,
+    "issues_resolved": 1,
+    "initial_total_issues": 2,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "slither": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "solc-version",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-49-32_Overflow\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-50-48_demonstrates",
+    "contract_name": "demonstrates",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 27,
+    "iterations": 2,
+    "issues_resolved": 17,
+    "initial_total_issues": 18,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "semgrep": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "unchecked-transfer",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-50-48_demonstrates\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-52-37_demonstrates",
+    "contract_name": "demonstrates",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 27,
+    "iterations": 2,
+    "issues_resolved": 8,
+    "initial_total_issues": 9,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "semgrep": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "reentrancy-pattern",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-52-37_demonstrates\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-55-04_UninitializedStorage",
+    "contract_name": "UninitializedStorage",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 14,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 0,
+    "final_total_issues": 0,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0,
+      "total": 0
+    },
+    "tool_issue_counts": {},
+    "top_issue_titles": [],
+    "report_path": "pipeline_outputs\\2026-01-08_23-55-04_UninitializedStorage\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-55-25_demonstrates",
+    "contract_name": "demonstrates",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 31,
+    "iterations": 1,
+    "issues_resolved": 5,
+    "initial_total_issues": 9,
+    "final_total_issues": 4,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 4,
+      "total": 4
+    },
+    "tool_issue_counts": {
+      "semgrep": 2,
+      "slither": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "unchecked-transfer",
+        "count": 2
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-55-25_demonstrates\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-01-08_23-57-07_UnusedVariables",
+    "contract_name": "UnusedVariables",
+    "category": "Vulnerable",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 7,
+    "iterations": 1,
+    "issues_resolved": 2,
+    "initial_total_issues": 3,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "slither": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "solc-version",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-01-08_23-57-07_UnusedVariables\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-38-20",
+    "contract_name": "RentalNFTSystem",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 82,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 11,
+    "final_total_issues": 11,
+    "severity": {
+      "critical": 0,
+      "high": 1,
+      "medium": 4,
+      "low": 0,
+      "info": 6,
+      "total": 11
+    },
+    "tool_issue_counts": {
+      "slither": 8,
+      "solhint": 3
+    },
+    "top_issue_titles": [
+      {
+        "title": "naming-convention",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "uninitialized-state",
+        "count": 1
+      },
+      {
+        "title": "locked-ether",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-38-20\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-40-17",
+    "contract_name": "ERC20Token",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 63,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 4,
+    "final_total_issues": 4,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 4,
+      "low": 0,
+      "info": 0,
+      "total": 4
+    },
+    "tool_issue_counts": {
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-40-17\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-42-00",
+    "contract_name": "DecentralizedVoting",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 74,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 7,
+    "final_total_issues": 7,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 7,
+      "low": 0,
+      "info": 0,
+      "total": 7
+    },
+    "tool_issue_counts": {
+      "solhint": 7
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-42-00\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-43-30",
+    "contract_name": "Crowdfunding",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 49,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 4,
+    "final_total_issues": 4,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 0,
+      "info": 2,
+      "total": 4
+    },
+    "tool_issue_counts": {
+      "slither": 2,
+      "solhint": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-43-30\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-46-04",
+    "contract_name": "Escrow",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 67,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 13,
+    "final_total_issues": 13,
+    "severity": {
+      "critical": 0,
+      "high": 1,
+      "medium": 4,
+      "low": 2,
+      "info": 6,
+      "total": 13
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "slither": 8,
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 3
+      },
+      {
+        "title": "missing-zero-check",
+        "count": 2
+      },
+      {
+        "title": "immutable-states",
+        "count": 2
+      },
+      {
+        "title": "arbitrary-send-eth",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-46-04\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-47-36",
+    "contract_name": "MultiSigWallet",
+    "category": "MultiSig",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 93,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 14,
+    "final_total_issues": 14,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 13,
+      "low": 0,
+      "info": 1,
+      "total": 14
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 13
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-custom-errors",
+        "count": 3
+      },
+      {
+        "title": "gas-increment-by-one",
+        "count": 3
+      },
+      {
+        "title": "no-global-import",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-pattern",
+        "count": 1
+      },
+      {
+        "title": "gas-struct-packing",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-47-36\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-48-38",
+    "contract_name": "DAOGovernance",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 78,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 11,
+    "final_total_issues": 11,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 11,
+      "low": 0,
+      "info": 0,
+      "total": 11
+    },
+    "tool_issue_counts": {
+      "solhint": 11
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 3
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-48-38\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-50-08",
+    "contract_name": "NFTMarketplace",
+    "category": "Marketplace",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 62,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 7,
+    "final_total_issues": 7,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 1,
+      "total": 7
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-pattern",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-50-08\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-51-25",
+    "contract_name": "Timelock",
+    "category": "Timelock",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 45,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 3
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-51-25\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_19-52-24",
+    "contract_name": "DecentralizedAuction",
+    "category": "Auction",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 49,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 12,
+    "final_total_issues": 12,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 10,
+      "low": 0,
+      "info": 2,
+      "total": 12
+    },
+    "tool_issue_counts": {
+      "semgrep": 2,
+      "solhint": 10
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "unchecked-transfer",
+        "count": 2
+      },
+      {
+        "title": "no-global-import",
+        "count": 2
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 2
+      },
+      {
+        "title": "reentrancy",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_19-52-24\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-03-15",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": false,
+    "tools_used": [],
+    "loc": 59,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 0,
+    "final_total_issues": 0,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0,
+      "total": 0
+    },
+    "tool_issue_counts": {},
+    "top_issue_titles": [],
+    "report_path": "pipeline_outputs\\2026-03-23_21-03-15\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-03-42",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": false,
+    "tools_used": [],
+    "loc": 50,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 0,
+    "final_total_issues": 0,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0,
+      "total": 0
+    },
+    "tool_issue_counts": {},
+    "top_issue_titles": [],
+    "report_path": "pipeline_outputs\\2026-03-23_21-03-42\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-05-42",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 79,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 1,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "info": 0,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-05-42\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-06-44",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 48,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 7,
+    "final_total_issues": 7,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 7,
+      "low": 0,
+      "info": 0,
+      "total": 7
+    },
+    "tool_issue_counts": {
+      "solhint": 7
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 5
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-06-44\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-08-05",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 70,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 2,
+    "final_total_issues": 2,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 0,
+      "info": 0,
+      "total": 2
+    },
+    "tool_issue_counts": {
+      "solhint": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-08-05\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-08-56",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 49,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-08-56\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-11-36",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 65,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 7,
+    "final_total_issues": 7,
+    "severity": {
+      "critical": 0,
+      "high": 1,
+      "medium": 2,
+      "low": 2,
+      "info": 2,
+      "total": 7
+    },
+    "tool_issue_counts": {
+      "mythril": 2,
+      "slither": 3,
+      "solhint": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 2
+      },
+      {
+        "title": "uninitialized-state",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-11-36\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-13-18",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 44,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-13-18\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-32-42",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 65,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 1,
+    "final_total_issues": 1,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "info": 0,
+      "total": 1
+    },
+    "tool_issue_counts": {
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-32-42\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-34-10",
+    "contract_name": "GeneratedContract",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 53,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-34-10\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-35-32",
+    "contract_name": "DecentralizedVoting",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 91,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 9,
+    "final_total_issues": 9,
+    "severity": {
+      "critical": 0,
+      "high": 1,
+      "medium": 5,
+      "low": 1,
+      "info": 2,
+      "total": 9
+    },
+    "tool_issue_counts": {
+      "slither": 4,
+      "solhint": 5
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "uninitialized-state",
+        "count": 1
+      },
+      {
+        "title": "timestamp",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-35-32\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-37-20",
+    "contract_name": "Crowdfunding",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 62,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 8,
+    "final_total_issues": 8,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 1,
+      "info": 4,
+      "total": 8
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "slither": 4,
+      "solhint": 3
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "events-maths",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "low-level-calls",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-37-20\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-40-26",
+    "contract_name": "Escrow",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 64,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 17,
+    "final_total_issues": 17,
+    "severity": {
+      "critical": 0,
+      "high": 3,
+      "medium": 5,
+      "low": 2,
+      "info": 7,
+      "total": 17
+    },
+    "tool_issue_counts": {
+      "mythril": 2,
+      "semgrep": 2,
+      "slither": 9,
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "arbitrary-send-eth",
+        "count": 2
+      },
+      {
+        "title": "missing-zero-check",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-unlimited-gas",
+        "count": 2
+      },
+      {
+        "title": "immutable-states",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-40-26\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-46-18",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 59,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 8,
+    "final_total_issues": 8,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 5,
+      "info": 2,
+      "total": 8
+    },
+    "tool_issue_counts": {
+      "mythril": 3,
+      "slither": 4,
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 3
+      },
+      {
+        "title": "timestamp",
+        "count": 2
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-46-18\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-48-24",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 50,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-48-24\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-49-39",
+    "contract_name": "DecentralizedVoting",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 84,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 24,
+    "final_total_issues": 24,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 24,
+      "low": 0,
+      "info": 0,
+      "total": 24
+    },
+    "tool_issue_counts": {
+      "solhint": 24
+    },
+    "top_issue_titles": [
+      {
+        "title": "explicit-types",
+        "count": 9
+      },
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 4
+      },
+      {
+        "title": "no-unused-vars",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-49-39\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-51-25",
+    "contract_name": "Crowdfunding",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 77,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 26,
+    "final_total_issues": 26,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 9,
+      "low": 9,
+      "info": 8,
+      "total": 26
+    },
+    "tool_issue_counts": {
+      "mythril": 6,
+      "semgrep": 2,
+      "slither": 10,
+      "solhint": 8
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-strict-inequalities",
+        "count": 4
+      },
+      {
+        "title": "immutable-states",
+        "count": 3
+      },
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 3
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 3
+      },
+      {
+        "title": "reentrancy-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-51-25\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-55-26",
+    "contract_name": "Escrow",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 84,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 14,
+    "final_total_issues": 14,
+    "severity": {
+      "critical": 0,
+      "high": 3,
+      "medium": 2,
+      "low": 2,
+      "info": 7,
+      "total": 14
+    },
+    "tool_issue_counts": {
+      "mythril": 2,
+      "semgrep": 2,
+      "slither": 9,
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "arbitrary-send-eth",
+        "count": 2
+      },
+      {
+        "title": "missing-zero-check",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-unlimited-gas",
+        "count": 2
+      },
+      {
+        "title": "immutable-states",
+        "count": 2
+      },
+      {
+        "title": "unchecked-transfer",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-55-26\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-57-33",
+    "contract_name": "MultiSigWallet",
+    "category": "MultiSig",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 80,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 29,
+    "final_total_issues": 29,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 28,
+      "low": 0,
+      "info": 1,
+      "total": 29
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 28
+    },
+    "top_issue_titles": [
+      {
+        "title": "explicit-types",
+        "count": 17
+      },
+      {
+        "title": "gas-custom-errors",
+        "count": 3
+      },
+      {
+        "title": "gas-increment-by-one",
+        "count": 3
+      },
+      {
+        "title": "no-global-import",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-pattern",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-57-33\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_21-59-12",
+    "contract_name": "DAOGovernance",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 87,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 13,
+    "final_total_issues": 13,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 13,
+      "low": 0,
+      "info": 0,
+      "total": 13
+    },
+    "tool_issue_counts": {
+      "solhint": 13
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 3
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_21-59-12\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-23_22-00-57",
+    "contract_name": "NFTMarketplace",
+    "category": "Marketplace",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 73,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 7,
+    "final_total_issues": 7,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 1,
+      "total": 7
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-pattern",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-23_22-00-57\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-27_17-25-55",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 65,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 10,
+    "final_total_issues": 10,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 7,
+      "info": 2,
+      "total": 10
+    },
+    "tool_issue_counts": {
+      "mythril": 3,
+      "slither": 7
+    },
+    "top_issue_titles": [
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 3
+      },
+      {
+        "title": "timestamp",
+        "count": 2
+      },
+      {
+        "title": "locked-ether",
+        "count": 1
+      },
+      {
+        "title": "events-maths",
+        "count": 1
+      },
+      {
+        "title": "missing-zero-check",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-27_17-25-55\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-27_17-27-13",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 47,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-27_17-27-13\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-27_17-27-50",
+    "contract_name": "DecentralizedVoting",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 90,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 27,
+    "final_total_issues": 27,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 27,
+      "low": 0,
+      "info": 0,
+      "total": 27
+    },
+    "tool_issue_counts": {
+      "solhint": 27
+    },
+    "top_issue_titles": [
+      {
+        "title": "explicit-types",
+        "count": 12
+      },
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 4
+      },
+      {
+        "title": "no-unused-vars",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-27_17-27-50\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-30_13-57-51",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": false,
+    "tools_used": [],
+    "loc": 59,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 0,
+    "final_total_issues": 0,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0,
+      "total": 0
+    },
+    "tool_issue_counts": {},
+    "top_issue_titles": [],
+    "report_path": "pipeline_outputs\\2026-03-30_13-57-51\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-30_14-42-26",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 66,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 7,
+    "final_total_issues": 7,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 3,
+      "info": 2,
+      "total": 7
+    },
+    "tool_issue_counts": {
+      "mythril": 3,
+      "slither": 2,
+      "solhint": 2
+    },
+    "top_issue_titles": [
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 3
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-30_14-42-26\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_13-31-21",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 61,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 7,
+    "final_total_issues": 7,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 4,
+      "info": 2,
+      "total": 7
+    },
+    "tool_issue_counts": {
+      "mythril": 3,
+      "slither": 3,
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 3
+      },
+      {
+        "title": "timestamp",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_13-31-21\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_13-33-03",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 47,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_13-33-03\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_13-36-55",
+    "contract_name": "DecentralizedVoting",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 89,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 16,
+    "final_total_issues": 16,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 16,
+      "low": 0,
+      "info": 0,
+      "total": 16
+    },
+    "tool_issue_counts": {
+      "solhint": 16
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 5
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 4
+      },
+      {
+        "title": "no-unused-vars",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_13-36-55\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_13-40-56",
+    "contract_name": "Crowdfunding",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 87,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 23,
+    "final_total_issues": 23,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 8,
+      "low": 7,
+      "info": 8,
+      "total": 23
+    },
+    "tool_issue_counts": {
+      "mythril": 3,
+      "semgrep": 2,
+      "slither": 10,
+      "solhint": 8
+    },
+    "top_issue_titles": [
+      {
+        "title": "immutable-states",
+        "count": 3
+      },
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 3
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 3
+      },
+      {
+        "title": "gas-custom-errors",
+        "count": 3
+      },
+      {
+        "title": "reentrancy-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_13-40-56\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_13-55-41",
+    "contract_name": "Crowdfunding",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 72,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 10,
+    "final_total_issues": 10,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 5,
+      "low": 1,
+      "info": 4,
+      "total": 10
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "slither": 4,
+      "solhint": 5
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 2
+      },
+      {
+        "title": "events-maths",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "reentrancy-unlimited-gas",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_13-55-41\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_14-00-55",
+    "contract_name": "Escrow",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 64,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 17,
+    "final_total_issues": 17,
+    "severity": {
+      "critical": 0,
+      "high": 3,
+      "medium": 5,
+      "low": 2,
+      "info": 7,
+      "total": 17
+    },
+    "tool_issue_counts": {
+      "mythril": 2,
+      "semgrep": 2,
+      "slither": 9,
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "arbitrary-send-eth",
+        "count": 2
+      },
+      {
+        "title": "missing-zero-check",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-unlimited-gas",
+        "count": 2
+      },
+      {
+        "title": "immutable-states",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_14-00-55\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-00-18",
+    "contract_name": "RentalNFT",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 69,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 5,
+    "final_total_issues": 5,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 2,
+      "info": 2,
+      "total": 5
+    },
+    "tool_issue_counts": {
+      "mythril": 1,
+      "slither": 3,
+      "solhint": 1
+    },
+    "top_issue_titles": [
+      {
+        "title": "timestamp",
+        "count": 1
+      },
+      {
+        "title": "solc-version",
+        "count": 1
+      },
+      {
+        "title": "immutable-states",
+        "count": 1
+      },
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 1
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-00-18\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-01-21",
+    "contract_name": "MyToken",
+    "category": "ERC20",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 47,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 6,
+    "final_total_issues": 6,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 0,
+      "total": 6
+    },
+    "tool_issue_counts": {
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 4
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-01-21\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-01-49",
+    "contract_name": "DecentralizedVoting",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 90,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 11,
+    "final_total_issues": 11,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 11,
+      "low": 0,
+      "info": 0,
+      "total": 11
+    },
+    "tool_issue_counts": {
+      "solhint": 11
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 3
+      },
+      {
+        "title": "no-unused-vars",
+        "count": 1
+      },
+      {
+        "title": "no-empty-blocks",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-01-49\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-02-18",
+    "contract_name": "Crowdfunding",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 86,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 21,
+    "final_total_issues": 21,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 8,
+      "low": 5,
+      "info": 8,
+      "total": 21
+    },
+    "tool_issue_counts": {
+      "mythril": 3,
+      "semgrep": 2,
+      "slither": 8,
+      "solhint": 8
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 4
+      },
+      {
+        "title": "immutable-states",
+        "count": 3
+      },
+      {
+        "title": "dependence on predictable environment variable (swc 116)",
+        "count": 3
+      },
+      {
+        "title": "timestamp",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-02-18\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-04-07",
+    "contract_name": "Escrow",
+    "category": "Custom",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 65,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 17,
+    "final_total_issues": 17,
+    "severity": {
+      "critical": 0,
+      "high": 3,
+      "medium": 5,
+      "low": 2,
+      "info": 7,
+      "total": 17
+    },
+    "tool_issue_counts": {
+      "mythril": 2,
+      "semgrep": 2,
+      "slither": 9,
+      "solhint": 4
+    },
+    "top_issue_titles": [
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "arbitrary-send-eth",
+        "count": 2
+      },
+      {
+        "title": "missing-zero-check",
+        "count": 2
+      },
+      {
+        "title": "reentrancy-unlimited-gas",
+        "count": 2
+      },
+      {
+        "title": "immutable-states",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-04-07\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-05-09",
+    "contract_name": "MultiSigWallet",
+    "category": "MultiSig",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 95,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 33,
+    "final_total_issues": 33,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 32,
+      "low": 0,
+      "info": 1,
+      "total": 33
+    },
+    "tool_issue_counts": {
+      "semgrep": 1,
+      "solhint": 32
+    },
+    "top_issue_titles": [
+      {
+        "title": "explicit-types",
+        "count": 17
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 5
+      },
+      {
+        "title": "gas-custom-errors",
+        "count": 3
+      },
+      {
+        "title": "gas-increment-by-one",
+        "count": 3
+      },
+      {
+        "title": "no-global-import",
+        "count": 2
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-05-09\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-05-44",
+    "contract_name": "DAOGovernance",
+    "category": "Governor",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 83,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 14,
+    "final_total_issues": 14,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 14,
+      "low": 0,
+      "info": 0,
+      "total": 14
+    },
+    "tool_issue_counts": {
+      "solhint": 14
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 6
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 4
+      },
+      {
+        "title": "gas-strict-inequalities",
+        "count": 4
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-05-44\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-06-17",
+    "contract_name": "NFTMarketplace",
+    "category": "Marketplace",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 70,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 8,
+    "final_total_issues": 8,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 0,
+      "info": 2,
+      "total": 8
+    },
+    "tool_issue_counts": {
+      "semgrep": 2,
+      "solhint": 6
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 5
+      },
+      {
+        "title": "reentrancy-pattern",
+        "count": 2
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-06-17\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-06-46",
+    "contract_name": "Timelock",
+    "category": "Timelock",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 49,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 5,
+    "final_total_issues": 5,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 5,
+      "low": 0,
+      "info": 0,
+      "total": 5
+    },
+    "tool_issue_counts": {
+      "solhint": 5
+    },
+    "top_issue_titles": [
+      {
+        "title": "no-global-import",
+        "count": 2
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "immutable-vars-naming",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-06-46\\stage3_report.json"
+  },
+  {
+    "run_id": "2026-03-31_15-07-06",
+    "contract_name": "DecentralizedAuction",
+    "category": "Auction",
+    "analysis_success": true,
+    "tools_used": [
+      "slither",
+      "mythril",
+      "semgrep",
+      "solhint"
+    ],
+    "loc": 48,
+    "iterations": 0,
+    "issues_resolved": 0,
+    "initial_total_issues": 16,
+    "final_total_issues": 16,
+    "severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 14,
+      "low": 0,
+      "info": 2,
+      "total": 16
+    },
+    "tool_issue_counts": {
+      "semgrep": 2,
+      "solhint": 14
+    },
+    "top_issue_titles": [
+      {
+        "title": "explicit-types",
+        "count": 8
+      },
+      {
+        "title": "unchecked-transfer",
+        "count": 2
+      },
+      {
+        "title": "no-global-import",
+        "count": 2
+      },
+      {
+        "title": "gas-indexed-events",
+        "count": 2
+      },
+      {
+        "title": "state-visibility",
+        "count": 1
+      }
+    ],
+    "report_path": "pipeline_outputs\\2026-03-31_15-07-06\\stage3_report.json"
+  }
+]

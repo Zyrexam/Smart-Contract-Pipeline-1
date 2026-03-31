@@ -1,0 +1,75 @@
+{
+  "iterations": 0,
+  "issues_resolved": 0,
+  "initial_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril-failed",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 24,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": [
+      "mythril: parsing issues - ['error parsing JSON output - no valid JSON found | Debug: stdout length: 269; stdout first 500: {\"success\": false, \"error\": \"Solc experienced a fatal error.\\n\\nParserError: Expected \\';\\' but got reserved keyword \\'in\\'\\n  --> /sb/contract.sol:25:34:\\n   |\\n25 |         for (address contributor in contributions) {\\n   |                                  ^^\\n\\n\", \"issues\": []}; stdout_lines count: 9; first line (first 200): {\"success\": false, \"error\": \"Solc experienced a fatal error.; last line (first 200): \", \"issues\": []}']"
+    ]
+  },
+  "final_analysis": {
+    "contract_name": "Crowdfunding",
+    "tools_used": [
+      "slither",
+      "mythril-failed",
+      "semgrep",
+      "solhint"
+    ],
+    "total_issues": 1,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 1,
+    "issues": [
+      {
+        "tool": "semgrep",
+        "severity": "INFO",
+        "title": "unchecked-transfer",
+        "description": "unchecked-transfer detected",
+        "line": 24,
+        "line_end": null,
+        "filename": "/sb/contract.sol",
+        "contract": null,
+        "function": null,
+        "recommendation": "Check return values or use SafeERC20"
+      }
+    ],
+    "success": true,
+    "error": null,
+    "warnings": [
+      "mythril: parsing issues - ['error parsing JSON output - no valid JSON found | Debug: stdout length: 269; stdout first 500: {\"success\": false, \"error\": \"Solc experienced a fatal error.\\n\\nParserError: Expected \\';\\' but got reserved keyword \\'in\\'\\n  --> /sb/contract.sol:25:34:\\n   |\\n25 |         for (address contributor in contributions) {\\n   |                                  ^^\\n\\n\", \"issues\": []}; stdout_lines count: 9; first line (first 200): {\"success\": false, \"error\": \"Solc experienced a fatal error.; last line (first 200): \", \"issues\": []}']"
+    ]
+  },
+  "fixes_applied": [],
+  "stage2_metadata": null,
+  "compiles": null
+}
